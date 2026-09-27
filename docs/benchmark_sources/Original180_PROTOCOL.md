@@ -1,0 +1,17 @@
+# TCSPV3 original TCSP 180-case benchmark, CPU2
+
+Frozen before prediction/evaluation on this cohort, 2026-09-27.
+
+The authoritative input is https://github.com/usccolumbia/TCSP/blob/main/data/180_testdata.csv, frozen at commit 4da9ee6eae151732b406cec7df81e16e9d0a7125. Preserve all180 IDs and CSV compositions in exact row order. No replacements or exclusions of difficult targets. This matches the archived original180 CSV, and shares only31 IDs with the previous curated180 run.
+
+Reference CIFs come from the existing paper archive Weilai_paper/180-primitive-groundtruth.zip. All180 unique reduced-composition keys match exactly one archived CIF. Parsed compositions and ordered species validate; space groups calculated at symprec0.1 match all180 CSV labels. Some CIFs are conventional cells despite the archive name; preserve exact CIF text. CSV site counts occasionally differ from computed primitive counts; record these observations rather than modifying the targets. Evaluation uses primitive_cell=True. input/reference_mapping.json records source archive, member names, hashes and metadata checks.
+
+Generation receives only queries.json (ID and composition) and exclusions.json (all180 reduced compositions). Use the frozen TCSPV3 chemical algorithm and parameters from prior runs: embedding and PN routes, neutral BERTOS alternatives, coefficient-preserving mappings, radius mismatch score, up to100 valid instantiated structures, up to20 distinct structures. Actual source-CIF composition and SHA256 are checked. Exclude every target composition from template retrieval. No tuning on reference matches.
+
+Primary ranking is radius-scaled MatterSim1M single-point energy per atom over the same top20 candidates; linear scale clipped to[0.85,1.18]. Also report chemical-only ranking. No relaxation, matching the last TCSPV3 run. This is a dataset correction, not a change in the prediction algorithm. The original paper relaxed predictions and used exact-entry exclusion rather than all-composition exclusion; do not claim a fully identical reproduction of Figure1. Model-training overlap remains unknown.
+
+Top1 and Top5 mean StructureMatcher recovery within the first1/5 ranked candidates, with ltol0.2, stol0.3, angle_tol5, primitive_cell=True, scale=True, attempt_supercell=False. Compare each to its one archived ground-truth CIF. All180 stay in the denominator. Empty predictions fail; task crashes must be diagnosed/rerun. Record candidate/model errors. Do not add alternate polymorphs after inspecting results.
+
+Every Slurm task uses partition cpu, two CPUs, no GPU resources; Torch intra-op2/inter-op1 and OMP/MKL/OpenBLAS/NumExpr2. CUDA_VISIBLE_DEVICES is cleared inside runtime before importing Torch. Shared environments, model/checkpoint and core source are unchanged. Initially cap atlas at6 concurrent tasks, enigma16 and pluto16; these limits preserve8 CPU cores per GPU and memory headroom under the observed live allocations. No changes to other jobs.
+
+Audit each generated pool candidate against actual source-CIF identity, hash, composition and target exclusion. Export Top5 for both rankings; strict CIF reread with frac_tolerance0 must preserve composition, lattice and species-matched periodic coordinates. Finalization requires180 complete case records and export hashes intact before writing DONE. Verify source/model/inputs and export hashes after transfer. Preserve both the earlier curated180 result and this original180 result separately. Keep standalone; do not wire to csp.

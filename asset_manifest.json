@@ -1,0 +1,50 @@
+{
+  "version": "3.0.0",
+  "assets": {
+    "checkpoints/mattersim-v1.0.0-1M.pth": {
+      "bytes": 17932943,
+      "sha256": "28b0b0b0f13efefee06b47ea4c9105a26bd3e2c8396da193430da96b3b49a8be"
+    },
+    "tcspv3/731K_index.pkl": {
+      "bytes": 25782054,
+      "sha256": "874ae374775b2666ccf6b0e1d746b2d96b586a797c50b153f2ce57df51b8aee6"
+    },
+    "tcspv3/731K_index_minus_MP20_test.pkl": {
+      "bytes": 25483278,
+      "sha256": "b042c9c0887bf5c0a6ef7b53c0f0792e3639f19229703909052cf513e9a90ebd"
+    },
+    "tcspv3/731K_index_minus_MPST52_test.pkl": {
+      "bytes": 25455124,
+      "sha256": "87198499e04e09eb4f82d64c573968bbd8f1cf7c957927ac885f23adc8a5933a"
+    },
+    "tcspv3/database/BERTOS/tokenizer/vocab.txt": {
+      "bytes": 374,
+      "sha256": "705eed98b864cf992552c9d07b1d6a32bb7d79b4125a1c13113ae3025aa49879"
+    },
+    "tcspv3/database/BERTOS/trained_models/ICSD_CN/config.json": {
+      "bytes": 1062,
+      "sha256": "fbdef1a2ee103588499dec8d4031d1dab988b3d81badeb3fa9706e8bf4bd78c2"
+    },
+    "tcspv3/database/BERTOS/trained_models/ICSD_CN/pytorch_model.bin": {
+      "bytes": 8972151,
+      "sha256": "e2f4d0db519eb3fd10e1e3c1427d7366b10778af2d0f970fcad0a975503997cc"
+    },
+    "tcspv3/database/data/matscholar-embedding.json": {
+      "bytes": 449164,
+      "sha256": "b299272ebb3e59113006758b1a2f4056eb7df3fe28987b2d0a3de341c1247417"
+    },
+    "tcspv3/database/data/source_cifs.bin": {
+      "bytes": 1352566330,
+      "sha256": "6869103da5c920ae1f9db78cddfc0d91546beb877d71f2fe4e7b68c53737faba"
+    },
+    "tcspv3/database/data/source_cifs.mmap_manifest.json": {
+      "bytes": 345,
+      "sha256": "dd5e1a8624ce246541e34b43a03ae44e3bb8abbfbbcb1971f5b195a862c8f8df"
+    },
+    "tcspv3/database/data/source_cifs.offsets.pkl": {
+      "bytes": 20086513,
+      "sha256": "c0baabdaeaaacbafebe6e384a72f7bcd38aafc3537c72e275033b2cd1e0c1fb7"
+    }
+  },
+  "source_deployment_manifest": "deploy_tcsp/package_manifest.json"
+}

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tcspv3"
+version = "3.0.0"
+description = "Composition-conditioned template crystal structure prediction"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Machine Learning and Evolution Laboratory, University of South Carolina"}]
+dependencies = ["numpy", "scipy", "pymatgen", "torch", "transformers>=4.40,<6"]
+classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License", "Topic :: Scientific/Engineering :: Chemistry"]
+
+[project.optional-dependencies]
+physics = ["ase", "mattersim"]
+test = ["pytest"]
+
+[project.scripts]
+tcsp = "tcspv3.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["tcspv3*"]
+
+[tool.setuptools.package-data]
+tcspv3 = ["data/*.csv"]

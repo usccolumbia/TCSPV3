@@ -1,0 +1,5 @@
+numpy
+scipy
+pymatgen
+torch
+transformers>=4.40,<6

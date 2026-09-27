@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use TCSPV3, cite this software release and the TCSP2.0 and PNcsp+ papers."
+type: software
+title: "TCSPV3: Composition-Conditioned Template Crystal Structure Prediction"
+authors:
+  - name: "Machine Learning and Evolution Laboratory, University of South Carolina"
+version: 3.0.0
+references:
+  - type: article
+    title: "TCSP 2.0: Template Based Crystal Structure Prediction with Improved Oxidation State Prediction and Chemistry Heuristics"
+    url: "https://arxiv.org/abs/2503.23183"
+  - type: article
+    title: "PNcsp+: A Periodic Number-Based Crystal Structure Prediction Method Enhanced by Machine Learning"
+    authors:
+      - family-names: Oran
+        given-names: Cem
+      - family-names: Caputo
+        given-names: Riccarda
+      - family-names: Villars
+        given-names: Pierre
+      - family-names: Tekin
+        given-names: Adem
+    doi: "10.1021/acs.jctc.6c00044"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC13085239/"

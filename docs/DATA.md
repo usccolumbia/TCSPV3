@@ -1,0 +1,11 @@
+# Data and model provenance
+
+The versioned code repository omits large binary assets. The locally prepared `TCSPV3-v3.0.0-assets.tar.gz` release bundle contains the three template indexes, 731,293 byte-preserved CIFs in a read-only memory-mapped archive, an ID-to-offset map, Matscholar embeddings, BERTOS tokenizer/checkpoint, and MatterSim v1.0.0 1M checkpoint. `asset_manifest.json` fixes each file's size and SHA256; `release_manifest.json` fixes the bundle SHA256. `scripts/install_data.py` verifies both before installation.
+
+The full index has 731,293 entries (SHA256 `874ae374775b2666ccf6b0e1d746b2d96b586a797c50b153f2ce57df51b8aee6`). The default MP20-test-excluded index has 719,450 entries; the MPTS-52-test-excluded index has 719,963. The filtered indexes exclude their **test** split by exact material ID or matching reduced composition, space group, and Wyckoff signature. Signature matching is a heuristic, not full structural equivalence, and train/validation splits remain in these variants. The source CIFs, indexes, and models are trusted assets; do not unpickle untrusted files.
+
+The [TCSP2.0 repository](https://github.com/usccolumbia/TCSP) describes the source template collection as combining Materials Project, Materials Cloud, C2DB, and GNoME. The code license in this repository follows TCSP2.0's MIT license, but that does **not** assert MIT terms for redistributed third-party CIF data or model weights. Check the applicable terms and attribution for each upstream data/model source before publishing the asset bundle. The V3 repository can publish source and documentation independently of that rights review.
+
+Model checkpoints and the template database are not evidence of train/test independence. The benchmark excluded target compositions from retrieved templates; it did not establish absence of pretraining overlap for BERTOS, Matscholar embeddings, or MatterSim.
+
+The Villars periodic-number ordering used by the PN route follows the chemical-similarity approach described in [Oran et al., PNcsp+](https://doi.org/10.1021/acs.jctc.6c00044). This is a methodological attribution; it does not imply that the PNcsp+ source database or ML ensemble is included in this release.

@@ -1,0 +1,1 @@
+`formulas.csv` demonstrates batch input. The CLI accepts an exact `composition` header (case-insensitive), or a unique header containing `formula`. If multiple formula columns exist, use `--column NAME`.
