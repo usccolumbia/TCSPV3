@@ -1,6 +1,14 @@
 # Benchmark evidence and comparison to TCSP2.0
 
-**Metric.** Top-1/Top-5 mean that at least one of the first 1/5 ranked candidates matches a reference with pymatgen StructureMatcher (`ltol=0.2`, `stol=0.3`, angle tolerance 5°, primitive-cell reduction and scaling enabled, no supercell matching). All cases remain in the denominator. These are structure-recovery rates, not stability or experimental validation.
+**Metric.** Top-1/Top-5/Top-20 mean that at least one of the first 1/5/20 ranked candidates matches a reference with pymatgen StructureMatcher (`ltol=0.2`, `stol=0.3`, angle tolerance 5°, primitive-cell reduction and scaling enabled, no supercell matching). All cases remain in the denominator. These are structure-recovery rates, not stability or experimental validation.
+
+## Current leakage-audited T180 v3.1
+
+| Ranking | Top-1 | Top-5 | Top-20 |
+|---|---:|---:|---:|
+| TCSPV3 native chemical | 122/180 (67.8%) | 154/180 (85.6%) | **163/180 (90.6%)** |
+
+The [complete result package](../benchmarks/T180_v3_1_top20/README.md) contains 2,581 ranked prediction CIFs, all 180 per-target records, checksums and independent verification. It uses integer cell-count inputs and no physical relaxation. Seventy-nine pools contain 20 candidates; the others contain fewer available native templates. The denominator remains 180. The package documents the 20-atom actual query for the `mp-557387` primitive-cell ambiguity and the `mp-1183076` to `mp-3576` reference replacement. This release is separate from the historical original TCSP 180-case cohort below.
 
 ## Exploratory Testset 46
 

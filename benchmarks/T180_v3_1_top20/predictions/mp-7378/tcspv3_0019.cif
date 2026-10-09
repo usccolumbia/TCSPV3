@@ -1,0 +1,38 @@
+# generated using pymatgen
+data_NaCdAs
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   6.93783800
+_cell_length_b   6.64833800
+_cell_length_c   8.22361906
+_cell_angle_alpha   53.22406235
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.00000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   NaCdAs
+_chemical_formula_sum   'Na4 Cd4 As4'
+_cell_volume   303.82496641
+_cell_formula_units_Z   4
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Na  Na0  1  0.68014000  0.52685300  0.11029900  1.0
+  Na  Na1  1  0.81986000  0.52685300  0.61029900  1.0
+  Na  Na2  1  0.31986000  0.47314700  0.88970100  1.0
+  Na  Na3  1  0.18014000  0.47314700  0.38970100  1.0
+  Cd  Cd4  1  0.65821500  0.30122300  0.94880300  1.0
+  Cd  Cd5  1  0.84178500  0.30122300  0.44880300  1.0
+  Cd  Cd6  1  0.34178500  0.69877700  0.05119700  1.0
+  Cd  Cd7  1  0.15821500  0.69877700  0.55119700  1.0
+  As  As8  1  0.85180800  0.85710800  0.86920000  1.0
+  As  As9  1  0.64819200  0.85710800  0.36920000  1.0
+  As  As10  1  0.14819200  0.14289200  0.13080000  1.0
+  As  As11  1  0.35180800  0.14289200  0.63080000  1.0

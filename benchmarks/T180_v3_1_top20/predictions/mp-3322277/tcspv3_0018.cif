@@ -1,0 +1,39 @@
+# generated using pymatgen
+data_CePr2Co3Si7
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   7.29278996
+_cell_length_b   7.29278951
+_cell_length_c   7.51403893
+_cell_angle_alpha   90.82187236
+_cell_angle_beta   89.17812589
+_cell_angle_gamma   119.58718627
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   CePr2Co3Si7
+_chemical_formula_sum   'Ce1 Pr2 Co3 Si7'
+_cell_volume   347.47471906
+_cell_formula_units_Z   1
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Pr  Pr0  1  0.66967500  0.33032500  0.68375000  1.0
+  Pr  Pr1  1  0.33525100  0.66474900  0.32071100  1.0
+  Co  Co2  1  0.49841700  0.50158300  0.99702700  1.0
+  Co  Co3  1  0.99533300  0.49832800  0.99916800  1.0
+  Co  Co4  1  0.50167200  0.00466700  0.99916800  1.0
+  Ce  Ce5  1  0.17478500  0.82521500  0.18030500  1.0
+  Si  Si6  1  0.34228600  0.65771400  0.57514700  1.0
+  Si  Si7  1  0.67169100  0.32830900  0.42849800  1.0
+  Si  Si8  1  0.81462300  0.18537700  0.82514600  1.0
+  Si  Si9  1  0.81118900  0.62192400  0.82649400  1.0
+  Si  Si10  1  0.37807600  0.18881100  0.82649400  1.0
+  Si  Si11  1  0.62101600  0.81401500  0.16904600  1.0
+  Si  Si12  1  0.18598500  0.37898400  0.16904600  1.0

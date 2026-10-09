@@ -2,6 +2,7 @@
 
 ## Source updates — 2026-10-09
 
+- Added the current T180 v3.1 Top-20 result package: 2,581 ranked CIFs for 180 targets, per-target metrics and checksums, independent matcher verification, and the documented actual-query exception. Native chemical recovery is 122/154/163 at Top-1/5/20; the historical original-180 results are unchanged.
 - Added a LeMat template guide, revision-pinned streaming CIF exporter, and parallel primitive-cell native index/mmap builder with explicit provenance and rejection records.
 - Replaced bundled MatterSim weights with official upstream download links and size/SHA256 verification; distinguish the Matbench-listed 5M checkpoint from the historical 1M benchmark model.
 - Added the repository URL BibTeX citation with Ying Feng, Lai Wei, and Jianjun Hu as authors.

@@ -35,6 +35,8 @@ All percentages below are **StructureMatcher** recovery, not stability rates. Th
 | Original TCSP 180-case list, V3 + radius-scaled MatterSim single-point | **116/180 (64.44%)** | 150/180 (83.33%) |
 | Published TCSP2.0 on its 180-case protocol **(not controlled against V3)** | 68.3% | 78.33% |
 
+The separate, current **T180 v3.1** benchmark recovers **122/180 (67.8%) at Top-1**, **154/180 (85.6%) at Top-5**, and **163/180 (90.6%) at Top-20** by native chemical ranking. Download/browse the [ranked prediction CIFs, per-target scores and hashes](benchmarks/T180_v3_1_top20/README.md). This package contains 2,581 available candidates across all 180 targets, with up to 20 per target. Its audited cohort and cell-count conditioning differ from the historical original-180 rows above; the package documents the actual input exception for `mp-557387`.
+
 
 
 ## Install

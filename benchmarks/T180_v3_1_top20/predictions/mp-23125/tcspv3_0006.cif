@@ -1,0 +1,48 @@
+# generated using pymatgen
+data_K3NaFeCl6
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   3.81614400
+_cell_length_b   12.51993159
+_cell_length_c   12.97380550
+_cell_angle_alpha   89.30720891
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.00000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   K3NaFeCl6
+_chemical_formula_sum   'K6 Na2 Fe2 Cl12'
+_cell_volume   619.81537392
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Fe  Fe0  1  0.50000000  0.62725600  0.64969900  1.0
+  Fe  Fe1  1  0.50000000  0.37274400  0.35030100  1.0
+  K  K2  1  0.00000000  0.10461200  0.08273600  1.0
+  K  K3  1  0.00000000  0.89538800  0.91726400  1.0
+  K  K4  1  0.00000000  0.60525900  0.41627400  1.0
+  K  K5  1  0.00000000  0.39474100  0.58372600  1.0
+  K  K6  1  0.50000000  0.12636000  0.85150800  1.0
+  K  K7  1  0.50000000  0.87364000  0.14849200  1.0
+  Na  Na8  1  0.50000000  0.00000000  0.00000000  1.0
+  Na  Na9  1  0.50000000  0.50000000  0.50000000  1.0
+  Cl  Cl10  1  0.50000000  0.26737300  0.68405100  1.0
+  Cl  Cl11  1  0.50000000  0.73262700  0.31594900  1.0
+  Cl  Cl12  1  0.50000000  0.77108000  0.82065200  1.0
+  Cl  Cl13  1  0.50000000  0.22892000  0.17934800  1.0
+  Cl  Cl14  1  0.00000000  0.25565300  0.92846400  1.0
+  Cl  Cl15  1  0.00000000  0.74434700  0.07153600  1.0
+  Cl  Cl16  1  0.00000000  0.48403600  0.24048500  1.0
+  Cl  Cl17  1  0.00000000  0.51596400  0.75951500  1.0
+  Cl  Cl18  1  0.00000000  0.97692500  0.25578300  1.0
+  Cl  Cl19  1  0.00000000  0.02307500  0.74421700  1.0
+  Cl  Cl20  1  0.00000000  0.23964900  0.43482300  1.0
+  Cl  Cl21  1  0.00000000  0.76035100  0.56517700  1.0

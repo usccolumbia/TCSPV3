@@ -1,0 +1,8 @@
+{
+  "targets_verified": 180,
+  "cif_bytes_hashes_and_compositions_verified": 2581,
+  "top1": 122,
+  "top5": 154,
+  "top20": 163,
+  "source": "Independent rematching of every packaged target against release v3.1 reference CIFs"
+}

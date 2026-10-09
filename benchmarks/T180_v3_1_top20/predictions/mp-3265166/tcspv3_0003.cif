@@ -1,0 +1,42 @@
+# generated using pymatgen
+data_AlGaPt6
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   5.13040700
+_cell_length_b   5.71951000
+_cell_length_c   7.62893200
+_cell_angle_alpha   90.00000000
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.00000000
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   AlGaPt6
+_chemical_formula_sum   'Al2 Ga2 Pt12'
+_cell_volume   223.85891113
+_cell_formula_units_Z   2
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Al  Al0  1  0.94583000  0.61503700  0.75000000  1.0
+  Al  Al1  1  0.44583000  0.88496300  0.25000000  1.0
+  Ga  Ga2  1  0.54482400  0.11452200  0.75000000  1.0
+  Ga  Ga3  1  0.04482400  0.38547800  0.25000000  1.0
+  Pt  Pt4  1  0.68088100  0.80938900  0.93305700  1.0
+  Pt  Pt5  1  0.18088100  0.69061100  0.06694300  1.0
+  Pt  Pt6  1  0.84125300  0.33496800  0.56734600  1.0
+  Pt  Pt7  1  0.34125300  0.16503200  0.43265400  1.0
+  Pt  Pt8  1  0.83871800  0.01774900  0.25000000  1.0
+  Pt  Pt9  1  0.33871800  0.48225100  0.75000000  1.0
+  Pt  Pt10  1  0.62636100  0.53832200  0.25000000  1.0
+  Pt  Pt11  1  0.12636100  0.96167800  0.75000000  1.0
+  Pt  Pt12  1  0.68088100  0.80938900  0.56694300  1.0
+  Pt  Pt13  1  0.18088100  0.69061100  0.43305700  1.0
+  Pt  Pt14  1  0.84125300  0.33496800  0.93265400  1.0
+  Pt  Pt15  1  0.34125300  0.16503200  0.06734600  1.0

@@ -1,0 +1,42 @@
+# generated using pymatgen
+data_HPbClO
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   6.37758279
+_cell_length_b   3.73747539
+_cell_length_c   33.15033986
+_cell_angle_alpha   90.00000000
+_cell_angle_beta   90.00000000
+_cell_angle_gamma   90.07377765
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   HPbClO
+_chemical_formula_sum   'H4 Pb4 Cl4 O4'
+_cell_volume   790.17279258
+_cell_formula_units_Z   4
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Pb  Pb0  1  0.13074706  0.54011359  0.46011369  1.0
+  Pb  Pb1  1  0.63080578  0.22992839  0.46013417  1.0
+  Pb  Pb2  1  0.55881288  0.04097209  0.53990054  1.0
+  Pb  Pb3  1  0.05896725  0.73075969  0.53986312  1.0
+  H  H4  1  0.45805300  0.28401063  0.50003370  1.0
+  H  H5  1  0.95736052  0.48878000  0.49995983  1.0
+  H  H6  1  0.23244551  0.78207975  0.50002840  1.0
+  H  H7  1  0.73145907  0.98693176  0.49997915  1.0
+  O  O8  1  0.75247969  0.62500765  0.56907296  1.0
+  O  O9  1  0.93701975  0.12295867  0.43093517  1.0
+  O  O10  1  0.43729426  0.64578133  0.43094534  1.0
+  O  O11  1  0.25247423  0.14777605  0.56904709  1.0
+  Cl  Cl12  1  0.75859713  0.67785415  0.61250686  1.0
+  Cl  Cl13  1  0.93101218  0.17391265  0.38746899  1.0
+  Cl  Cl14  1  0.43125827  0.59287838  0.38751236  1.0
+  Cl  Cl15  1  0.25844367  0.09686799  0.61251362  1.0

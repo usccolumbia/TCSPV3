@@ -1,0 +1,34 @@
+# generated using pymatgen
+data_NdPt
+_symmetry_space_group_name_H-M   'P 1'
+_cell_length_a   6.03292349
+_cell_length_b   6.03292349
+_cell_length_c   6.03292349
+_cell_angle_alpha   109.47122063
+_cell_angle_beta   109.47122063
+_cell_angle_gamma   109.47122063
+_symmetry_Int_Tables_number   1
+_chemical_formula_structural   NdPt
+_chemical_formula_sum   'Nd4 Pt4'
+_cell_volume   169.02913232
+_cell_formula_units_Z   4
+loop_
+ _symmetry_equiv_pos_site_id
+ _symmetry_equiv_pos_as_xyz
+  1  'x, y, z'
+loop_
+ _atom_site_type_symbol
+ _atom_site_label
+ _atom_site_symmetry_multiplicity
+ _atom_site_fract_x
+ _atom_site_fract_y
+ _atom_site_fract_z
+ _atom_site_occupancy
+  Nd  Nd0  1  0.98102500  0.98102500  0.98102500  1.0
+  Nd  Nd1  1  0.51897500  0.00000000  0.50000000  1.0
+  Nd  Nd2  1  0.50000000  0.51897500  0.00000000  1.0
+  Nd  Nd3  1  0.00000000  0.50000000  0.51897500  1.0
+  Pt  Pt4  1  0.41598000  0.41598000  0.41598000  1.0
+  Pt  Pt5  1  0.08402000  0.00000000  0.50000000  1.0
+  Pt  Pt6  1  0.50000000  0.08402000  0.00000000  1.0
+  Pt  Pt7  1  0.00000000  0.50000000  0.08402000  1.0

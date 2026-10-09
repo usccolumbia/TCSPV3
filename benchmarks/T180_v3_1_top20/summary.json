@@ -1,0 +1,36 @@
+{
+  "testset": "T180",
+  "release": "v3.1",
+  "targets": 180,
+  "coverage": 180,
+  "cif_files": 2581,
+  "full20_pools": 79,
+  "ranking": "TCSPV3 native chemical",
+  "input": "integer primitive-cell formula only",
+  "candidate_budget": "100 instantiated candidates, up to 20 selected exports",
+  "physical_relaxation": false,
+  "matching": {
+    "ltol": 0.2,
+    "stol": 0.3,
+    "angle_tol": 5,
+    "primitive_cell": true,
+    "scale": true,
+    "attempt_supercell": false
+  },
+  "replacement": {
+    "old_id": "mp-1183076",
+    "new_id": "mp-3576"
+  },
+  "top1": 122,
+  "top1_percent": 67.77777777777777,
+  "top5": 154,
+  "top5_percent": 85.55555555555556,
+  "top20": 163,
+  "top20_percent": 90.55555555555556,
+  "input_exception": {
+    "material_id": "mp-557387",
+    "actual_query": "Sr4Tm2Nb2O12",
+    "release_formula": "Nb1O6Sr2Tm1",
+    "reason": "Original campaign resolved the 0.01-A pseudo-translation ambiguity to the 20-atom cell; preserve its actual query"
+  }
+}
