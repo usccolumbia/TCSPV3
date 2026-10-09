@@ -13,3 +13,4 @@ tcspv3/731K_index*.pkl
 checkpoints/
 *.partial
 .DS_Store
+template_libraries/

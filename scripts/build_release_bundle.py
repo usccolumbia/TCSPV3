@@ -20,7 +20,7 @@ def sha256(path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--source', type=Path, required=True, help='Local standalone deployment folder')
-    parser.add_argument('--output', type=Path, default=ROOT/'release_artifacts/TCSPV3-v3.0.0-assets.tar.gz')
+    parser.add_argument('--output', type=Path, default=ROOT/'release_artifacts/TCSPV3-v3.0.0-template-assets.tar.gz')
     args = parser.parse_args()
     for name, expected in EXPECTED.items():
         path = args.source/name

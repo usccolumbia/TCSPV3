@@ -1,0 +1,21 @@
+{
+  "matbench_metadata_url": "https://github.com/janosh/matbench-discovery/blob/main/models/mattersim/mattersim-v1-5m.yml",
+  "verified_date": "2026-10-09",
+  "benchmark_model": "1M",
+  "models": {
+    "1M": {
+      "filename": "mattersim-v1.0.0-1M.pth",
+      "url": "https://github.com/microsoft/mattersim/raw/refs/heads/main/pretrained_models/mattersim-v1.0.0-1M.pth",
+      "bytes": 17932943,
+      "sha256": "28b0b0b0f13efefee06b47ea4c9105a26bd3e2c8396da193430da96b3b49a8be",
+      "source": "Official upstream companion checkpoint; matches the recorded TCSPV3 benchmark model"
+    },
+    "5M": {
+      "filename": "mattersim-v1.0.0-5M.pth",
+      "url": "https://github.com/microsoft/mattersim/raw/refs/heads/main/pretrained_models/mattersim-v1.0.0-5M.pth",
+      "bytes": 91176875,
+      "sha256": "e3df9fa708725e3d453140646c7d1838324b347a3d1214cf1440522146f872b5",
+      "source": "Exact checkpoint_url from the Matbench Discovery MatterSim v1 5M metadata"
+    }
+  }
+}

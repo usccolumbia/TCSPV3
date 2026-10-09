@@ -47,10 +47,10 @@ source .venv/bin/activate
 python -m pip install -e .
 ```
 
-The **versioned data bundle** is separate from Git history because the CIF archive alone is 1.35 GB. **This source publication does not include a public data/model download.** If you already have the locally prepared, authorized bundle named `TCSPV3-v3.0.0-assets.tar.gz`, install it with checksum verification:
+The **versioned template/BERTOS data bundle** is separate from Git history because the CIF archive alone is 1.35 GB. **This source publication does not include a public template/BERTOS bundle download.** If you already have the locally prepared, authorized bundle named `TCSPV3-v3.0.0-template-assets.tar.gz`, install it with checksum verification:
 
 ```bash
-python scripts/install_data.py --bundle /path/to/TCSPV3-v3.0.0-assets.tar.gz
+python scripts/install_data.py --bundle /path/to/TCSPV3-v3.0.0-template-assets.tar.gz
 ```
 
 The installer verifies the bundle SHA256 and file inventory, and checks installed/extracted asset SHA256 hashes. Source installation and unit tests work without the bundle; actual prediction requires these assets. Public distribution of the bundle is pending review of upstream dataset/model terms. The code and dataset/model licensing are distinct; review [docs/DATA.md](docs/DATA.md) before redistributing the assets.
@@ -82,13 +82,36 @@ The CSV reader finds an exact `composition` header (case-insensitive), or one he
 
 Both commands default to `--output ./cif_output`, relative to the current working directory. `--out` remains an alias. Use a new output directory for each run. The default index is `tcspv3/731K_index_minus_MP20_test.pkl` (719,450 entries). Use `--index tcspv3/731K_index.pkl` for the full 731,293-entry index or `--index tcspv3/731K_index_minus_MPST52_test.pkl` for the MPTS-52-test-excluded index. See [docs/DATA.md](docs/DATA.md) for exactly what each filtered index excludes.
 
+## Use LeMat or your own CIFs as templates
+
+See [the LeMat template guide](docs/LEMAT_TEMPLATES.md) for obtaining individual
+CIFs, building a **parallel primitive-cell index and mmap CIF store**, recording
+exclusions/provenance, and using the new library with `--index` and `--cif-store`.
+The tested builder is `scripts/build_template_index.py`; auxiliary BERTOS and
+embedding assets remain necessary. LeMat results are a separate experiment, not
+the existing 731K benchmark scores.
+
 ## Optional MatterSim stage
 
-Install `pip install -e '.[physics]'` in a compatible environment. The data bundle includes the benchmark MatterSim 1M checkpoint. For a **single-formula** prediction directory, run:
+Install `pip install -e '.[physics]'` in a compatible environment. MatterSim checkpoints are **downloaded from official upstream URLs, not bundled or rehosted here**.
+
+[Matbench Discovery's MatterSim entry](https://github.com/janosh/matbench-discovery/blob/main/models/mattersim/mattersim-v1-5m.yml) lists [MatterSim v1.0.0-5M (direct checkpoint)](https://github.com/microsoft/mattersim/raw/refs/heads/main/pretrained_models/mattersim-v1.0.0-5M.pth). Our recorded benchmarks used **1M**, available from [the official 1M checkpoint URL](https://github.com/microsoft/mattersim/raw/refs/heads/main/pretrained_models/mattersim-v1.0.0-1M.pth). The models are distinct: choosing 5M does not reproduce the reported 1M results.
+
+For the benchmark-compatible default, download 1M with size/SHA256 verification, then run the physical stage on a **single-formula** prediction directory:
 
 ```bash
+python scripts/download_mattersim.py --model 1M
 python -m tcspv3.energy --run cif_output --device cpu
 ```
+
+To explicitly use the checkpoint linked by Matbench Discovery instead:
+
+```bash
+python scripts/download_mattersim.py --model 5M
+python -m tcspv3.energy --run cif_output --device cpu --checkpoint checkpoints/mattersim-v1.0.0-5M.pth
+```
+
+Use a fresh prediction/output directory when changing the checkpoint. `model_manifest.json` records both official URLs, byte sizes and SHA256 hashes. The earlier locally prepared `TCSPV3-v3.0.0-assets.tar.gz` archive included MatterSim; it remains a historical artifact, not the current template-only bundle.
 
 This separate stage computes raw/scaled single-point energies and limited relaxation; it can take substantially longer than chemical prediction. It does not turn a low within-composition energy into a stability claim. The parallel CSV CLI currently parallelizes chemical prediction only.
 
@@ -100,3 +123,13 @@ python -m pytest tests -q
 ```
 
 The source is MIT-licensed, following the [existing TCSP2.0 license](https://github.com/usccolumbia/TCSP/blob/main/LICENSE). Large data/model assets retain their own provenance and applicable terms. For attribution, cite this software version, the [TCSP2.0 paper](https://arxiv.org/abs/2503.23183), and [PNcsp+](https://doi.org/10.1021/acs.jctc.6c00044) for the periodic-number retrieval idea. See [CITATION.cff](CITATION.cff).
+
+## BibTeX citation
+
+```bibtex
+@misc{tcspv3,
+  author = {Feng, Ying and Wei, Lai and Hu, Jianjun},
+  title = {TCSPV3},
+  url = {https://github.com/usccolumbia/TCSPV3}
+}
+```

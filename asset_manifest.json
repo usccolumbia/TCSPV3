@@ -1,10 +1,6 @@
 {
   "version": "3.0.0",
   "assets": {
-    "checkpoints/mattersim-v1.0.0-1M.pth": {
-      "bytes": 17932943,
-      "sha256": "28b0b0b0f13efefee06b47ea4c9105a26bd3e2c8396da193430da96b3b49a8be"
-    },
     "tcspv3/731K_index.pkl": {
       "bytes": 25782054,
       "sha256": "874ae374775b2666ccf6b0e1d746b2d96b586a797c50b153f2ce57df51b8aee6"
