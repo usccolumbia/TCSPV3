@@ -2,7 +2,7 @@
 
 **TCSPV3** is a composition-conditioned, template-based crystal structure predictor. It extends [TCSP2.0](docs/TCSP2.md) with complementary template retrieval, multiple stoichiometry-preserving substitutions, soft oxidation-state evidence, size and coordination checks, structural deduplication, and optional MatterSim ranking. This repository contains the standalone V3 implementation; it does not replace the existing TCSP2.0 repository or connect to a CSP dispatcher.
 
-**Developed by Jianjun Hu and Ying Feng at Machine Learning and Evolution Lab at University of South Carolina.
+**Developed by Jianjun Hu, Ying Feng, and Lai Wei at Machine Learning and Evolution Lab at University of South Carolina.
 
 **Version:** `3.0.0` (source publication; the data/model bundle is not publicly distributed here). See [the separate V2 page](docs/TCSP2.md), [CHANGELOG.md](CHANGELOG.md), [algorithm details](docs/ALGORITHM.md), [benchmark protocol](docs/BENCHMARKS.md), and [data provenance](docs/DATA.md).
 
