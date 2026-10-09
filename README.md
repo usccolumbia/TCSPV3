@@ -33,7 +33,7 @@ All percentages below are **StructureMatcher** recovery, not stability rates. Th
 | Original TCSP 180-case list, V3 + radius-scaled MatterSim single-point | **116/180 (64.44%)** | 150/180 (83.33%) |
 | Published TCSP2.0 on its 180-case protocol **(not controlled against V3)** | 68.3% | 78.33% |
 
-Published TCSP2.0 Figure 1 reports **68.3% Top-1**, and its paper abstract reports **78.33% Top-5** on its 180 cases. Its Top-1 is above V3's best tested **64.44% Top-1**, while the reported Top-5 is below V3's **85.00% chemical Top-5**. The protocols differ in relaxation, accepted reference polymorphs, and template exclusion, so these numbers do **not** establish that either implementation is superior under matched conditions. In V3's original-180 run, MatterSim gave a net gain of one Top-1 recovery but a net loss of three Top-5 recoveries. The 46-case set had been used during method inspection. Full denominators, tolerances, resource settings, frozen upstream commit, and caveats are in [docs/BENCHMARKS.md](docs/BENCHMARKS.md).
+
 
 ## Install
 
