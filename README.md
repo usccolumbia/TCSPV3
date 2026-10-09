@@ -1,8 +1,8 @@
 # TCSPV3
 
-**TCSPV3** is a composition-conditioned, template-based crystal structure predictor. It extends [TCSP2.0](https://github.com/usccolumbia/TCSP) with complementary template retrieval, multiple stoichiometry-preserving substitutions, soft oxidation-state evidence, size and coordination checks, structural deduplication, and optional MatterSim ranking. This repository contains the standalone V3 implementation; it does not replace the existing TCSP2.0 repository or connect to a CSP dispatcher.
+**TCSPV3** is a composition-conditioned, template-based crystal structure predictor. It extends [TCSP2.0](docs/TCSP2.md) with complementary template retrieval, multiple stoichiometry-preserving substitutions, soft oxidation-state evidence, size and coordination checks, structural deduplication, and optional MatterSim ranking. This repository contains the standalone V3 implementation; it does not replace the existing TCSP2.0 repository or connect to a CSP dispatcher.
 
-**Version:** `3.0.0` (release candidate prepared locally; no public V3 release is claimed). See [CHANGELOG.md](CHANGELOG.md), [algorithm details](docs/ALGORITHM.md), [benchmark protocol](docs/BENCHMARKS.md), and [data provenance](docs/DATA.md).
+**Version:** `3.0.0` (source publication; the data/model bundle is not publicly distributed here). See [the separate V2 page](docs/TCSP2.md), [CHANGELOG.md](CHANGELOG.md), [algorithm details](docs/ALGORITHM.md), [benchmark protocol](docs/BENCHMARKS.md), and [data provenance](docs/DATA.md).
 
 ## What changed from TCSP2.0
 
@@ -40,20 +40,20 @@ Published TCSP2.0 Figure 1 reports **68.3% Top-1**, and its paper abstract repor
 Python 3.10 or newer is recommended. Clone this source repository and install it in editable mode:
 
 ```bash
-git clone <this-repository-url> TCSPV3
+git clone https://github.com/usccolumbia/TCSPV3.git
 cd TCSPV3
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
 ```
 
-The **versioned data bundle** is separate from Git history because the CIF archive alone is 1.35 GB. Download the asset named `TCSPV3-v3.0.0-assets.tar.gz` from the corresponding V3 release (or use the locally prepared bundle), then install it with checksum verification:
+The **versioned data bundle** is separate from Git history because the CIF archive alone is 1.35 GB. **This source publication does not include a public data/model download.** If you already have the locally prepared, authorized bundle named `TCSPV3-v3.0.0-assets.tar.gz`, install it with checksum verification:
 
 ```bash
 python scripts/install_data.py --bundle /path/to/TCSPV3-v3.0.0-assets.tar.gz
 ```
 
-The installer checks the release SHA256, file inventory, and each asset SHA256. Until the asset bundle is published, this source checkout requires the locally prepared bundle. The code and dataset/model licensing are distinct; review [docs/DATA.md](docs/DATA.md) before redistributing the assets.
+The installer verifies the bundle SHA256 and file inventory, and checks installed/extracted asset SHA256 hashes. Source installation and unit tests work without the bundle; actual prediction requires these assets. Public distribution of the bundle is pending review of upstream dataset/model terms. The code and dataset/model licensing are distinct; review [docs/DATA.md](docs/DATA.md) before redistributing the assets.
 
 ## Predict one composition
 

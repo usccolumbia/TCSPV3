@@ -5,6 +5,8 @@ title: "TCSPV3: Composition-Conditioned Template Crystal Structure Prediction"
 authors:
   - name: "Machine Learning and Evolution Laboratory, University of South Carolina"
 version: 3.0.0
+repository-code: "https://github.com/usccolumbia/TCSPV3"
+url: "https://github.com/usccolumbia/TCSPV3"
 references:
   - type: article
     title: "TCSP 2.0: Template Based Crystal Structure Prediction with Improved Oxidation State Prediction and Chemistry Heuristics"
