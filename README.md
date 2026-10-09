@@ -6,7 +6,7 @@
 
 **Version:** `3.0.0` (source publication; the data/model bundle is not publicly distributed here). See [the separate V2 page](docs/TCSP2.md), [CHANGELOG.md](CHANGELOG.md), [algorithm details](docs/ALGORITHM.md), [benchmark protocol](docs/BENCHMARKS.md), and [data provenance](docs/DATA.md).
 
-## What changed from TCSP2.0
+## What is new in TCSP3.0
 
 TCSP2.0 already uses BERTOS oxidation-state predictions, element embeddings and periodic-group similarity, flexible substitution, and space-group voting ([paper](https://arxiv.org/abs/2503.23183); [V2 README](https://github.com/usccolumbia/TCSP/blob/main/README.md)). V3 changes how these signals are used:
 
