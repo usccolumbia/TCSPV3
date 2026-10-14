@@ -4,7 +4,7 @@
 
 **Developed by Jianjun Hu, Ying Feng, and Lai Wei at Machine Learning and Evolution Lab at University of South Carolina.
 
-**Version:** `3.0.0` (source publication; the data/model bundle is not publicly distributed here). See [the separate V2 page](docs/TCSP2.md), [CHANGELOG.md](CHANGELOG.md), [algorithm details](docs/ALGORITHM.md), [benchmark protocol](docs/BENCHMARKS.md), and [data provenance](docs/DATA.md).
+**Version:** `3.1.0` (source publication; the data/model bundle, version 3.0.0, is not publicly distributed here). Since 3.1.0 the default final stage is ORB-v3 relaxation and energy ranking; see [CHANGELOG.md](CHANGELOG.md). See [the separate V2 page](docs/TCSP2.md), [CHANGELOG.md](CHANGELOG.md), [algorithm details](docs/ALGORITHM.md), [benchmark protocol](docs/BENCHMARKS.md), and [data provenance](docs/DATA.md).
 
 ## What is new in TCSP3.0
 
@@ -17,7 +17,7 @@ TCSP2.0 already uses BERTOS oxidation-state predictions, element embeddings and 
 | Oxidation states | Aggregates BERTOS probabilities per species and softly scores up to four neutral alternatives, rather than letting one uncertain assignment reject a template. |
 | Geometry | Uses nearest-shell coordination and compatible Shannon/atomic radii for size penalties and optional bounded lattice scaling. |
 | Candidate diversity | Deduplicates with `StructureMatcher` while retaining distinct polymorphs; majority-space-group voting is optional and was not part of the benchmarked default. |
-| Physical stage | Optionally reranks the same candidates with MatterSim single-point energies and limited relaxation; chemical ranking and physical ranking remain separately inspectable. |
+| Final stage | By default relaxes the 20 native candidates with ORB-v3 and ranks them by ORB-v3 energy per atom (`--ranker orb-v3`); `--ranker native` keeps the chemical-score order without relaxation. An optional MatterSim single-point stage is also available; chemical and physical rankings remain separately inspectable. |
 | Reproducibility | Checks actual source CIF composition, preserves source hashes, records failures, and supports versioned indexes and a shared read-only memory-mapped CIF archive. |
 
 The periodic-number idea is credited to Oran, Caputo, Villars, and Tekin’s [PNcsp+ paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC13085239/). TCSPV3 combines a PN retrieval route with its existing embedding route; it does not implement PNcsp+’s OQMD search, formation-enthalpy filter, or MACE/M3GNet/ALIGNN-FF ensemble.
@@ -35,7 +35,15 @@ All percentages below are **StructureMatcher** recovery, not stability rates. Th
 | Original TCSP 180-case list, V3 + radius-scaled MatterSim single-point | **116/180 (64.44%)** | 150/180 (83.33%) |
 | Published TCSP2.0 on its 180-case protocol **(not controlled against V3)** | 68.3% | 78.33% |
 
-The separate, current **T180 v3.1** benchmark recovers **122/180 (67.8%) at Top-1**, **154/180 (85.6%) at Top-5**, and **163/180 (90.6%) at Top-20** by native chemical ranking. Download/browse the [ranked prediction CIFs, per-target scores and hashes](benchmarks/T180_v3_1_top20/README.md). This package contains 2,581 available candidates across all 180 targets, with up to 20 per target. Its audited cohort and cell-count conditioning differ from the historical original-180 rows above; the package documents the actual input exception for `mp-557387`.
+The separate, current **T180 v3.1** benchmark recovers **130/180 (72.2%) at Top-1**, **159/180 (88.3%) at Top-5**, and **163/180 (90.6%) at Top-20** with the default ORB-v3 relaxation and energy ranking (native chemical ranking without relaxation: 122/154/163).
+
+| Cohort (structure match, Top-1/5/20) | Native order, no relaxation | Default: ORB-v3 relax and rank |
+|---|---:|---:|
+| T46 (46 targets) | 34/39/41 | **35/41/41** |
+| T180 v3.1 (180 targets) | 122/154/163 | **130/159/163** |
+| T800 (800 targets; 19 without candidates count as misses) | 512/575/591 | **518/579/592** |
+
+The ORB-v3 stage adds no candidates, so Top-20 stays (to within one target) the same; it improves the order. Without relaxation the template stage is fast: the median is 28 s per target on two CPU cores. The ORB-v3 stage adds about 219 s per target on a GPU, including loading the weights for each target. Download/browse the [ranked prediction CIFs, per-target scores and hashes](benchmarks/T180_v3_1_top20/README.md). This package contains 2,581 available candidates across all 180 targets, with up to 20 per target. Its audited cohort and cell-count conditioning differ from the historical original-180 rows above; the package documents the actual input exception for `mp-557387`.
 
 
 
@@ -57,19 +65,20 @@ The **versioned template/BERTOS data bundle** is separate from Git history becau
 python scripts/install_data.py --bundle /path/to/TCSPV3-v3.0.0-template-assets.tar.gz
 ```
 
-The installer verifies the bundle SHA256 and file inventory, and checks installed/extracted asset SHA256 hashes. Source installation and unit tests work without the bundle; actual prediction requires these assets. Public distribution of the bundle is pending review of upstream dataset/model terms. The code and dataset/model licensing are distinct; review [docs/DATA.md](docs/DATA.md) before redistributing the assets.
+The default ORB-v3 final stage uses `orb-models` and `ase` (installed with the package); the ORB-v3 weights are downloaded by `orb-models` on first use, or pass a local file with `--orb-weights`. A GPU is recommended (`--orb-device auto` uses it when available). Use `--ranker native` to skip the stage. The installer verifies the bundle SHA256 and file inventory, and checks installed/extracted asset SHA256 hashes. Source installation and unit tests work without the bundle; actual prediction requires these assets. Public distribution of the bundle is pending review of upstream dataset/model terms. The code and dataset/model licensing are distinct; review [docs/DATA.md](docs/DATA.md) before redistributing the assets.
 
 ## Predict one composition
 
 ```bash
-python tcsp.py --formula SrTiO3
+python tcsp.py --formula SrTiO3                       # default: ORB-v3 relaxation and energy ranking of the 20 candidates
+python tcsp.py --formula SrTiO3 --ranker native        # chemical-score order, no relaxation
 python tcsp.py --formula Fe4O6 --formula-type full --output results/Fe4O6
 python tcsp.py --formula Fe2O3 --formula-type reduced --output results/Fe2O3_multiple_Z
 ```
 
 `--formula-type full` is the default: it requires the output cell's atom count to equal the count written in the formula. `--formula-type reduced` permits the template cell sizes available for that reduced composition and reports each candidate's atom count and formula-unit count. The latter does not promise primitive cells or arbitrary new values of Z. Historical V3 benchmarks used unrestricted template sizes, corresponding to `--formula-type reduced` in this CLI.
 
-`--mode v3` is the default. The predictor excludes **all templates with the same reduced composition** as the query, and rechecks the actual source CIF. It creates `prediction.json`, `oxidation.json`, and ranked `tcspv3_###.cif` files. `--topk 20` is a maximum: fewer may be returned after structural deduplication or cell-size filtering. The default pool contains up to 100 valid instantiated candidates; increase `--pool-size` if more distinct structures are needed.
+`--mode v3` is the default. The predictor excludes **all templates with the same reduced composition** as the query, and rechecks the actual source CIF. It creates `prediction.json`, `oxidation.json`, and ranked `tcspv3_###.cif` files (ORB-v3-relaxed structures in ORB-v3 energy order by default; the unrelaxed native candidates are kept in `native/`, and `prediction.json` records the final stage and each candidate's native rank). `--topk 20` is a maximum: fewer may be returned after structural deduplication or cell-size filtering. The default pool contains up to 100 valid instantiated candidates; increase `--pool-size` if more distinct structures are needed.
 
 ## Batch and parallel CSV prediction
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.0 — 2026-10-14
+
+- **ORB-v3 relaxation and energy ranking is now the default final stage** (`--ranker orb-v3`). The 20 native candidates are relaxed with ORB-v3 (`orb-v3-conservative-inf-omat`; FIRE with ASE `ExpCellFilter`, at most 500 steps, force threshold 0.01 eV/Å, nonconverged structures kept) and ranked by ORB-v3 energy per atom, the same post-processing used for the deep generative models in the benchmark. The native candidates are saved in `native/`; `--ranker native` keeps the chemical-score order without relaxation. New options: `--orb-device`, `--orb-weights`, `--orb-steps`, `--orb-fmax`.
+- Benchmark effect (structure match, Top-1/5/20): T46 34/39/41 → 35/41/41, T180 122/154/163 → 130/159/163, T800 512/575/591 → 518/579/592; Top-20 is unchanged to within one target because the stage adds no candidates. The native results in the table below remain valid for `--ranker native`.
+- `ase` and `orb-models>=0.5.5` are now core dependencies. No template library, retrieval, mapping or scoring code changed; the data bundle is still 3.0.0.
+
 ## Source updates — 2026-10-09
 
 - Added the current T180 v3.1 Top-20 result package: 2,581 ranked CIFs for 180 targets, per-target metrics and checksums, independent matcher verification, and the documented actual-query exception. Native chemical recovery is 122/154/163 at Top-1/5/20; the historical original-180 results are unchanged.

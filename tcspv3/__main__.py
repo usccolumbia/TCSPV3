@@ -6,6 +6,7 @@ from pathlib import Path
 from pymatgen.core import Composition, Structure
 from .core import Predictor, dump, sha256, symmetry_vote
 from .oxidation import predict
+from . import orb
 
 
 def row_folder_name(row, formula):
@@ -60,6 +61,13 @@ def build_parser():
     p.add_argument('--topk', type=int, default=20)
     p.add_argument('--device', default='cpu', choices=['cpu', 'cuda'])
     p.add_argument('--symmetry-vote', action='store_true', help='Experimental, off by default')
+    p.add_argument('--ranker', choices=['orb-v3', 'native'], default='orb-v3',
+                   help='Final stage. orb-v3 (default): relax the 20 native candidates with ORB-v3 and rank by ORB-v3 energy per atom; '
+                        'native: keep the chemical-score order, no relaxation')
+    p.add_argument('--orb-device', choices=['auto', 'cpu', 'cuda'], default='auto', help='Device for the ORB-v3 stage (default: cuda if available)')
+    p.add_argument('--orb-weights', help='Local ORB-v3 weights file (default: downloaded by orb-models)')
+    p.add_argument('--orb-steps', type=int, default=orb.STEPS, help='Maximum ORB-v3 relaxation steps (default 500)')
+    p.add_argument('--orb-fmax', type=float, default=orb.FMAX, help='ORB-v3 force threshold in eV/A (default 0.01)')
     return p
 
 
@@ -88,6 +96,14 @@ def main():
         if (root/'prediction.json').exists():
             p.error('Output already contains a prediction; choose a new directory')
     excluded = json.loads(Path(args.exclude_formulas).read_text()) if args.exclude_formulas else []
+    stage = None
+    native_k = args.topk
+    if args.ranker == 'orb-v3':
+        try:
+            stage = orb.OrbStage(args.orb_device, weights_path=args.orb_weights, steps=args.orb_steps, fmax=args.orb_fmax)
+        except RuntimeError as exc:
+            p.error(str(exc))
+        native_k = min(max(args.topk, 20), args.pool_size)   # the ORB-v3 stage relaxes at least the 20 native candidates
     engine = Predictor(args.database, args.index, excluded, cif_store=args.cif_store)
     index_hash = sha256(args.index)
     evidence_cache = {}
@@ -104,17 +120,30 @@ def main():
                 evidence_cache.update(predict(list(needed), args.database, args.device))
             evidence = {f:evidence_cache[f] for f in set([formula]+plan['embedding']+plan['pn'])}
             legacy = {f: v.get('legacy_last_atom', {}) for f, v in evidence.items()}
-            result = engine.generate(plan, args.mode, evidence, legacy, args.pool_size, args.topk, target_atoms=target_atoms)
+            result = engine.generate(plan, args.mode, evidence, legacy, args.pool_size, native_k, target_atoms=target_atoms)
             if args.symmetry_vote:
                 result['selected'] = symmetry_vote(result['selected'])
+            native = result['selected']
+            if stage is not None:
+                ranked, orb_failures = orb.rank(native, stage.relax, args.topk)
+                if not ranked:
+                    raise RuntimeError('ORB-v3 stage produced no valid candidate: ' + json.dumps(orb_failures)[:500])
+                result['native_selected_ids'] = [c['candidate_id'] for c in native]
+                result['selected'] = ranked
+                result['orb_v3_failures'] = orb_failures
             result['provenance'] = {'index_sha256': index_hash, 'excluded_formulas': excluded,
                 'arguments': vars(args), 'csv_row': row, 'input_formula': formula,
                 'csv_column': column, 'formula_type': args.formula_type,
-                'target_atoms': target_atoms, 'reference_structure_used': False}
+                'target_atoms': target_atoms, 'reference_structure_used': False, 'ranker': args.ranker,
+                'final_stage': stage.provenance() if stage is not None else 'native chemical-score order, no relaxation'}
             dump(destination/'prediction.json', result)
             dump(destination/'oxidation.json', evidence)
             for i, c in enumerate(result['selected'], 1):
                 Structure.from_dict(c['structure']).to(filename=str(destination/('tcspv3_%03d.cif' % i)))
+            if stage is not None:   # keep the unrelaxed native candidates for inspection
+                (destination/'native').mkdir(parents=True, exist_ok=True)
+                for i, c in enumerate(native, 1):
+                    Structure.from_dict(c['structure']).to(filename=str(destination/'native'/('tcspv3_%03d.cif' % i)))
             status = {'row':row, 'formula':formula, 'status':'ok', 'output':str(destination.resolve()),
                       'candidates':len(result['selected']), 'failures':len(result['failures'])}
         except Exception as exc:

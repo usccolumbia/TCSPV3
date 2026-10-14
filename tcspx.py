@@ -13,6 +13,7 @@ if __package__ in (None, ''):
 from tcspv3.__main__ import atom_count, build_parser, read_formula_csv, row_folder_name
 from tcspv3.core import Predictor, dump, sha256, symmetry_vote
 from tcspv3.oxidation import predict
+from tcspv3 import orb
 from pymatgen.core import Structure
 
 _CONTEXT = None
@@ -110,7 +111,15 @@ def main():
     if args.workers and args.workers > resource['memory_limit']:
         print('Warning: requested workers exceed estimated RAM-safe limit', file=sys.stderr)
     excluded = json.loads(Path(args.exclude_formulas).read_text()) if args.exclude_formulas else []
+    stage = None
+    if args.ranker == 'orb-v3':
+        try:
+            stage = orb.OrbStage(args.orb_device, weights_path=args.orb_weights, steps=args.orb_steps, fmax=args.orb_fmax)
+        except RuntimeError as exc:
+            p.error(str(exc))
     options = vars(args).copy()
+    if stage is not None:   # CPU workers generate the native candidates; the ORB-v3 stage then runs once in this process
+        options['topk'] = min(max(args.topk, 20), args.pool_size)
     options.update(excluded=excluded, index_hash=sha256(args.index), column=column)
     options['arguments'] = vars(args).copy()
     dump(root/'batch_config.json', {'workers': workers, 'worker_selection': resource,
@@ -126,6 +135,18 @@ def main():
             ordered = [summary[n] for n in sorted(summary)]
             dump(root/'batch_summary.json', {'column': column, 'input_csv': str(Path(args.csv).resolve()),
                                               'workers': workers, 'rows': ordered})
+    if stage is not None:
+        for n in sorted(summary):
+            if summary[n]['status'] != 'ok':
+                continue
+            try:
+                kept, failed = orb.finalize_directory(summary[n]['output'], stage, args.topk)
+                summary[n].update(candidates=kept, failures=summary[n]['failures'] + failed)
+            except Exception as exc:
+                summary[n].update(status='error', error='ORB-v3 stage: ' + str(exc), candidates=0)
+            print(json.dumps(summary[n]), flush=True)
+        dump(root/'batch_summary.json', {'column': column, 'input_csv': str(Path(args.csv).resolve()),
+                                          'workers': workers, 'rows': [summary[n] for n in sorted(summary)]})
     with (root/'batch_summary.csv').open('w', newline='') as handle:
         writer = csv.DictWriter(handle, fieldnames=['row','formula','status','candidates','failures','output','error'])
         writer.writeheader();writer.writerows([summary[n] for n in sorted(summary)])
