@@ -26,14 +26,18 @@ The periodic-number idea is credited to Oran, Caputo, Villars, and Tekin’s [PN
 
 All percentages below are **StructureMatcher** recovery, not stability rates. The exploratory 46-case internal comparison used a repaired soft-OS/dedup baseline, **not** an exact reproduction of TCSP2.0.
 
-| Evaluation | Top-1 | Top-5 |
-|---|---:|---:|
-| Testset 46 internal repaired baseline | 23/46 (50.0%) | 34/46 (73.9%) |
-| Testset 46 V3 chemical ranking | 23/46 (50.0%) | 36/46 (78.3%) |
-| Testset 46 V3 + radius-scaled MatterSim single-point | **28/46 (60.9%)** | **38/46 (82.6%)** |
-| Original TCSP 180-case list, V3 chemical ranking | 115/180 (63.89%) | **153/180 (85.00%)** |
-| Original TCSP 180-case list, V3 + radius-scaled MatterSim single-point | **116/180 (64.44%)** | 150/180 (83.33%) |
-| Published TCSP2.0 on its 180-case protocol **(not controlled against V3)** | 68.3% | 78.33% |
+| Evaluation | Top-1 | Top-5 | Top-20 |
+|---|---:|---:|---:|
+| Testset 46 internal repaired baseline | 23/46 (50.0%) | 34/46 (73.9%) | 39/46 (84.8%) |
+| Testset 46 V3 chemical ranking | 23/46 (50.0%) | 36/46 (78.3%) | 39/46 (84.8%) |
+| Testset 46 V3 + radius-scaled MatterSim single-point | 28/46 (60.9%) | 38/46 (82.6%) | 39/46 (84.8%) |
+| Testset 46 V3.1 default (ORB-v3 relax and rank, current T46 cohort) | **35/46 (76.1%)** | **41/46 (89.1%)** | **41/46 (89.1%)** |
+| Original TCSP 180-case list, V3 chemical ranking | 115/180 (63.89%) | **153/180 (85.00%)** | not tabulated |
+| Original TCSP 180-case list, V3 + radius-scaled MatterSim single-point | **116/180 (64.44%)** | 150/180 (83.33%) | not tabulated |
+| T180 v3.1 (leakage-audited), V3.1 default (ORB-v3 relax and rank) | **130/180 (72.2%)** | **159/180 (88.3%)** | **163/180 (90.6%)** |
+| Published TCSP2.0 on its 180-case protocol **(not controlled against V3)** | 68.3% | 78.33% | not reported |
+
+The Top-20 for the single-point rows equals the chemical-ranking pool (the same 20 candidates are only reordered). The historical Testset 46 rows are the older exploratory cohort; the V3.1 row uses the current T46 cohort, so rows are not paired across cohorts.
 
 The separate, current **T180 v3.1** benchmark recovers **130/180 (72.2%) at Top-1**, **159/180 (88.3%) at Top-5**, and **163/180 (90.6%) at Top-20** with the default ORB-v3 relaxation and energy ranking (native chemical ranking without relaxation: 122/154/163).
 
