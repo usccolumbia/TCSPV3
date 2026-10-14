@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Fe2As4
+_chemical_formula_sum              "Fe2 As4"
+_cell_length_a       5.567043950948588
+_cell_length_b       5.567350499024605
+_cell_length_c       6.746384972669092
+_cell_angle_alpha    76.0776278337438
+_cell_angle_beta     76.07729147426296
+_cell_angle_gamma    30.942163213622674
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Fe  Fe1       1.0  0.6416528179389535  0.6417270834491604  0.4654470156735261  1.0000
+  Fe  Fe2       1.0  0.3584086023245817  0.35843847376531135  0.5344725921655208  1.0000
+  As  As1       1.0  0.2824553903325511  0.2825279854754472  0.2251812840189717  1.0000
+  As  As2       1.0  0.0176819157912657  0.017524444602231133  0.2829723492319298  1.0000
+  As  As3       1.0  0.9821502730391402  0.9823899270401919  0.7172386210431884  1.0000
+  As  As4       1.0  0.7176509964638752  0.7173920926579692  0.7746881326791752  1.0000

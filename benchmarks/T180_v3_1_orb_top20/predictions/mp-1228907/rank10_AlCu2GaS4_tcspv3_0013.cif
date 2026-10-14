@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       AlCu2GaS4
+_chemical_formula_sum              "Al1 Cu2 Ga1 S4"
+_cell_length_a       5.37525612118146
+_cell_length_b       5.376417173989797
+_cell_length_c       6.857369244065353
+_cell_angle_alpha    113.10626288246183
+_cell_angle_beta     113.08753185593497
+_cell_angle_gamma    89.99465969711706
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Al  Al1       1.0  0.4999378599936316  0.49999580448162834  3.551970078336104e-05  1.0000
+  Cu  Cu1       1.0  0.5001186729248448  0.9999798696208129  0.9999379181794316  1.0000
+  Cu  Cu2       1.0  9.93766264298788e-05  0.5000254113622603  0.9999467556076023  1.0000
+  Ga  Ga1       1.0  0.9999763007614628  1.8929986645367316e-05  9.109247933586672e-05  1.0000
+  S   S1        1.0  0.8683230394686134  0.8683623015131391  0.24659499310086488  1.0000
+  S   S2        1.0  0.3781442431723585  0.37817914189159335  0.2465504299024477  1.0000
+  S   S3        1.0  0.131621253668323  0.6217880629708923  0.7534060784486843  1.0000
+  S   S4        1.0  0.6217792519819638  0.13165047677354638  0.7534372127197142  1.0000

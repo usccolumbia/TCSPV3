@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       P2Cd2As2
+_chemical_formula_sum              "P2 Cd2 As2"
+_cell_length_a       6.378049510893342
+_cell_length_b       3.4481836845640896
+_cell_length_c       29.966391469140667
+_cell_angle_alpha    89.9324104339928
+_cell_angle_beta     55.57335628364223
+_cell_angle_gamma    122.71584761940241
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  P   P1        1.0  0.8175023494898225  0.23224294762085623  0.6191469029935825  1.0000
+  P   P2        1.0  0.11748663123477324  0.03354227384291375  0.3808488183539365  1.0000
+  Cd  Cd1       1.0  0.7395953769778305  0.6550599438832008  0.4973047527069884  1.0000
+  Cd  Cd2       1.0  0.19526987440138255  0.6105837882555238  0.5026901835166475  1.0000
+  As  As1       1.0  0.1306889531161811  0.04544511709104925  0.6141496271907106  1.0000
+  As  As2       1.0  0.804236732960806  0.2203858769422088  0.38585970624116056  1.0000

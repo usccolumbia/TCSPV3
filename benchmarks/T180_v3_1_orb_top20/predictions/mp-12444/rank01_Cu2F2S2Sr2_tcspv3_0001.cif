@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Sr2Cu2S2F2
+_chemical_formula_sum              "Sr2 Cu2 S2 F2"
+_cell_length_a       3.958083933402305
+_cell_length_b       3.958164959547001
+_cell_length_c       8.734092640234415
+_cell_angle_alpha    89.9980638459643
+_cell_angle_beta     90.00110991051721
+_cell_angle_gamma    89.99877260738918
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Sr  Sr1       1.0  0.9999771771119865  0.5000318256128393  0.8295853917175622  1.0000
+  Sr  Sr2       1.0  0.49999169552349054  0.9999987153865738  0.17042597538934692  1.0000
+  Cu  Cu1       1.0  0.49998580348413085  0.49991883737911547  0.4999651952403226  1.0000
+  Cu  Cu2       1.0  0.9999399229552511  0.9999186681706601  0.49996839276805305  1.0000
+  S   S1        1.0  7.070074095852691e-05  0.5000688319714833  0.3393619278508891  1.0000
+  S   S2        1.0  0.500044965722912  3.881021121189682e-05  0.660649099995049  1.0000
+  F   F1        1.0  0.49999028427913467  0.5000009152994709  1.894694112464555e-05  1.0000
+  F   F2        1.0  0.9999994510682947  2.3396288872066043e-05  2.5071273739840522e-05  1.0000

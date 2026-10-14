@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Cu4O2
+_chemical_formula_sum              "Cu4 O2"
+_cell_length_a       5.061961266531955
+_cell_length_b       5.061892079056205
+_cell_length_c       9.03335500693265
+_cell_angle_alpha    90.1828270491312
+_cell_angle_beta     90.16277670734944
+_cell_angle_gamma    89.99685422021135
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Cu  Cu1       1.0  0.25167172513210456  0.25164522104490905  0.4999936053831391  1.0000
+  Cu  Cu2       1.0  0.7516342545510654  0.24827444035154098  0.4999538563457332  1.0000
+  Cu  Cu3       1.0  0.7483286040914444  0.7484497545962261  0.49991406805589894  1.0000
+  Cu  Cu4       1.0  0.24843688616048867  0.7515798564619208  0.5000294152921296  1.0000
+  O   O1        1.0  0.9996686564165157  0.4996739852038286  0.43781598666989735  1.0000
+  O   O2        1.0  0.5002598718552144  0.00037674566717464474  0.5622930682612052  1.0000

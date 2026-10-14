@@ -1,0 +1,28 @@
+data_image0
+_chemical_formula_structural       SmH2
+_chemical_formula_sum              "Sm1 H2"
+_cell_length_a       3.9935664066939798
+_cell_length_b       3.9953809397529887
+_cell_length_c       4.0007147470150235
+_cell_angle_alpha    131.24648387375913
+_cell_angle_beta     131.2279583836227
+_cell_angle_gamma    71.34000791451655
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Sm  Sm1       1.0  0.9997211394921864  0.00018320419102224705  0.9999731261305363  1.0000
+  H   H1        1.0  0.647959787458124  0.6479385014408808  0.9999888258603392  1.0000
+  H   H2        1.0  0.35231907225568976  0.35187828752554984  3.8048917973051007e-05  1.0000

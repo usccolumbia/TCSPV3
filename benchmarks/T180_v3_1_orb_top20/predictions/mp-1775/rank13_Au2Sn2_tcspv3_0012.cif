@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       Sn2Au2
+_chemical_formula_sum              "Sn2 Au2"
+_cell_length_a       3.035544940273545
+_cell_length_b       4.027929203023283
+_cell_length_c       37.59806289531936
+_cell_angle_alpha    90.00290826984576
+_cell_angle_beta     90.01589732086366
+_cell_angle_gamma    90.00248017201808
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Sn  Sn1       1.0  0.9999913115027934  0.9999931471993831  0.5681654014973836  1.0000
+  Sn  Sn2       1.0  0.5000105719904676  0.49999927264596716  0.43205026838133104  1.0000
+  Au  Au1       1.0  1.6720922705242415e-05  0.49999686382646236  0.5185686587254614  1.0000
+  Au  Au2       1.0  0.49998139553806004  1.0716541188729891e-05  0.4816205613978139  1.0000

@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       Ca2NF
+_chemical_formula_sum              "Ca2 N1 F1"
+_cell_length_a       3.5739694022381805
+_cell_length_b       3.5739844832896575
+_cell_length_c       4.812371308242637
+_cell_angle_alpha    89.99948311829286
+_cell_angle_beta     89.99734139452596
+_cell_angle_gamma    89.99972838546444
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ca  Ca1       1.0  2.0713360254524737e-06  1.1357020649259418e-06  7.046138532148994e-06  1.0000
+  Ca  Ca2       1.0  0.5000032480219613  0.499989088780843  0.5000020132350017  1.0000
+  N   N1        1.0  0.9999968469095039  2.974100203908009e-06  0.4999935845869676  1.0000
+  F   F1        1.0  0.4999978345531603  0.5000068014892173  0.9999973561134785  1.0000

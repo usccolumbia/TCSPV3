@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Co2B4Fe2
+_chemical_formula_sum              "Co2 B4 Fe2"
+_cell_length_a       2.924549572405363
+_cell_length_b       4.909119995338186
+_cell_length_c       4.645954274330853
+_cell_angle_alpha    90.00419631567675
+_cell_angle_beta     89.99518742832743
+_cell_angle_gamma    107.33044903080184
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Co  Co1       1.0  0.045644551776961216  0.0893466842810843  0.7485402264929791  1.0000
+  Co  Co2       1.0  0.9624267948379462  0.9212920902906694  0.2485489364219893  1.0000
+  B   B1        1.0  0.6019503495046818  0.2011506035224783  0.44031499348133285  1.0000
+  B   B2        1.0  0.40616912168663616  0.8094774053208201  0.9403228400496779  1.0000
+  B   B3        1.0  0.4061589914413481  0.8094425163039368  0.556672977009491  1.0000
+  B   B4        1.0  0.601992167660881  0.20110919169569927  0.05668620090422384  1.0000
+  Fe  Fe1       1.0  0.7758321961732754  0.5488989751461775  0.7484165006664876  1.0000
+  Fe  Fe2       1.0  0.23217483603358932  0.4616095185386371  0.24838432442768457  1.0000

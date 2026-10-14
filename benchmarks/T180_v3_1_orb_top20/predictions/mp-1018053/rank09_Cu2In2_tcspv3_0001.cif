@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       In2Cu2
+_chemical_formula_sum              "In2 Cu2"
+_cell_length_a       8.714653769239815
+_cell_length_b       8.714046189915605
+_cell_length_c       8.714887644680651
+_cell_angle_alpha    20.99301993337028
+_cell_angle_beta     21.020931892121595
+_cell_angle_gamma    20.9822503127586
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  In  In1       1.0  0.3886548120508799  0.3879388064212322  0.38881882160256787  1.0000
+  In  In2       1.0  0.6114476896507082  0.6121546492124607  0.6109395833539982  1.0000
+  Cu  Cu1       1.0  0.8648765216906428  0.8650973899023183  0.8648780603778823  1.0000
+  Cu  Cu2       1.0  0.13502097952931197  0.1348091526635804  0.13536353509820961  1.0000

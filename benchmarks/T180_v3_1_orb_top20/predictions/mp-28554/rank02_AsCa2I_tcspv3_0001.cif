@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       Ca2AsI
+_chemical_formula_sum              "Ca2 As1 I1"
+_cell_length_a       7.928905175324578
+_cell_length_b       7.928963613963514
+_cell_length_c       7.928923513515937
+_cell_angle_alpha    32.26237145130083
+_cell_angle_beta     32.262769024442335
+_cell_angle_gamma    32.2633411307456
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ca  Ca1       1.0  0.7690389960235885  0.7690441218461056  0.769016756585001  1.0000
+  Ca  Ca2       1.0  0.230956946385925  0.23097575431938527  0.23095255219405114  1.0000
+  As  As1       1.0  0.4999915382301584  0.49999173785819034  0.5000273599280659  1.0000
+  I   I1        1.0  1.2519461872570185e-05  0.9999883867007694  3.331370206336135e-06  1.0000

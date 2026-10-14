@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Si4Ce4
+_chemical_formula_sum              "Si4 Ce4"
+_cell_length_a       5.409955243803346
+_cell_length_b       6.000289528182702
+_cell_length_c       5.410092911408084
+_cell_angle_alpha    90.00556145933827
+_cell_angle_beta     90.00395569498123
+_cell_angle_gamma    89.99343841717184
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Si  Si1       1.0  0.7500184245439561  0.7499536059726514  0.24998542046767214  1.0000
+  Si  Si2       1.0  0.2500102134748488  0.24999191285588535  0.7500718990883615  1.0000
+  Si  Si3       1.0  0.750017275863691  0.25001305147432196  0.2500762332764433  1.0000
+  Si  Si4       1.0  0.2500113793961956  0.7500249305795365  0.7499810064555635  1.0000
+  Ce  Ce1       1.0  0.24998815655439266  0.5011571722032235  0.24992672509509187  1.0000
+  Ce  Ce2       1.0  0.7499835729095388  0.49885098850250137  0.749989036898178  1.0000
+  Ce  Ce3       1.0  0.24998800749994268  0.0011572594310052813  0.2500106258607278  1.0000
+  Ce  Ce4       1.0  0.749982972491532  0.9988510647933222  0.7499590507875349  1.0000

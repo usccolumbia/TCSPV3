@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Al2WB2Mo
+_chemical_formula_sum              "Al2 W1 B2 Mo1"
+_cell_length_a       5.245455283504316
+_cell_length_b       5.24502608702986
+_cell_length_c       5.245373296729785
+_cell_angle_alpha    146.51517160933815
+_cell_angle_beta     84.22309474465716
+_cell_angle_gamma    105.45739058233718
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Al  Al1       1.0  0.6326552136583199  0.2995144191294672  0.3331680468551468  1.0000
+  Al  Al2       1.0  0.03376217968763879  0.7006532747648839  0.33332465826014046  1.0000
+  W   W1        1.0  0.5148074155210288  0.5001033956131609  0.014870274828095775  1.0000
+  B   B1        1.0  0.8461676717431391  0.23528053853488823  0.6108945681906622  1.0000
+  B   B2        1.0  0.375618151446039  0.764658919870213  0.6108129719218898  1.0000
+  Mo  Mo1       1.0  0.09698937224053285  0.999792437605345  0.09692947269507111  1.0000

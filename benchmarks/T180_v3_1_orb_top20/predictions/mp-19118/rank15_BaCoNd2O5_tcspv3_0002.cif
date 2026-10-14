@@ -1,0 +1,34 @@
+data_image0
+_chemical_formula_structural       BaCoNd2O5
+_chemical_formula_sum              "Ba1 Co1 Nd2 O5"
+_cell_length_a       4.251817330374848
+_cell_length_b       4.251775063046777
+_cell_length_c       9.929501779229698
+_cell_angle_alpha    90.00196292234747
+_cell_angle_beta     89.99790977498321
+_cell_angle_gamma    89.98843959411658
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ba  Ba1       1.0  2.36617029698479e-05  0.9999746168578162  0.4999826693006201  1.0000
+  Co  Co1       1.0  0.9998604483238426  0.0002057228482580055  0.9998737056054166  1.0000
+  Nd  Nd1       1.0  0.4999795063687815  0.4999817017705563  0.2343673086622961  1.0000
+  Nd  Nd2       1.0  0.49995461172030436  0.5000149876819123  0.7656297497647687  1.0000
+  O   O1        1.0  2.4774740190247935e-05  0.4999126118128312  0.3206137504634478  1.0000
+  O   O2        1.0  0.5000413647797736  0.4999205092972162  7.914325263578972e-06  1.0000
+  O   O3        1.0  0.5000829264412825  0.9999728093821215  0.32058681953161466  1.0000
+  O   O4        1.0  0.5000298489432756  0.9999934313237414  0.6794667470689983  1.0000
+  O   O5        1.0  2.858541228636122e-06  0.5000236089183513  0.6794713359880182  1.0000

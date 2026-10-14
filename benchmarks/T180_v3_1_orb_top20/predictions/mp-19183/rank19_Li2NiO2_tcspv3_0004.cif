@@ -1,0 +1,30 @@
+data_image0
+_chemical_formula_structural       Li2NiO2
+_chemical_formula_sum              "Li2 Ni1 O2"
+_cell_length_a       4.542454357064334
+_cell_length_b       4.539076915925653
+_cell_length_c       4.538550314273907
+_cell_angle_alpha    128.90751871414983
+_cell_angle_beta     128.93124646236285
+_cell_angle_gamma    75.10926104040095
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Li  Li1       1.0  0.7498862242394093  0.24994582433749238  0.4998630844181474  1.0000
+  Li  Li2       1.0  0.2500104324500225  0.7499635688024543  0.4999608109244128  1.0000
+  Ni  Ni1       1.0  8.65673269186105e-05  0.00014669244350098707  0.00015947661575320507  1.0000
+  O   O1        1.0  0.5001122415187415  5.640762026561946e-05  0.500189887062133  1.0000
+  O   O2        1.0  0.9999045355128737  0.4998875057449133  0.49982674063448623  1.0000

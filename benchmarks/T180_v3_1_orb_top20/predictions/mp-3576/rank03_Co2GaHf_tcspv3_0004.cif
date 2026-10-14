@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       GaCo2Hf
+_chemical_formula_sum              "Ga1 Co2 Hf1"
+_cell_length_a       4.090869178048752
+_cell_length_b       4.091037403598923
+_cell_length_c       3.281988010562668
+_cell_angle_alpha    89.99836131163053
+_cell_angle_beta     90.00244360003752
+_cell_angle_gamma    90.0029968729552
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ga  Ga1       1.0  0.500018500111254  0.5000184284449911  0.999957393385687  1.0000
+  Co  Co1       1.0  3.156579613175418e-05  0.4999644027653624  0.5000150327285535  1.0000
+  Co  Co2       1.0  0.49995710800889026  3.5026438171665394e-05  0.5000273234823676  1.0000
+  Hf  Hf1       1.0  0.9999928266765188  0.9999821420626102  2.503363790505248e-07  1.0000

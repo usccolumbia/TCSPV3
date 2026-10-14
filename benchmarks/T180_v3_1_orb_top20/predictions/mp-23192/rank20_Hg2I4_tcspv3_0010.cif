@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Hg2I4
+_chemical_formula_sum              "Hg2 I4"
+_cell_length_a       5.915737844019569
+_cell_length_b       9.369748804285061
+_cell_length_c       18.911547930639497
+_cell_angle_alpha    89.98212646777323
+_cell_angle_beta     89.99935646628904
+_cell_angle_gamma    90.00060311394988
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Hg  Hg1       1.0  0.7443016814962996  0.9741193734125386  0.49997896404177494  1.0000
+  Hg  Hg2       1.0  0.7443054662591954  0.47404599596018154  0.49998166927869975  1.0000
+  I   I1        1.0  0.7442436842786789  0.7240422769551157  0.5892075126543818  1.0000
+  I   I2        1.0  0.7442399241069322  0.2241146061982806  0.4107642943607503  1.0000
+  I   I3        1.0  0.2443474741998559  0.974003374308777  0.5000482230981762  1.0000
+  I   I4        1.0  0.24436176942819346  0.47404665311230143  0.5000193264492427  1.0000

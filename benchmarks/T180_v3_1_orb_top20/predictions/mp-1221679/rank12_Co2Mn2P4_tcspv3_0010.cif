@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Mn2Co2P4
+_chemical_formula_sum              "Mn2 Co2 P4"
+_cell_length_a       3.465038447203034
+_cell_length_b       3.4652267991131698
+_cell_length_c       8.84238136784554
+_cell_angle_alpha    101.29883881746953
+_cell_angle_beta     101.30325798575876
+_cell_angle_gamma    89.99663562580069
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Mn  Mn1       1.0  0.8799356649031155  0.8798202143267859  0.7603580664643708  1.0000
+  Mn  Mn2       1.0  0.11984676076251277  0.11942441540179075  0.23971318502400557  1.0000
+  Co  Co1       1.0  0.7500142617919874  0.25006847377752894  0.500048080636524  1.0000
+  Co  Co2       1.0  0.2500277814357669  0.7500605741448076  0.5000557287347204  1.0000
+  P   P1        1.0  0.6687379356266354  0.668799917578861  0.3375198452389028  1.0000
+  P   P2        1.0  0.3312197212771783  0.33127204277511463  0.6625079999697734  1.0000
+  P   P3        1.0  0.5007664988884908  0.00031006745111649304  0.9998797539943378  1.0000
+  P   P4        1.0  0.999451376907374  0.5002442939494663  0.9999173422505898  1.0000

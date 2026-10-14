@@ -1,0 +1,34 @@
+data_image0
+_chemical_formula_structural       NiIKO6
+_chemical_formula_sum              "Ni1 I1 K1 O6"
+_cell_length_a       5.482566052428151
+_cell_length_b       5.481876726578928
+_cell_length_c       4.606662511225125
+_cell_angle_alpha    89.97235840926854
+_cell_angle_beta     89.9935553725637
+_cell_angle_gamma    119.99398628179824
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ni  Ni1       1.0  0.3332970765880096  0.666560821193004  0.5000622300501342  1.0000
+  I   I1        1.0  0.9998660389442368  8.587961871240026e-05  3.3929833347504433e-05  1.0000
+  K   K1        1.0  0.6665653695292801  0.3333503431713698  0.4999798910454885  1.0000
+  O   O1        1.0  0.2511292462359614  0.9391376140973098  0.7686027691487717  1.0000
+  O   O2        1.0  0.06072209380774174  0.3119584424411296  0.7682136368338373  1.0000
+  O   O3        1.0  0.6883178594726947  0.7489730545916237  0.7684484638351401  1.0000
+  O   O4        1.0  0.06086585533282718  0.7487848049772186  0.2314002798190409  1.0000
+  O   O5        1.0  0.6881649901681882  0.9393983084999532  0.23176675607754532  1.0000
+  O   O6        1.0  0.25107146947071923  0.3117507490906042  0.23149204916433105  1.0000

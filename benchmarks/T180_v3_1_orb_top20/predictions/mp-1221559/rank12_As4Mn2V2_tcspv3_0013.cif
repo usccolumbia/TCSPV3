@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Mn2V2As4
+_chemical_formula_sum              "Mn2 V2 As4"
+_cell_length_a       3.6156855044582943
+_cell_length_b       3.6157654286711307
+_cell_length_c       12.961132112992912
+_cell_angle_alpha    90.01044654642533
+_cell_angle_beta     89.99877675511655
+_cell_angle_gamma    119.99931975993977
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Mn  Mn1       1.0  5.559859193958195e-05  0.00010328821206305118  0.999578945978575  1.0000
+  Mn  Mn2       1.0  4.5633508114546025e-05  0.9999768759902761  0.4995787997136613  1.0000
+  V   V1        1.0  0.6667185520144752  0.3334082579287275  0.30221734418047425  1.0000
+  V   V2        1.0  0.33339725218915134  0.6666622381903581  0.8022165586280113  1.0000
+  As  As1       1.0  0.6666698768255279  0.33335263542044125  0.9118953944309152  1.0000
+  As  As2       1.0  0.3333101506199606  0.6666421602875008  0.41190969407819095  1.0000
+  As  As3       1.0  0.9998805575188808  0.9999032144792146  0.18630126155140223  1.0000
+  As  As4       1.0  0.9999223795764414  0.999951331551399  0.6863020033541739  1.0000

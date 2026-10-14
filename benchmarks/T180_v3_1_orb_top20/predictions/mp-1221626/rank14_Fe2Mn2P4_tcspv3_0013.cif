@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Mn2P4Fe2
+_chemical_formula_sum              "Mn2 P4 Fe2"
+_cell_length_a       8.458636644258462
+_cell_length_b       8.459481768326766
+_cell_length_c       3.933049921613179
+_cell_angle_alpha    89.98607424436103
+_cell_angle_beta     90.01590476287258
+_cell_angle_gamma    159.91963728199553
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Mn  Mn1       1.0  0.9389655355598817  0.062291660194136095  0.7503630503510486  1.0000
+  Mn  Mn2       1.0  0.06080990559030565  0.9374595676143449  0.25028357503172716  1.0000
+  P   P1        1.0  0.5427190067215106  0.45819772775033824  0.7503399045130199  1.0000
+  P   P2        1.0  0.4569229170697872  0.5414711789644263  0.250279820805386  1.0000
+  P   P3        1.0  0.26938875969697057  0.7310642630766828  0.7497434339541038  1.0000
+  P   P4        1.0  0.730939137961271  0.26924625649170375  0.24960345098900558  1.0000
+  Fe  Fe1       1.0  0.6700013397890122  0.3301063182825829  0.7495788742413908  1.0000
+  Fe  Fe2       1.0  0.33025338398997306  0.6701630359539235  0.2498078779746132  1.0000

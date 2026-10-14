@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       AlSiNdLa
+_chemical_formula_sum              "Al1 Si1 Nd1 La1"
+_cell_length_a       4.114681269132224
+_cell_length_b       4.507849939271162
+_cell_length_c       6.167237993074474
+_cell_angle_alpha    111.41268977574127
+_cell_angle_beta     89.97361606933045
+_cell_angle_gamma    90.0001407654164
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Al  Al1       1.0  0.2499601737853545  0.5642064360773409  0.44113533890255985  1.0000
+  Si  Si1       1.0  0.7501706772395632  0.43018311559988254  0.17268537575426923  1.0000
+  Nd  Nd1       1.0  0.2499771848800182  0.8603105419508462  0.03269047036975062  1.0000
+  La  La1       1.0  0.7498919619963409  0.14529990546306631  0.6034888176689199  1.0000

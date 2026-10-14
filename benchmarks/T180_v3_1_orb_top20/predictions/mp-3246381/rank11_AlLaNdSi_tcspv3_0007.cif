@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       LaNdAlSi
+_chemical_formula_sum              "La1 Nd1 Al1 Si1"
+_cell_length_a       4.192609540488617
+_cell_length_b       4.914234192525034
+_cell_length_c       6.467425491108312
+_cell_angle_alpha    89.98060383373031
+_cell_angle_beta     49.581513761035254
+_cell_angle_gamma    89.99235801086256
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  La  La1       1.0  8.708188969085692e-05  0.9997429178146751  0.9999707184814143  1.0000
+  Nd  Nd1       1.0  0.49996441432983535  0.5002683931571865  0.5000774591252318  1.0000
+  Al  Al1       1.0  0.9999973907607383  0.0004894505817811067  0.49992166441977565  1.0000
+  Si  Si1       1.0  0.49995111301649287  0.49949923971992227  3.0158542728432266e-05  1.0000

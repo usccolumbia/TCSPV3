@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       V2As4Cr2
+_chemical_formula_sum              "V2 As4 Cr2"
+_cell_length_a       7.628097267945693
+_cell_length_b       7.627201168646429
+_cell_length_c       6.149223667287134
+_cell_angle_alpha    92.22816800675831
+_cell_angle_beta     102.42685762555674
+_cell_angle_gamma    153.8380898865116
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  V   V1        1.0  0.4705833198749951  0.6144917344872155  0.7925822895145668  1.0000
+  V   V2        1.0  0.49410048221769687  0.35062553787239004  0.17196336539412468  1.0000
+  As  As1       1.0  0.9834129192805112  0.8955416568902893  0.6895962676094473  1.0000
+  As  As2       1.0  0.0005104182865660611  0.08512600982509388  0.2918371344257303  1.0000
+  As  As3       1.0  0.9209154530219706  0.29838403732704505  0.8600200410326035  1.0000
+  As  As4       1.0  0.26053836852969825  0.8845538007726915  0.32286504682474876  1.0000
+  Cr  Cr1       1.0  0.12665024595488852  0.7143783870524425  0.6708079209182409  1.0000
+  Cr  Cr2       1.0  0.7432887949353815  0.15689884632116177  0.2003279276193073  1.0000

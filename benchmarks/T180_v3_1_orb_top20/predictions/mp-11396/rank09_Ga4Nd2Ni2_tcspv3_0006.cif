@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Ga4Ni2Nd2
+_chemical_formula_sum              "Ga4 Ni2 Nd2"
+_cell_length_a       3.3973344532486216
+_cell_length_b       3.3964242690537123
+_cell_length_c       17.532226631559077
+_cell_angle_alpha    90.00237726667459
+_cell_angle_beta     89.99391391410771
+_cell_angle_gamma    120.02854812128521
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ga  Ga1       1.0  0.666175141008843  0.33320396385167  0.6173660448437788  1.0000
+  Ga  Ga2       1.0  0.3327980128145532  0.6664506199148431  0.38265537464579774  1.0000
+  Ga  Ga3       1.0  0.3337153520283452  0.6670019882828088  0.2384934662883745  1.0000
+  Ga  Ga4       1.0  0.6673838105631064  0.3336661466508319  0.7614771420990184  1.0000
+  Ni  Ni1       1.0  0.3328747261506974  0.6663288585851761  0.5367013231996812  1.0000
+  Ni  Ni2       1.0  0.6662124064913278  0.3333073705859314  0.4632990264720489  1.0000
+  Nd  Nd1       1.0  0.6669927478151101  0.33340478439680316  0.09597193117882734  1.0000
+  Nd  Nd2       1.0  0.3338478008997034  0.6666362605756094  0.9040356905674093  1.0000

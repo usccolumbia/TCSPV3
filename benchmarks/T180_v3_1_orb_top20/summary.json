@@ -1,0 +1,43 @@
+{
+  "testset": "T180",
+  "release": "v3.1",
+  "targets": 180,
+  "coverage": 180,
+  "cif_files": 2581,
+  "full20_pools": 79,
+  "ranking": "ORB-v3 energy per atom after relaxation",
+  "relaxation": {
+    "model": "orb-v3-conservative-inf-omat",
+    "optimizer": "FIRE",
+    "cell_filter": "ExpCellFilter",
+    "fmax_eV_per_A": 0.01,
+    "max_steps": 500,
+    "nonconverged_kept": true
+  },
+  "input": "integer primitive-cell formula only",
+  "candidate_budget": "100 instantiated candidates, up to 20 selected exports",
+  "matching": {
+    "ltol": 0.2,
+    "stol": 0.3,
+    "angle_tol": 5,
+    "primitive_cell": true,
+    "scale": true,
+    "attempt_supercell": false
+  },
+  "replacement": {
+    "old_id": "mp-1183076",
+    "new_id": "mp-3576"
+  },
+  "input_exception": {
+    "material_id": "mp-557387",
+    "actual_query": "Sr4Tm2Nb2O12",
+    "release_formula": "Nb1O6Sr2Tm1",
+    "reason": "Original campaign resolved the 0.01-A pseudo-translation ambiguity to the 20-atom cell; preserve its actual query"
+  },
+  "top1": 130,
+  "top1_percent": 72.2,
+  "top5": 159,
+  "top5_percent": 88.3,
+  "top20": 163,
+  "top20_percent": 90.6
+}

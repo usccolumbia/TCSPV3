@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Br2Au4I2
+_chemical_formula_sum              "Br2 Au4 I2"
+_cell_length_a       5.40854004452852
+_cell_length_b       15.315146817343157
+_cell_length_c       5.858788045030666
+_cell_angle_alpha    98.02128613607535
+_cell_angle_beta     112.44815570570192
+_cell_angle_gamma    73.71711658351333
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Br  Br1       1.0  0.8371388738828143  0.2830599121230084  0.49822227727800766  1.0000
+  Br  Br2       1.0  0.19049170977623392  0.7398407368738288  0.49672785073761166  1.0000
+  Au  Au1       1.0  0.6081325702052173  0.6200776507241215  0.49906864367154397  1.0000
+  Au  Au2       1.0  0.899483789218421  0.4450602576246163  0.5028116160657973  1.0000
+  Au  Au3       1.0  0.13292653939641164  0.5781913703171306  0.5031474291409052  1.0000
+  Au  Au4       1.0  0.4214175799746499  0.4031212265292605  0.49969486814428277  1.0000
+  I   I1        1.0  0.9795261377784497  0.01028906242639855  0.4097829035555611  1.0000
+  I   I2        1.0  0.5529075503016118  0.012660465361376355  0.5905749122573888  1.0000

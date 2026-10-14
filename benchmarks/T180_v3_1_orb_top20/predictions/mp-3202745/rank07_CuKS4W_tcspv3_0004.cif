@@ -1,0 +1,32 @@
+data_image0
+_chemical_formula_structural       KCuWS4
+_chemical_formula_sum              "K1 Cu1 W1 S4"
+_cell_length_a       3.3606950317854496
+_cell_length_b       7.548750205394969
+_cell_length_c       6.586340871111014
+_cell_angle_alpha    74.45568752383177
+_cell_angle_beta     89.99311433798242
+_cell_angle_gamma    89.9983090369368
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  K   K1        1.0  0.5000962404210139  0.5088262190920394  0.6484137663860153  1.0000
+  Cu  Cu1       1.0  0.5001006563983813  0.01004381228182313  0.47958465045441573  1.0000
+  W   W1        1.0  0.9999237290606958  0.0036186332742711436  0.9856071334175905  1.0000
+  S   S1        1.0  0.00016287315836132675  0.8415826479256461  0.3800163315373054  1.0000
+  S   S2        1.0  0.49988549098485163  0.7823982749685169  0.9656876098375025  1.0000
+  S   S3        1.0  0.999926229331444  0.15379839078983823  0.6274331467232316  1.0000
+  S   S4        1.0  0.4999047854309151  0.19885302535305976  0.08021736657154045  1.0000

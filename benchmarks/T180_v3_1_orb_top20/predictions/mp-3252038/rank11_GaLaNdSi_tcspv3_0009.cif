@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       LaSiGaNd
+_chemical_formula_sum              "La1 Si1 Ga1 Nd1"
+_cell_length_a       4.075371538078926
+_cell_length_b       4.076343819645874
+_cell_length_c       8.033526397521042
+_cell_angle_alpha    89.91072891783517
+_cell_angle_beta     90.1457268912537
+_cell_angle_gamma    120.04505611473643
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  La  La1       1.0  0.9982930899887935  0.0003073703678586936  0.18025767544833649  1.0000
+  Si  Si1       1.0  0.6661398080212502  0.33324146640102154  0.4127191294334513  1.0000
+  Ga  Ga1       1.0  0.33350358034707805  0.6664053300708337  0.5146081419987016  1.0000
+  Nd  Nd1       1.0  0.6687301914575181  0.3333791635233206  0.7857150485215724  1.0000

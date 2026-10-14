@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Fe2Se4
+_chemical_formula_sum              "Fe2 Se4"
+_cell_length_a       3.3046601376506066
+_cell_length_b       3.3050578961120265
+_cell_length_c       13.6805224891488
+_cell_angle_alpha    90.00049549232124
+_cell_angle_beta     90.00007531485362
+_cell_angle_gamma    120.01053447777876
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Fe  Fe1       1.0  2.486303584060966e-06  2.622541257486238e-05  0.7499944663568163  1.0000
+  Fe  Fe2       1.0  0.00010000043694042157  3.1352008136148646e-06  0.24998567572352537  1.0000
+  Se  Se1       1.0  0.333299028215344  0.6666264928319302  0.1418401256900425  1.0000
+  Se  Se2       1.0  0.6667259759578962  0.333305583130184  0.6418472381979846  1.0000
+  Se  Se3       1.0  0.3332480216643711  0.6666795901339516  0.3581608773177924  1.0000
+  Se  Se4       1.0  0.6666244863841485  0.3333589730888485  0.8581716187435374  1.0000

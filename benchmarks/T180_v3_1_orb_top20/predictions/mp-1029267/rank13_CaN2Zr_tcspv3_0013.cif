@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       CaZrN2
+_chemical_formula_sum              "Ca1 Zr1 N2"
+_cell_length_a       11.487373042531473
+_cell_length_b       14.45517708890756
+_cell_length_c       14.497661734867664
+_cell_angle_alpha    153.0566306087232
+_cell_angle_beta     121.9583119431894
+_cell_angle_gamma    66.39989922894834
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ca  Ca1       1.0  0.01053584757322587  0.04007368522957607  0.9708002081674194  1.0000
+  Zr  Zr1       1.0  0.9875920496508332  0.4551440733733678  0.5291960358505636  1.0000
+  N   N1        1.0  0.000926420665859108  0.2871381537153013  0.28367685614091637  1.0000
+  N   N2        1.0  0.0009456822883981975  0.7176440883363325  0.7163269017181133  1.0000

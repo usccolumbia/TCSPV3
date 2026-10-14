@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Si4Ir4
+_chemical_formula_sum              "Si4 Ir4"
+_cell_length_a       15.284345733407008
+_cell_length_b       2.9321952718134963
+_cell_length_c       2.920562076702042
+_cell_angle_alpha    89.99869101939228
+_cell_angle_beta     89.9847250380894
+_cell_angle_gamma    112.67609199671926
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Si  Si1       1.0  0.41661348680599714  0.6072044771502542  0.2501430620328824  1.0000
+  Si  Si2       1.0  0.08339548474369415  0.39288754846173923  0.7497680923804607  1.0000
+  Si  Si3       1.0  0.916244777538516  0.05651261866414092  0.7500738064128067  1.0000
+  Si  Si4       1.0  0.5837652857246134  0.943616216914844  0.24985413083022703  1.0000
+  Ir  Ir1       1.0  0.8284690096421881  0.37749924727682155  0.2503396954237431  1.0000
+  Ir  Ir2       1.0  0.6715292667491028  0.6224518508820718  0.7497488452864415  1.0000
+  Ir  Ir3       1.0  0.328741345604069  0.9331329261952488  0.7504339305519062  1.0000
+  Ir  Ir4       1.0  0.17124134005004585  0.06669511307775311  0.24963844206195762  1.0000

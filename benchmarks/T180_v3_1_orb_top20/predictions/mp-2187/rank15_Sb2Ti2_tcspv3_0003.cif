@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       Ti2Sb2
+_chemical_formula_sum              "Ti2 Sb2"
+_cell_length_a       4.783938563029965
+_cell_length_b       4.783842893761998
+_cell_length_c       5.471151343086793
+_cell_angle_alpha    90.00118262490935
+_cell_angle_beta     90.0006736731114
+_cell_angle_gamma    120.00157206585087
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ti  Ti1       1.0  0.33333419394544106  0.6666523844665951  0.2499884361198088  1.0000
+  Ti  Ti2       1.0  0.6666608075472906  0.33331884300302284  0.749987716584136  1.0000
+  Sb  Sb1       1.0  0.6666702939469323  0.3333516947033671  0.250012180721993  1.0000
+  Sb  Sb2       1.0  0.3333347046924576  0.6666770777117629  0.7500116668932962  1.0000

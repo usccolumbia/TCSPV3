@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Ce2Mg4
+_chemical_formula_sum              "Ce2 Mg4"
+_cell_length_a       3.1076918694264335
+_cell_length_b       3.107714791627309
+_cell_length_c       17.102883447084093
+_cell_angle_alpha    89.99354095018938
+_cell_angle_beta     90.00797278835464
+_cell_angle_gamma    120.00049626181138
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ce  Ce1       1.0  0.6667132142886797  0.3333778254502732  0.7499773096072253  1.0000
+  Ce  Ce2       1.0  0.33334796565901875  0.6666871354765397  0.24997842334134837  1.0000
+  Mg  Mg1       1.0  0.33331946400078977  0.6666675292485627  0.9216139008854183  1.0000
+  Mg  Mg2       1.0  0.3332963965517472  0.666611829499429  0.5784088678356918  1.0000
+  Mg  Mg3       1.0  0.6666580352242913  0.333346639588776  0.42161364136690105  1.0000
+  Mg  Mg4       1.0  0.6666649244506513  0.3333090409236648  0.07840785692247755  1.0000

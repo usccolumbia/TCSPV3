@@ -1,0 +1,30 @@
+data_image0
+_chemical_formula_structural       PtHg4
+_chemical_formula_sum              "Pt1 Hg4"
+_cell_length_a       2.9338845843953942
+_cell_length_b       2.933837135041664
+_cell_length_c       14.746695322283525
+_cell_angle_alpha    90.06487701932946
+_cell_angle_beta     90.04969608449048
+_cell_angle_gamma    90.01156931592627
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Pt  Pt1       1.0  0.9999404486279779  0.9999996754521464  0.9999944263175936  1.0000
+  Hg  Hg1       1.0  0.9999430468828584  0.9999213051026082  0.1857587936977084  1.0000
+  Hg  Hg2       1.0  2.2692399317327657e-05  2.946070764245457e-05  0.3940604394384796  1.0000
+  Hg  Hg3       1.0  4.8164792245495974e-05  5.446662215258563e-05  0.6059431268565127  1.0000
+  Hg  Hg4       1.0  4.56471406925542e-05  0.9999950913045976  0.8142432137431067  1.0000

@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       BaGaCu2
+_chemical_formula_sum              "Ba1 Ga1 Cu2"
+_cell_length_a       3.4930467685116615
+_cell_length_b       3.492966627762908
+_cell_length_c       6.991934873002508
+_cell_angle_alpha    90.01118730724369
+_cell_angle_beta     89.99646267636204
+_cell_angle_gamma    90.0111341026899
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ba  Ba1       1.0  8.62507536566449e-05  0.0001302229737931204  0.49999081098317755  1.0000
+  Ga  Ga1       1.0  0.9999841000132039  0.9998169844500316  0.9999901578106175  1.0000
+  Cu  Cu1       1.0  0.4999717450049428  0.5000253633710988  0.17287345432821907  1.0000
+  Cu  Cu2       1.0  0.4999579040826352  0.5000274291468935  0.8271455760688928  1.0000

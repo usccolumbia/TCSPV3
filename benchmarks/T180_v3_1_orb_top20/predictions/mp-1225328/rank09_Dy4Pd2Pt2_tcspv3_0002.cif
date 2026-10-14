@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Pt2Dy4Pd2
+_chemical_formula_sum              "Pt2 Dy4 Pd2"
+_cell_length_a       3.545705412334109
+_cell_length_b       7.309384159765672
+_cell_length_c       7.1615730704662335
+_cell_angle_alpha    90.00163654015319
+_cell_angle_beta     90.00157067430517
+_cell_angle_gamma    104.03246455589584
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Pt  Pt1       1.0  0.5037829902046472  0.007548850250465922  0.2499833322702369  1.0000
+  Pt  Pt2       1.0  0.4961884056672617  0.9924341343214719  0.7499797734137602  1.0000
+  Dy  Dy1       1.0  0.8799572173393324  0.7599324175603888  0.4938148733207625  1.0000
+  Dy  Dy2       1.0  0.12000533172835431  0.2400976342184985  0.9937811102819004  1.0000
+  Dy  Dy3       1.0  0.12009730967022185  0.24012715657097378  0.5062232919158409  1.0000
+  Dy  Dy4       1.0  0.8799711224871652  0.7598987593578129  0.0061986433935348195  1.0000
+  Pd  Pd1       1.0  0.7158314984581172  0.4316946420450931  0.2500120496211461  1.0000
+  Pd  Pd2       1.0  0.2841661337694791  0.5682664045000205  0.7500069280062119  1.0000

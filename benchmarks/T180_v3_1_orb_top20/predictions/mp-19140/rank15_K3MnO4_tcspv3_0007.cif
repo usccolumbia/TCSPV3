@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       MnK3O4
+_chemical_formula_sum              "Mn1 K3 O4"
+_cell_length_a       3.0504055526178178
+_cell_length_b       5.683990342460991
+_cell_length_c       7.826693580900597
+_cell_angle_alpha    89.99789693035868
+_cell_angle_beta     90.00211433273768
+_cell_angle_gamma    90.00439957105455
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Mn  Mn1       1.0  0.9998666099285469  0.05092932863738869  0.9999700582014474  1.0000
+  K   K1        1.0  0.5001851847532129  0.526283097744641  0.23391540947738557  1.0000
+  K   K2        1.0  0.9995904726929754  0.023333542533829667  0.49994181234232166  1.0000
+  K   K3        1.0  0.5001186453029262  0.5263436844658388  0.7661336300015599  1.0000
+  O   O1        1.0  0.00017789652110123284  0.5173129813380395  0.5000086590308506  1.0000
+  O   O2        1.0  0.4999343843503019  0.9997938841154149  0.8417250441290363  1.0000
+  O   O3        1.0  2.474436872044138e-05  0.35622844324478437  9.032130212182407e-06  1.0000
+  O   O4        1.0  0.5001020523936832  0.9997750616932894  0.15829632571237925  1.0000

@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       Cr2Sb2
+_chemical_formula_sum              "Cr2 Sb2"
+_cell_length_a       3.860076340247629
+_cell_length_b       3.8604219156567017
+_cell_length_c       5.521608909752283
+_cell_angle_alpha    89.88201293680875
+_cell_angle_beta     90.00389666435056
+_cell_angle_gamma    90.00541730750437
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Cr  Cr1       1.0  0.5001009033098865  0.7483015456616682  0.05482447201503984  1.0000
+  Cr  Cr2       1.0  0.9999670802420079  0.251684990153256  0.4451633698438747  1.0000
+  Sb  Sb1       1.0  3.316225138019361e-05  0.2487826306873587  0.9518967972310202  1.0000
+  Sb  Sb2       1.0  0.499898852900935  0.7512308317570903  0.5481153648559367  1.0000

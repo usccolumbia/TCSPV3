@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       BaAg2GeSe4
+_chemical_formula_sum              "Ba1 Ag2 Ge1 Se4"
+_cell_length_a       7.052269270170676
+_cell_length_b       7.217191932792349
+_cell_length_c       7.702441971621939
+_cell_angle_alpha    127.09212998267438
+_cell_angle_beta     126.62869218230597
+_cell_angle_gamma    73.06587987983289
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ba  Ba1       1.0  0.9773952466312971  0.9819040007774628  0.959190516618216  1.0000
+  Ag  Ag1       1.0  0.5443562215287415  0.543352116866776  0.08712256601505595  1.0000
+  Ag  Ag2       1.0  0.37108338057019735  0.8698307446088656  0.74415273101494  1.0000
+  Ge  Ge1       1.0  0.7979300318631428  0.29763317645402915  0.5951037694220374  1.0000
+  Se  Se1       1.0  0.8792958145266009  0.41743994089683245  0.41423922752376124  1.0000
+  Se  Se2       1.0  0.6970526925593927  0.6361659179891446  0.8960642127763059  1.0000
+  Se  Se3       1.0  0.5326620825065903  0.996325784289141  0.4098759834111287  1.0000
+  Se  Se4       1.0  0.20022451647815934  0.25734831594466123  0.8942509746932226  1.0000

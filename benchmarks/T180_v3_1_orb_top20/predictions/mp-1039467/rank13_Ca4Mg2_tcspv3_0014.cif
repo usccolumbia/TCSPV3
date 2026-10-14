@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Ca4Mg2
+_chemical_formula_sum              "Ca4 Mg2"
+_cell_length_a       4.977887590718861
+_cell_length_b       4.970032396834615
+_cell_length_c       9.677490868213466
+_cell_angle_alpha    104.87739367651731
+_cell_angle_beta     104.90072990754823
+_cell_angle_gamma    90.00137879359873
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ca  Ca1       1.0  0.6718284261074334  0.6718154049911894  0.34368712862186923  1.0000
+  Ca  Ca2       1.0  0.9948398830215236  0.4948101389475634  0.9896326885707608  1.0000
+  Ca  Ca3       1.0  0.3177847456738022  0.31780952093524756  0.6355682329352765  1.0000
+  Ca  Ca4       1.0  0.4948586649789651  0.9947602648908717  0.9896408397572626  1.0000
+  Mg  Mg1       1.0  0.8645283584335068  0.8645999769160566  0.7290638142711827  1.0000
+  Mg  Mg2       1.0  0.1250619218778787  0.12510669324835785  0.2502062859411298  1.0000

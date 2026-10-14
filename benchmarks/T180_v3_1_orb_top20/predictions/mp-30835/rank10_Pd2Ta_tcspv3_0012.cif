@@ -1,0 +1,28 @@
+data_image0
+_chemical_formula_structural       TaPd2
+_chemical_formula_sum              "Ta1 Pd2"
+_cell_length_a       2.865891126114017
+_cell_length_b       2.8665594253370323
+_cell_length_c       17.52060910004608
+_cell_angle_alpha    89.99872750674743
+_cell_angle_beta     89.9881102986064
+_cell_angle_gamma    119.99652642699121
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ta  Ta1       1.0  0.00010544648066993444  7.884365641428105e-05  0.4999910564774903  1.0000
+  Pd  Pd1       1.0  0.6666232578721287  0.3332980189317008  0.6255731990795813  1.0000
+  Pd  Pd2       1.0  0.6666046355950338  0.33328979765016487  0.374435604540091  1.0000

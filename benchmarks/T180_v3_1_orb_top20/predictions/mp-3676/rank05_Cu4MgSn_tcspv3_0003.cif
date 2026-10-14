@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       MgCu4Sn
+_chemical_formula_sum              "Mg1 Cu4 Sn1"
+_cell_length_a       5.081192097317854
+_cell_length_b       5.08076708675259
+_cell_length_c       4.289180439109968
+_cell_angle_alpha    89.99952255513043
+_cell_angle_beta     90.00188634775766
+_cell_angle_gamma    119.99936886427493
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Mg  Mg1       1.0  8.448696728121834e-06  0.9999826493731592  2.580791100775722e-05  1.0000
+  Cu  Cu1       1.0  0.33331204735183123  0.6666602762531797  2.0430250916120813e-05  1.0000
+  Cu  Cu2       1.0  0.4943399235073374  0.9886630224607041  0.5000001905484104  1.0000
+  Cu  Cu3       1.0  0.49430906776416833  0.5056497799777144  0.4999916199831471  1.0000
+  Cu  Cu4       1.0  0.011367839762544836  0.505710616224159  0.4999986029709425  1.0000
+  Sn  Sn1       1.0  0.6666626734581359  0.33333365594038517  0.9999633488038419  1.0000

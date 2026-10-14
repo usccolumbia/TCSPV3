@@ -1,0 +1,27 @@
+data_image0
+_chemical_formula_structural       AlSb
+_chemical_formula_sum              "Al1 Sb1"
+_cell_length_a       4.097566959130003
+_cell_length_b       4.097397024897157
+_cell_length_c       4.097772471602976
+_cell_angle_alpha    130.95869115562766
+_cell_angle_beta     107.84624621085725
+_cell_angle_gamma    92.17891317772427
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Al  Al1       1.0  0.9998872110122299  5.8815712192236675e-05  0.9999250281506743  1.0000
+  Sb  Sb1       1.0  0.5001127886706689  0.49994118409355515  7.497149487043226e-05  1.0000

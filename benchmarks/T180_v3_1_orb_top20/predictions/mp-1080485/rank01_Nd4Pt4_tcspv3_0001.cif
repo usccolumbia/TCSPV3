@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Nd4Pt4
+_chemical_formula_sum              "Nd4 Pt4"
+_cell_length_a       4.618699734831587
+_cell_length_b       7.335021551044388
+_cell_length_c       5.750803954023114
+_cell_angle_alpha    89.9988692779678
+_cell_angle_beta     89.99962589146008
+_cell_angle_gamma    89.99695225965118
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Nd  Nd1       1.0  0.7500046875710226  0.8160336167398698  0.35807546922724376  1.0000
+  Nd  Nd2       1.0  0.25003642684757355  0.1839667486977897  0.6419180681084719  1.0000
+  Nd  Nd3       1.0  0.24998687951404217  0.6839728294057201  0.8580957896999973  1.0000
+  Nd  Nd4       1.0  0.750016860399254  0.31601810253383683  0.14194509665226362  1.0000
+  Pt  Pt1       1.0  0.7499741091879478  0.9581580687208249  0.8459236990257489  1.0000
+  Pt  Pt2       1.0  0.24999091009058635  0.04179061239302497  0.15404813915987967  1.0000
+  Pt  Pt3       1.0  0.2499806725633977  0.5418307833445769  0.3459267544196703  1.0000
+  Pt  Pt4       1.0  0.7500094538152909  0.4582292386889815  0.6540669833325071  1.0000

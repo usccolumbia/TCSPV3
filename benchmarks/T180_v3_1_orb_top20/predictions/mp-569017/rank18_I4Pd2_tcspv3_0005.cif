@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       Pd2I4
+_chemical_formula_sum              "Pd2 I4"
+_cell_length_a       4.4192308700469844
+_cell_length_b       4.418349459144903
+_cell_length_c       13.032742802502117
+_cell_angle_alpha    89.99750853498183
+_cell_angle_beta     90.01957770321049
+_cell_angle_gamma    90.01971758905152
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Pd  Pd1       1.0  1.2628298593789398e-05  0.9997748924460199  0.7499796339409566  1.0000
+  Pd  Pd2       1.0  0.9999106930901495  0.9999053348656688  0.2500178427305016  1.0000
+  I   I1        1.0  1.0504909469221646e-05  0.4998285058317691  0.8599328373548607  1.0000
+  I   I2        1.0  0.5001287669690265  0.00019364258664115961  0.3599255095177187  1.0000
+  I   I3        1.0  0.4999775302068803  0.00035876997953593836  0.640077821624827  1.0000
+  I   I4        1.0  0.9999598768158025  0.49993885424942297  0.14006635462162617  1.0000

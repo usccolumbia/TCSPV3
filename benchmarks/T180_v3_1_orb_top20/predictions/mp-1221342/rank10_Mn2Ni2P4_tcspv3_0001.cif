@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Mn2Ni2P4
+_chemical_formula_sum              "Mn2 Ni2 P4"
+_cell_length_a       2.818530479943636
+_cell_length_b       2.818263495206969
+_cell_length_c       14.901881011922134
+_cell_angle_alpha    89.99686807086215
+_cell_angle_beta     90.00241470058621
+_cell_angle_gamma    119.99710636778345
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Mn  Mn1       1.0  0.33351350270157815  0.6669974428074169  0.2500032625721697  1.0000
+  Mn  Mn2       1.0  0.6666207085946491  0.33321940191304794  0.7500027962822895  1.0000
+  Ni  Ni1       1.0  0.9999152460443878  0.9998661058120021  0.9999994734131696  1.0000
+  Ni  Ni2       1.0  0.9998987453576982  0.9998613369889601  0.5000038921950389  1.0000
+  P   P1        1.0  0.9999343065997207  0.9997847017562428  0.8557173536891297  1.0000
+  P   P2        1.0  7.792818350476888e-05  0.00024138363138542118  0.14427413710340733  1.0000
+  P   P3        1.0  0.0001868728775991815  0.00024592341807749715  0.35572107476268716  1.0000
+  P   P4        1.0  0.9998526891689172  0.9997837026271056  0.644278009407246  1.0000

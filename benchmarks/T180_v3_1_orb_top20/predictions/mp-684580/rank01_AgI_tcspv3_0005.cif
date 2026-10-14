@@ -1,0 +1,27 @@
+data_image0
+_chemical_formula_structural       AgI
+_chemical_formula_sum              "Ag1 I1"
+_cell_length_a       4.685790890928583
+_cell_length_b       4.6842968919986125
+_cell_length_c       4.6843041451935115
+_cell_angle_alpha    59.960985742265905
+_cell_angle_beta     59.98729130641923
+_cell_angle_gamma    89.94584551746794
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ag  Ag1       1.0  0.905005482763573  0.029993916903631367  0.12498608084560789  1.0000
+  I   I1        1.0  0.15499451655211718  0.7800060844135918  0.6250139190197805  1.0000

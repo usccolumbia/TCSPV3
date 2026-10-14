@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       P4Ru2
+_chemical_formula_sum              "P4 Ru2"
+_cell_length_a       3.6689656552419403
+_cell_length_b       5.771116029247731
+_cell_length_c       5.180360087449511
+_cell_angle_alpha    75.79642889156631
+_cell_angle_beta     110.74080169658946
+_cell_angle_gamma    89.99896505733791
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  P   P1        1.0  0.8726020715757481  0.5375856932273348  0.7451644365779927  1.0000
+  P   P2        1.0  0.12733309509412186  0.46247600113949733  0.2548243588925339  1.0000
+  P   P3        1.0  0.38782866376156444  0.05521134434090552  0.7756962281577657  1.0000
+  P   P4        1.0  0.6122340720060196  0.944836279958758  0.22422808856243637  1.0000
+  Ru  Ru1       1.0  0.7504439514476005  0.20525967470562256  0.501121996257776  1.0000
+  Ru  Ru2       1.0  0.24955814729670983  0.794631018643943  0.49896489012624035  1.0000

@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Sm4Au4
+_chemical_formula_sum              "Sm4 Au4"
+_cell_length_a       5.791756549262874
+_cell_length_b       5.792308386689493
+_cell_length_c       5.917734413047429
+_cell_angle_alpha    90.00052450682074
+_cell_angle_beta     89.99773418095059
+_cell_angle_gamma    83.09207509732984
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Sm  Sm1       1.0  0.8450738420846715  0.5533612233511555  0.24998595677609212  1.0000
+  Sm  Sm2       1.0  0.5532630741043587  0.8451776384167015  0.7500014548178485  1.0000
+  Sm  Sm3       1.0  0.4465328469685452  0.1548953275800358  0.2500001060565407  1.0000
+  Sm  Sm4       1.0  0.15492646098799764  0.4465946308783315  0.7500224565458277  1.0000
+  Au  Au1       1.0  2.3814903971386514e-05  0.9999780385820164  0.4999950008766721  1.0000
+  Au  Au2       1.0  6.295445491649887e-05  0.9999756682424354  0.9999672230710341  1.0000
+  Au  Au3       1.0  0.33212674020524335  0.667881655212701  0.25000642346777413  1.0000
+  Au  Au4       1.0  0.6679902613449873  0.3321358202899406  0.750021375370664  1.0000

@@ -43,7 +43,7 @@ The separate, current **T180 v3.1** benchmark recovers **130/180 (72.2%) at Top-
 | T180 v3.1 (180 targets) | 122/154/163 | **130/159/163** |
 | T800 (800 targets; 19 without candidates count as misses) | 512/575/591 | **518/579/592** |
 
-The ORB-v3 stage adds no candidates, so Top-20 stays (to within one target) the same; it improves the order. Without relaxation the template stage is fast: the median is 28 s per target on two CPU cores. The ORB-v3 stage adds about 219 s per target on a GPU, including loading the weights for each target. Download/browse the [ranked prediction CIFs, per-target scores and hashes](benchmarks/T180_v3_1_top20/README.md). This package contains 2,581 available candidates across all 180 targets, with up to 20 per target. Its audited cohort and cell-count conditioning differ from the historical original-180 rows above; the package documents the actual input exception for `mp-557387`.
+The ORB-v3 stage adds no candidates, so Top-20 stays (to within one target) the same; it improves the order. Without relaxation the template stage is fast: the median is 28 s per target on two CPU cores. The ORB-v3 stage adds about 219 s per target on a GPU, including loading the weights for each target. Download/browse the [ORB-v3 relaxed and ranked Top-20 prediction CIFs (default; 130/159/163), with per-target scores and hashes](benchmarks/T180_v3_1_orb_top20/README.md), or the [native-order Top-20 CIFs without relaxation (122/154/163)](benchmarks/T180_v3_1_top20/README.md). This package contains 2,581 available candidates across all 180 targets, with up to 20 per target. Its audited cohort and cell-count conditioning differ from the historical original-180 rows above; the package documents the actual input exception for `mp-557387`.
 
 
 

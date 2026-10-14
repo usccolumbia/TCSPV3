@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       ThHoNiPt
+_chemical_formula_sum              "Th1 Ho1 Ni1 Pt1"
+_cell_length_a       4.96489476581228
+_cell_length_b       4.965080814353279
+_cell_length_c       4.96565287590727
+_cell_angle_alpha    119.99520211148351
+_cell_angle_beta     120.00260226474393
+_cell_angle_gamma    89.99756351989089
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Th  Th1       1.0  0.9999871119745867  0.9999911318233757  0.9999960129659412  1.0000
+  Ho  Ho1       1.0  0.4999883678117764  0.500002510072059  1.5291765745407198e-06  1.0000
+  Ni  Ni1       1.0  0.7499942340455583  0.2499965532262496  0.4999799518915423  1.0000
+  Pt  Pt1       1.0  0.25003028531336363  0.7500098049275815  0.5000225057999648  1.0000

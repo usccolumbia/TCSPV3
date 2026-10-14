@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       Nb2N2
+_chemical_formula_sum              "Nb2 N2"
+_cell_length_a       3.524410934572624
+_cell_length_b       3.5232452090598203
+_cell_length_c       16.04051230507544
+_cell_angle_alpha    89.99888742800191
+_cell_angle_beta     90.01083432974805
+_cell_angle_gamma    119.98834261090458
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Nb  Nb1       1.0  0.9999132582973449  4.748012981210687e-05  0.5621756380847892  1.0000
+  Nb  Nb2       1.0  0.33331283303996656  0.6666856948261694  0.4378654537058485  1.0000
+  N   N1        1.0  1.792263383570969e-05  0.9999872526509731  0.42088402934645536  1.0000
+  N   N2        1.0  0.3334115572666554  0.6666536519531004  0.5792124092244305  1.0000

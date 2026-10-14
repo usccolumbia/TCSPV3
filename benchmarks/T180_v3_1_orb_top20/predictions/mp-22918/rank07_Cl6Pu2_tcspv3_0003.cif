@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Pu2Cl6
+_chemical_formula_sum              "Pu2 Cl6"
+_cell_length_a       7.129847061708553
+_cell_length_b       7.12996312231588
+_cell_length_c       8.675871088309165
+_cell_angle_alpha    90.00982233391257
+_cell_angle_beta     89.99046546452051
+_cell_angle_gamma    148.00713061270775
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Pu  Pu1       1.0  0.7405889296970869  0.2595008608445299  0.750002077201123  1.0000
+  Pu  Pu2       1.0  0.25949534444568106  0.7405620577774199  0.24998826224518428  1.0000
+  Cl  Cl1       1.0  0.34005545815756916  0.6599815372078806  0.9317763584055142  1.0000
+  Cl  Cl2       1.0  0.33999317096595305  0.6599156285623936  0.5682393205012497  1.0000
+  Cl  Cl3       1.0  0.6599591174159918  0.340035961849977  0.4317804962855516  1.0000
+  Cl  Cl4       1.0  0.6599059492956241  0.34001689205765917  0.06824867180720913  1.0000
+  Cl  Cl5       1.0  0.10310886208795535  0.8969073986931947  0.7499813406147608  1.0000
+  Cl  Cl6       1.0  0.8968931668752502  0.10307966459544576  0.24998347029923582  1.0000

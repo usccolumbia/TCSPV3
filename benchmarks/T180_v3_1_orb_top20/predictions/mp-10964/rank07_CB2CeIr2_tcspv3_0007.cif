@@ -1,0 +1,31 @@
+data_image0
+_chemical_formula_structural       CeB2CIr2
+_chemical_formula_sum              "Ce1 B2 C1 Ir2"
+_cell_length_a       7.89115832542976
+_cell_length_b       6.5854302308813475
+_cell_length_c       3.267091745317652
+_cell_angle_alpha    90.13725972221664
+_cell_angle_beta     89.94592870879924
+_cell_angle_gamma    150.05708633423225
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ce  Ce1       1.0  0.12045942355128406  0.5539274371151052  0.7484750411063853  1.0000
+  B   B1        1.0  0.9899311287130178  0.02676041348696472  0.5021189186575455  1.0000
+  B   B2        1.0  0.9877812149042353  0.026337596505224915  0.0015681134617457904  1.0000
+  C   C1        1.0  0.7470388034869029  0.3559230363162902  0.24823188432025117  1.0000
+  Ir  Ir1       1.0  0.4886158677807659  0.5965523640693993  0.2508122955675881  1.0000
+  Ir  Ir2       1.0  0.666173598197242  0.440499154896168  0.7487937438146991  1.0000

@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       BaEuO2
+_chemical_formula_sum              "Ba1 Eu1 O2"
+_cell_length_a       3.8068215231373976
+_cell_length_b       3.806919834977288
+_cell_length_c       5.382462569633688
+_cell_angle_alpha    90.00121238499894
+_cell_angle_beta     90.00078832755433
+_cell_angle_gamma    89.99821593356378
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ba  Ba1       1.0  8.93670399252961e-06  7.571791116389888e-06  4.800260324020522e-06  1.0000
+  Eu  Eu1       1.0  0.4999920785295558  0.5000049532990154  0.5000003532369369  1.0000
+  O   O1        1.0  5.022322707438108e-06  3.2958919663297467e-07  0.5000100269472341  1.0000
+  O   O2        1.0  0.49999396233987536  0.49998714523264404  0.9999848194188878  1.0000

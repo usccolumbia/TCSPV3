@@ -1,0 +1,27 @@
+data_image0
+_chemical_formula_structural       AlAs
+_chemical_formula_sum              "Al1 As1"
+_cell_length_a       4.053046837699961
+_cell_length_b       4.053198255796143
+_cell_length_c       4.0531648384942915
+_cell_angle_alpha    60.00029185183978
+_cell_angle_beta     59.99993546274569
+_cell_angle_gamma    59.998232398831334
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Al  Al1       1.0  1.3025922535043674e-06  0.9999829799124289  5.1740634384245175e-06  1.0000
+  As  As1       1.0  0.2499986974641654  0.25001702007485027  0.24999482590519667  1.0000

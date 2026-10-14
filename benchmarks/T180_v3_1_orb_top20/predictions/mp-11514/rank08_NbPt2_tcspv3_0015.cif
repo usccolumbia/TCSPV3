@@ -1,0 +1,28 @@
+data_image0
+_chemical_formula_structural       NbPt2
+_chemical_formula_sum              "Nb1 Pt2"
+_cell_length_a       7.145624249432147
+_cell_length_b       7.1457990620324585
+_cell_length_c       7.145957731442372
+_cell_angle_alpha    23.07341965813416
+_cell_angle_beta     23.073968078989953
+_cell_angle_gamma    23.072801656573496
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Nb  Nb1       1.0  0.33253189798499233  0.3324558004745954  0.3324305223834857  1.0000
+  Pt  Pt1       1.0  0.5573120450057139  0.5573791026644825  0.5573531404122293  1.0000
+  Pt  Pt2       1.0  0.7744880587907551  0.7744970962013547  0.7745483368579417  1.0000

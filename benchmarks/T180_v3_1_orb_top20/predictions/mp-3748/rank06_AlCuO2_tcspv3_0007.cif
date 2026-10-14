@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       CuAlO2
+_chemical_formula_sum              "Cu1 Al1 O2"
+_cell_length_a       2.8772781425835317
+_cell_length_b       2.8771877807397654
+_cell_length_c       7.190911907505431
+_cell_angle_alpha    78.48119139325638
+_cell_angle_beta     53.144695867276965
+_cell_angle_gamma    60.01058327102577
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Cu  Cu1       1.0  0.9999211783854769  6.314184974290561e-05  0.9999966460247883  1.0000
+  Al  Al1       1.0  0.5000476690071817  0.4999763432772487  0.49998926991865417  1.0000
+  O   O1        1.0  0.4499427637443217  0.10999461893661497  0.3298687466656651  1.0000
+  O   O2        1.0  0.5500883621789814  0.8899659270183342  0.67014532616989  1.0000

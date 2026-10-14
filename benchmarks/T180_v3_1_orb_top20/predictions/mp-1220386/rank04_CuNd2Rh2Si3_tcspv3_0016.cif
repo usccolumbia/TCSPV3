@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Rh2Nd2Si3Cu
+_chemical_formula_sum              "Rh2 Nd2 Si3 Cu1"
+_cell_length_a       4.119806373352684
+_cell_length_b       5.632440971797291
+_cell_length_c       6.983713547858366
+_cell_angle_alpha    111.89836655336491
+_cell_angle_beta     90.00252521707387
+_cell_angle_gamma    90.02572157367864
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Rh  Rh1       1.0  0.24995314520032277  0.23935693888007606  0.7321969214724532  1.0000
+  Rh  Rh2       1.0  0.7500271806720596  0.7696798097671833  0.2619184509403333  1.0000
+  Nd  Nd1       1.0  0.2500724775549537  0.24436938877396458  0.24896501570385843  1.0000
+  Nd  Nd2       1.0  0.7500301237124567  0.7529150393419036  0.7523583983512857  1.0000
+  Si  Si1       1.0  0.25004926938123245  0.8233680764113817  0.4569525459960598  1.0000
+  Si  Si2       1.0  0.24997738567178365  0.649563276500603  0.04275544484932387  1.0000
+  Si  Si3       1.0  0.7499145972242028  0.1739822797108054  0.5460774210469123  1.0000
+  Cu  Cu1       1.0  0.7499758213751032  0.34676419616186205  0.9587767962881154  1.0000

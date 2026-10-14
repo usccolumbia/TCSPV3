@@ -1,0 +1,27 @@
+data_image0
+_chemical_formula_structural       PtCo
+_chemical_formula_sum              "Pt1 Co1"
+_cell_length_a       2.7144377461828686
+_cell_length_b       2.7143794111828234
+_cell_length_c       4.263509134750059
+_cell_angle_alpha    89.99728919981884
+_cell_angle_beta     90.00600883238829
+_cell_angle_gamma    120.0075261590153
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Pt  Pt1       1.0  0.9999996431807427  0.9999681381259291  5.115031784723253e-05  1.0000
+  Co  Co1       1.0  0.3333336864594102  0.6666985315379949  0.49994884992492816  1.0000

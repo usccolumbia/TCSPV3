@@ -1,0 +1,29 @@
+data_image0
+_chemical_formula_structural       LiRh3
+_chemical_formula_sum              "Li1 Rh3"
+_cell_length_a       5.090765858526891
+_cell_length_b       5.091870649998761
+_cell_length_c       5.091874736561286
+_cell_angle_alpha    149.41102488951498
+_cell_angle_beta     63.97464587689999
+_cell_angle_gamma    125.30461491688696
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Li  Li1       1.0  0.9959736690676387  0.9958882517854059  0.9999309951721566  1.0000
+  Rh  Rh1       1.0  0.9177274418929378  0.6746890936621489  0.24311175288712572  1.0000
+  Rh  Rh2       1.0  0.4316448578206413  0.6747303364434809  0.7569723337694976  1.0000
+  Rh  Rh3       1.0  0.48265402044273203  0.9826923172948346  0.49998491799245426  1.0000

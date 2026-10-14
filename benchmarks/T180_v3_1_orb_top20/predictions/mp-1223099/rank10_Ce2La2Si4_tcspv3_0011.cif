@@ -1,0 +1,33 @@
+data_image0
+_chemical_formula_structural       Ce2La2Si4
+_chemical_formula_sum              "Ce2 La2 Si4"
+_cell_length_a       4.164474698438442
+_cell_length_b       4.164490511396024
+_cell_length_c       14.541113535476565
+_cell_angle_alpha    89.99391145458017
+_cell_angle_beta     90.0025654442809
+_cell_angle_gamma    119.99876815678003
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ce  Ce1       1.0  0.9999800902947471  0.9999293935372924  0.8619585889243061  1.0000
+  Ce  Ce2       1.0  0.9999989281964671  0.9999779723179443  0.13800139294119704  1.0000
+  La  La1       1.0  0.3333759889620943  0.6668086711424295  0.6265061185464025  1.0000
+  La  La2       1.0  0.6667066437762144  0.3333318906420305  0.37348118282410797  1.0000
+  Si  Si1       1.0  0.666693011102399  0.33342602662340826  0.7416107503431592  1.0000
+  Si  Si2       1.0  0.3333339291424949  0.6666914615552344  0.25838099563700306  1.0000
+  Si  Si3       1.0  0.3332800346175805  0.6665683077060347  0.9967132756906033  1.0000
+  Si  Si4       1.0  0.6666313757224844  0.3332662766505609  0.0033476985728030117  1.0000

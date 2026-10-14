@@ -1,0 +1,28 @@
+data_image0
+_chemical_formula_structural       MoPd2
+_chemical_formula_sum              "Mo1 Pd2"
+_cell_length_a       6.913793155345441
+_cell_length_b       6.9140253826563125
+_cell_length_c       6.913822742260073
+_cell_angle_alpha    23.450136684979217
+_cell_angle_beta     23.450606514789047
+_cell_angle_gamma    23.445161173603672
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
+loop_
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
+loop_
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Mo  Mo1       1.0  0.6666974528952856  0.6667201003060091  0.6668567822490732  1.0000
+  Pd  Pd1       1.0  0.4417110477507063  0.44174066837323067  0.44172459931591335  1.0000
+  Pd  Pd2       1.0  0.2252584946279895  0.22520623227980044  0.22508561848805514  1.0000
