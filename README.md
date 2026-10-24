@@ -69,13 +69,11 @@ Download the template data from Zenodo ([DOI 10.5281/zenodo.23627915](https://do
 python scripts/install_data.py --download
 ```
 
-Test the installation:
+Test the installation. By default the candidates are relaxed and ranked with ORB-v3: `orb-models` is installed by the `pip` step above, the first run downloads the ORB-v3 weights, and a GPU is recommended (add `--ranker native` to skip this stage).
 
 ```bash
 python tcsp.py --formula SrTiO3
 ```
-
-By default the candidates are relaxed and ranked with ORB-v3. `orb-models` is installed by the `pip` step above; the first run downloads the ORB-v3 weights, and a GPU is recommended. Add `--ranker native` to skip this stage.
 
 ## Predict one composition
 
