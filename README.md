@@ -53,17 +53,19 @@ The ORB-v3 stage adds no candidates, so Top-20 stays (to within one target) the 
 
 ## Install
 
-Python 3.10 or newer is recommended. Clone this source repository and install it in editable mode:
+TCSPV3 needs Python 3.10–3.12 (the `dm-tree` dependency does not install on 3.13). Clone the repository and install it in editable mode:
 
 ```bash
 git clone https://github.com/usccolumbia/TCSPV3.git
 cd TCSPV3
-python3 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
 ```
 
-Download the template data from Zenodo ([DOI 10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915), 343 MB):
+If `python3.12` is not available, use `python3.11` or `python3.10`, or create the environment with `uv venv -p 3.12 .venv`.
+
+Download the template data and BERTOS model from Zenodo ([DOI 10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915), 343 MB):
 
 ```bash
 python scripts/install_data.py --download

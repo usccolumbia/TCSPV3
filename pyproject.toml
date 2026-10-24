@@ -7,7 +7,7 @@ name = "tcspv3"
 version = "3.1.0"
 description = "Composition-conditioned template crystal structure prediction"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.13"
 license = {file = "LICENSE"}
 authors = [{name = "Machine Learning and Evolution Laboratory, University of South Carolina"}]
 dependencies = ["numpy", "scipy", "pymatgen", "torch", "transformers>=4.40,<6", "ase", "orb-models>=0.5.5"]
