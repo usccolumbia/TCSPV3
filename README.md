@@ -63,19 +63,17 @@ source .venv/bin/activate
 python -m pip install -e .
 ```
 
-Predictions need the template data bundle (343 MB, [Zenodo DOI 10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915)). Download and install it:
+Download the template data from Zenodo ([DOI 10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915), 343 MB):
 
 ```bash
 python scripts/install_data.py --download
 ```
 
-Or install a local copy:
+Test the installation:
 
 ```bash
-python scripts/install_data.py --bundle /path/to/TCSPV3-v3.0.0-template-assets.tar.gz
+python tcsp.py --formula SrTiO3
 ```
-
-The installer checks the SHA256 of the bundle and of every file. Unit tests run without the bundle. The ORB-v3 stage uses `orb-models` (weights download on first use, or pass `--orb-weights`); a GPU is recommended, and `--ranker native` skips it. See [docs/DATA.md](docs/DATA.md) for data sources and licences.
 
 ## Predict one composition
 
