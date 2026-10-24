@@ -58,8 +58,8 @@ TCSPV3 needs Python 3.10–3.12 (the `dm-tree` dependency does not install on 3.
 ```bash
 git clone https://github.com/usccolumbia/TCSPV3.git
 cd TCSPV3
-python3.12 -m venv .venv
-source .venv/bin/activate
+python3.12 -m venv csp
+source csp/bin/activate
 python -m pip install -e .
 ```
 
@@ -68,16 +68,16 @@ If `python3.12` is not available, create the environment another way, then run `
 - With uv, which downloads Python 3.12 for you if it's missing:
 
   ```bash
-  uv venv -p 3.12 --seed .venv
+  uv venv -p 3.12 --seed csp
   ```
 
 - With conda:
 
   ```bash
-  conda create -y -p .venv python=3.12
+  conda create -y -p csp python=3.12
   ```
 
-  Then activate it with `conda activate ./.venv` instead of `source .venv/bin/activate`.
+  Then activate it with `conda activate ./csp` instead of `source csp/bin/activate`.
 
 Download the template data and BERTOS model from Zenodo ([DOI 10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915), 343 MB):
 
