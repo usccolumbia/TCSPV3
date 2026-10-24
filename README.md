@@ -63,7 +63,21 @@ source .venv/bin/activate
 python -m pip install -e .
 ```
 
-If `python3.12` is not available, use `python3.11` or `python3.10`, or create the environment with `uv venv -p 3.12 .venv`.
+If `python3.12` is not available, create the environment another way, then run `python -m pip install -e .` as above:
+
+- With uv, which downloads Python 3.12 for you if it's missing:
+
+  ```bash
+  uv venv -p 3.12 .venv
+  ```
+
+- With conda:
+
+  ```bash
+  conda create -y -p .venv python=3.12
+  ```
+
+  Then activate it with `conda activate ./.venv` instead of `source .venv/bin/activate`.
 
 Download the template data and BERTOS model from Zenodo ([DOI 10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915), 343 MB):
 
