@@ -15,8 +15,6 @@ The [complete result package](../benchmarks/T180_v3_1_top20/README.md) contains 
 | Method | Top-1 | Top-5 |
 |---|---:|---:|
 | Repaired soft-OS + dedup internal baseline | 23/46 (50.0%) | 34/46 (73.9%) |
-| PN-only retrieval | 24/46 (52.2%) | 33/46 (71.7%) |
-| Embedding + PN retrieval | 23/46 (50.0%) | 35/46 (76.1%) |
 | TCSPV3 chemical ranking | 23/46 (50.0%) | 36/46 (78.3%) |
 | TCSPV3 + MatterSim single-point | 26/46 (56.5%) | 36/46 (78.3%) |
 | TCSPV3 + radius scaling + single-point | **28/46 (60.9%)** | **38/46 (82.6%)** |

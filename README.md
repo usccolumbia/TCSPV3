@@ -12,15 +12,13 @@ TCSP2.0 already uses BERTOS oxidation-state predictions, element embeddings and 
 
 | Area | V3 implementation |
 |---|---|
-| Retrieval | Unions embedding-based formulas with Villars periodic-number neighborhoods, inspired by [PNcsp+](https://doi.org/10.1021/acs.jctc.6c00044), preserving candidates from both routes under the search budget. |
+| Retrieval | Ranks template formulas by the chemical similarity of their elements and keeps the best candidates under the search budget. |
 | Element mapping | Keeps up to three near-optimal assignments that preserve reduced stoichiometric coefficients. |
 | Oxidation states | Aggregates BERTOS probabilities per species and softly scores up to four neutral alternatives, rather than letting one uncertain assignment reject a template. |
 | Geometry | Uses nearest-shell coordination and compatible Shannon/atomic radii for size penalties and optional bounded lattice scaling. |
 | Candidate diversity | Deduplicates with `StructureMatcher` while retaining distinct polymorphs; majority-space-group voting is optional and was not part of the benchmarked default. |
 | Final stage | By default relaxes the 20 native candidates with ORB-v3 and ranks them by ORB-v3 energy per atom (`--ranker orb-v3`); `--ranker native` keeps the chemical-score order without relaxation. An optional MatterSim single-point stage is also available; chemical and physical rankings remain separately inspectable. |
 | Reproducibility | Checks actual source CIF composition, preserves source hashes, records failures, and supports versioned indexes and a shared read-only memory-mapped CIF archive. |
-
-The periodic-number idea is credited to Oran, Caputo, Villars, and Tekin’s [PNcsp+ paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC13085239/). TCSPV3 combines a PN retrieval route with its existing embedding route; it does not implement PNcsp+’s OQMD search, formation-enthalpy filter, or MACE/M3GNet/ALIGNN-FF ensemble.
 
 ## Performance and limits
 
@@ -169,7 +167,7 @@ python -m pip install -e '.[test]'
 python -m pytest tests -q
 ```
 
-The source is MIT-licensed, following the [existing TCSP2.0 license](https://github.com/usccolumbia/TCSP/blob/main/LICENSE). Large data/model assets retain their own provenance and applicable terms. For attribution, cite this software version, the [TCSP2.0 paper](https://arxiv.org/abs/2503.23183), and [PNcsp+](https://doi.org/10.1021/acs.jctc.6c00044) for the periodic-number retrieval idea. See [CITATION.cff](CITATION.cff).
+The source is MIT-licensed, following the [existing TCSP2.0 license](https://github.com/usccolumbia/TCSP/blob/main/LICENSE). Large data/model assets retain their own provenance and applicable terms. For attribution, cite this software version and the [TCSP2.0 paper](https://arxiv.org/abs/2503.23183). See [CITATION.cff](CITATION.cff).
 
 ## BibTeX citation
 
