@@ -85,11 +85,21 @@ Download the template data and BERTOS model from Zenodo ([DOI 10.5281/zenodo.236
 python scripts/install_data.py --download
 ```
 
-Test the installation. By default the candidates are relaxed and ranked with ORB-v3: `orb-models` is installed by the `pip` step above, the first run downloads the ORB-v3 weights, and a GPU is recommended; the least-busy GPU is used, or pick one with `--orb-device cuda:N` (add `--ranker native` to skip this stage).
+Test the installation. The candidates are relaxed and ranked with ORB-v3 (`orb-models` is installed by the `pip` step above); the first run downloads the ORB-v3 weights.
+
+Run with GPU (default; uses the least-busy GPU, or pick one with `--orb-device cuda:N`):
 
 ```bash
 python tcsp.py --formula SrTiO3
 ```
+
+Run without GPU (CPU only, slower):
+
+```bash
+python tcsp.py --formula SrTiO3 --orb-device cpu
+```
+
+Add `--ranker native` to skip the ORB-v3 stage and keep the chemical-score order.
 
 ## Predict one composition
 
