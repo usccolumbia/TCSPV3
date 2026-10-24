@@ -85,7 +85,7 @@ Download the template data and BERTOS model from Zenodo ([DOI 10.5281/zenodo.236
 python scripts/install_data.py --download
 ```
 
-Test the installation. By default the candidates are relaxed and ranked with ORB-v3: `orb-models` is installed by the `pip` step above, the first run downloads the ORB-v3 weights, and a GPU is recommended (add `--ranker native` to skip this stage).
+Test the installation. By default the candidates are relaxed and ranked with ORB-v3: `orb-models` is installed by the `pip` step above, the first run downloads the ORB-v3 weights, and a GPU is recommended; the least-busy GPU is used, or pick one with `--orb-device cuda:N` (add `--ranker native` to skip this stage).
 
 ```bash
 python tcsp.py --formula SrTiO3
