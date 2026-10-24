@@ -25,7 +25,7 @@ if '--show-warnings' not in sys.argv:
 from pymatgen.core import Composition, Structure
 from .core import Predictor, dump, sha256, symmetry_vote
 from .oxidation import predict
-from . import orb
+from . import orb, __version__
 
 
 def row_folder_name(row, formula):
@@ -69,6 +69,20 @@ def clear_previous(root):
         (root/'native').rmdir()
 
 
+BANNER = f"""\
+ ==================================================================
+   TCSP 3.0   Template-based Crystal Structure Prediction
+   Version {__version__}
+
+   Machine Learning and Evolution Laboratory
+   University of South Carolina, 2026
+
+   License  MIT
+   Code     https://github.com/usccolumbia/TCSPV3
+   Data     https://doi.org/10.5281/zenodo.23627915
+ =================================================================="""
+
+
 class HelpFormatter(argparse.ArgumentDefaultsHelpFormatter):
     """Show defaults in --help, except empty ones."""
     def _get_help_string(self, action):
@@ -105,12 +119,16 @@ def build_parser():
     p.add_argument('--orb-steps', type=int, default=orb.STEPS, help='Maximum ORB-v3 relaxation steps')
     p.add_argument('--orb-fmax', type=float, default=orb.FMAX, help='ORB-v3 force threshold in eV/A')
     p.add_argument('--show-warnings', action='store_true', help='Show library warnings')
+    p.add_argument('--no-banner', action='store_true', help='Do not print the software banner')
+    p.add_argument('--version', action='version', version=f'TCSP 3.0 (TCSPV3 {__version__}), MIT License')
     return p
 
 
 def main():
     p = build_parser()
     args = p.parse_args()
+    if not args.no_banner:
+        print(BANNER, file=sys.stderr, flush=True)
     if args.pool_size < 1 or not 0 < args.topk <= args.pool_size:
         p.error('Require pool-size >= topk > 0')
     if not re.fullmatch(r'auto|cpu|cuda(:\d+)?', args.orb_device):
