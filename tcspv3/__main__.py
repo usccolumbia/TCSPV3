@@ -7,6 +7,7 @@ import re
 import sys
 import warnings
 from pathlib import Path
+from tqdm import tqdm
 
 
 def quiet():
@@ -83,6 +84,12 @@ BANNER = f"""\
    Code     https://github.com/usccolumbia/TCSPV3
    Data     https://doi.org/10.5281/zenodo.23627915
  =================================================================="""
+
+
+def step(text, quiet):
+    """One-line status for a single-formula run."""
+    if not quiet:
+        print(text, file=sys.stderr, flush=True)
 
 
 class HelpFormatter(argparse.ArgumentDefaultsHelpFormatter):
@@ -169,14 +176,18 @@ def main():
     index_hash = sha256(args.index)
     evidence_cache = {}
     summary = []
-    for row, formula in records:
+    single = not args.csv
+    rows = tqdm(records, desc='Formulas', unit='formula', file=sys.stderr, disable=None) if args.csv else records
+    for row, formula in rows:
         destination = root / row_folder_name(row, formula) if args.csv else root
         try:
             if not formula:
                 raise ValueError('Empty formula')
             target_atoms = atom_count(formula) if args.formula_type == 'full' else None
+            step(f'[1/3] Finding templates for {formula}', not single)
             plan = engine.retrieve(formula)
             needed = set([formula]+plan['embedding']+plan['pn']) - evidence_cache.keys()
+            step('[2/3] Predicting oxidation states and building candidates', not single)
             if needed:
                 evidence_cache.update(predict(list(needed), args.database, args.device))
             evidence = {f:evidence_cache[f] for f in set([formula]+plan['embedding']+plan['pn'])}
@@ -186,7 +197,9 @@ def main():
                 result['selected'] = symmetry_vote(result['selected'])
             native = result['selected']
             if stage is not None:
-                ranked, orb_failures = orb.rank(native, stage.relax, args.topk)
+                step(f'[3/3] Relaxing {len(native)} candidates with ORB-v3 on {stage.device}', not single)
+                with tqdm(total=len(native), desc='ORB-v3', unit='structure', file=sys.stderr, disable=None if single else True) as bar:
+                    ranked, orb_failures = orb.rank(native, stage.relax, args.topk, progress=bar.update)
                 if not ranked:
                     raise RuntimeError('ORB-v3 stage produced no valid candidate: ' + json.dumps(orb_failures)[:500])
                 result['native_selected_ids'] = [c['candidate_id'] for c in native]

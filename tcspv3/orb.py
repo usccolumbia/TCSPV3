@@ -102,11 +102,12 @@ class OrbStage:
         return AseAtomsAdaptor.get_structure(atoms), converged, energy / len(atoms)
 
 
-def rank(candidates, relax, topk=None):
+def rank(candidates, relax, topk=None, progress=None):
     """Relax and rank candidate dicts (core.Predictor output). ``relax(structure) -> (structure, converged, energy_per_atom)``.
 
     Returns (ranked candidates, failures). Each ranked candidate keeps its keys; ``structure`` becomes the relaxed structure and
     ``orb_v3`` records the rank, energy per atom, convergence flag and the candidate's native rank.
+    ``progress()`` is called after each candidate.
     """
     scored, failures = [], []
     for native_rank, c in enumerate(candidates, 1):
@@ -125,6 +126,8 @@ def rank(candidates, relax, topk=None):
             scored.append(out)
         except Exception as exc:
             failures.append({'candidate_id': c.get('candidate_id'), 'native_rank': native_rank, 'error': type(exc).__name__ + ': ' + str(exc)})
+        if progress:
+            progress()
     scored.sort(key=lambda c: (c['orb_v3']['energy_per_atom_eV'], c['orb_v3']['native_rank']))
     for i, c in enumerate(scored, 1):
         c['orb_v3']['rank'] = i
