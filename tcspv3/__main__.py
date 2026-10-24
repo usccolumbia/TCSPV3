@@ -12,6 +12,7 @@ from pathlib import Path
 def quiet():
     """Hide library warnings and Warp's startup messages (use --show-warnings to keep them)."""
     warnings.filterwarnings('ignore')
+    os.environ.setdefault('HF_HUB_DISABLE_PROGRESS_BARS', '1')  # transformers 'Loading weights' bar
     os.environ.setdefault('PYTHONWARNINGS', 'ignore')  # also for worker processes
     if importlib.util.find_spec('warp') is not None:
         import warp
@@ -25,6 +26,7 @@ if '--show-warnings' not in sys.argv:
 from pymatgen.core import Composition, Structure
 from .core import Predictor, dump, sha256, symmetry_vote
 from .oxidation import predict
+from . import oxidation
 from . import orb, __version__
 
 
@@ -118,7 +120,7 @@ def build_parser():
     p.add_argument('--orb-weights', help='Local ORB-v3 weights file (default: downloaded by orb-models)')
     p.add_argument('--orb-steps', type=int, default=orb.STEPS, help='Maximum ORB-v3 relaxation steps')
     p.add_argument('--orb-fmax', type=float, default=orb.FMAX, help='ORB-v3 force threshold in eV/A')
-    p.add_argument('--show-warnings', action='store_true', help='Show library warnings')
+    p.add_argument('--show-warnings', action='store_true', help='Show library warnings and progress messages')
     p.add_argument('--no-banner', action='store_true', help='Do not print the software banner')
     p.add_argument('--version', action='version', version=f'TCSP {__version__}, MIT License')
     return p
@@ -127,6 +129,7 @@ def build_parser():
 def main():
     p = build_parser()
     args = p.parse_args()
+    oxidation.PROGRESS = args.show_warnings
     if not args.no_banner:
         print(BANNER, file=sys.stderr, flush=True)
     if args.pool_size < 1 or not 0 < args.topk <= args.pool_size:
