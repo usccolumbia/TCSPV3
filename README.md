@@ -75,6 +75,8 @@ Test the installation:
 python tcsp.py --formula SrTiO3
 ```
 
+By default the candidates are relaxed and ranked with ORB-v3. `orb-models` is installed by the `pip` step above; the first run downloads the ORB-v3 weights, and a GPU is recommended. Add `--ranker native` to skip this stage.
+
 ## Predict one composition
 
 ```bash
