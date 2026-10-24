@@ -71,7 +71,7 @@ def clear_previous(root):
 
 BANNER = f"""\
  ==================================================================
-   TCSP 3.0   Template-based Crystal Structure Prediction
+   TCSP {__version__}   Template-based Crystal Structure Prediction
    Version {__version__}
 
    Machine Learning and Evolution Laboratory
@@ -120,7 +120,7 @@ def build_parser():
     p.add_argument('--orb-fmax', type=float, default=orb.FMAX, help='ORB-v3 force threshold in eV/A')
     p.add_argument('--show-warnings', action='store_true', help='Show library warnings')
     p.add_argument('--no-banner', action='store_true', help='Do not print the software banner')
-    p.add_argument('--version', action='version', version=f'TCSP 3.0 (TCSPV3 {__version__}), MIT License')
+    p.add_argument('--version', action='version', version=f'TCSP {__version__}, MIT License')
     return p
 
 
