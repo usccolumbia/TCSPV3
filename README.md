@@ -63,13 +63,17 @@ source .venv/bin/activate
 python -m pip install -e .
 ```
 
-The **versioned template/BERTOS data bundle** is separate from Git history because the CIF archive alone is 1.35 GB. **This source publication does not include a public template/BERTOS bundle download.** If you already have the locally prepared, authorized bundle named `TCSPV3-v3.0.0-template-assets.tar.gz`, install it with checksum verification:
+Download the template data from Zenodo ([DOI 10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915), 343 MB):
 
 ```bash
-python scripts/install_data.py --bundle /path/to/TCSPV3-v3.0.0-template-assets.tar.gz
+python scripts/install_data.py --download
 ```
 
-The default ORB-v3 final stage uses `orb-models` and `ase` (installed with the package); the ORB-v3 weights are downloaded by `orb-models` on first use, or pass a local file with `--orb-weights`. A GPU is recommended (`--orb-device auto` uses it when available). Use `--ranker native` to skip the stage. The installer verifies the bundle SHA256 and file inventory, and checks installed/extracted asset SHA256 hashes. Source installation and unit tests work without the bundle; actual prediction requires these assets. Public distribution of the bundle is pending review of upstream dataset/model terms. The code and dataset/model licensing are distinct; review [docs/DATA.md](docs/DATA.md) before redistributing the assets.
+Test the installation. By default the candidates are relaxed and ranked with ORB-v3: `orb-models` is installed by the `pip` step above, the first run downloads the ORB-v3 weights, and a GPU is recommended (add `--ranker native` to skip this stage).
+
+```bash
+python tcsp.py --formula SrTiO3
+```
 
 ## Predict one composition
 

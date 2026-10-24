@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "upload_type": "dataset",
+    "title": "TCSPV3 v3.0.0 template and model assets (template library, indexes, BERTOS, Matscholar embeddings)",
+    "version": "3.0.0",
+    "creators": [
+      {
+        "name": "Feng, Ying",
+        "affiliation": "University of South Carolina"
+      },
+      {
+        "name": "Hu, Jeffrey",
+        "affiliation": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "name": "Wei, Lai",
+        "affiliation": "University of North Georgia"
+      },
+      {
+        "name": "Rogers, Remy",
+        "affiliation": "University of South Carolina"
+      },
+      {
+        "name": "Tao, Liang",
+        "affiliation": "University of South Carolina"
+      },
+      {
+        "name": "Das Gupta, Dipannoy",
+        "affiliation": "University of South Carolina"
+      },
+      {
+        "name": "Erfanshekooh, Hossein",
+        "affiliation": "University of South Carolina"
+      },
+      {
+        "name": "Hu, Jianjun",
+        "affiliation": "University of South Carolina"
+      }
+    ],
+    "description": "<p>Data bundle required to run predictions with <a href=\"https://github.com/usccolumbia/TCSPV3\">TCSPV3</a>, a template-based crystal structure predictor. The source code is distributed separately on GitHub; this record holds only the large binary assets.</p><p><b>File:</b> <code>TCSPV3-v3.0.0-template-assets.tar.gz</code> (342,903,364 bytes; SHA-256 <code>afe73e7940f1a6037313031e303069481bcfdb096230783a8db437f9d2a66157</code>).</p><p><b>Contents (10 files, each pinned by size and SHA-256 in the repository's <code>asset_manifest.json</code>):</b></p><ul><li><code>tcspv3/database/data/source_cifs.bin</code>, <code>source_cifs.offsets.pkl</code>, <code>source_cifs.mmap_manifest.json</code>: 731,293 byte-preserved template CIFs in a read-only memory-mapped archive with an ID-to-offset map.</li><li><code>tcspv3/731K_index.pkl</code>: full template index (731,293 entries); <code>731K_index_minus_MP20_test.pkl</code> (default, 719,450 entries) and <code>731K_index_minus_MPST52_test.pkl</code> (719,963 entries) exclude the MP-20 and MPTS-52 test splits.</li><li><code>tcspv3/database/BERTOS/</code>: tokenizer and the pretrained BERTOS ICSD_CN oxidation-state checkpoint.</li><li><code>tcspv3/database/data/matscholar-embedding.json</code>: Matscholar element embeddings.</li></ul><p><b>Install:</b> <code>python scripts/install_data.py --download</code> in a TCSPV3 checkout downloads this file, checks its size and SHA-256, verifies the file inventory and every member's SHA-256, and installs it. MatterSim and ORB-v3 weights are not included; they are obtained from their official sources.</p><p><b>Provenance and terms:</b> The bundle as compiled is released under the MIT licence. The template structures were collected for TCSP2.0 from Materials Project, Materials Cloud, C2DB and GNoME. Each upstream source keeps its own licence and attribution requirements, which apply to the corresponding structures in this bundle; BERTOS and the Matscholar embeddings likewise follow their original terms. See <code>docs/DATA.md</code> in the repository.</p>",
+    "license": "mit",
+    "access_right": "open",
+    "keywords": [
+      "crystal structure prediction",
+      "template-based CSP",
+      "materials informatics",
+      "TCSPV3",
+      "crystal structures",
+      "oxidation states"
+    ],
+    "related_identifiers": [
+      {
+        "identifier": "https://github.com/usccolumbia/TCSPV3",
+        "relation": "isSupplementTo",
+        "resource_type": "software"
+      },
+      {
+        "identifier": "https://github.com/usccolumbia/TCSP",
+        "relation": "isDerivedFrom",
+        "resource_type": "software"
+      },
+      {
+        "identifier": "arXiv:2503.23183",
+        "relation": "isDerivedFrom",
+        "resource_type": "publication-article"
+      }
+    ],
+    "communities": []
+  }
+}
