@@ -8,6 +8,7 @@ Requires the optional dependency ``orb-models`` (listed in requirements.txt); us
 Reference structures are never read.
 """
 import importlib.util
+import subprocess
 import time
 import warnings
 
@@ -32,14 +33,35 @@ def require():
                            '(pip install "orb-models>=0.5.5" ase). Use --ranker native to keep the chemical-score order.')
 
 
+def smi_load(torch):
+    """GPU utilization from nvidia-smi, matched to torch device order by UUID."""
+    out = subprocess.run(['nvidia-smi', '--query-gpu=uuid,utilization.gpu', '--format=csv,noheader,nounits'],
+                         capture_output=True, text=True, timeout=10, check=True).stdout
+    by_uuid = {u.strip().removeprefix('GPU-'): float(v) for u, v in (line.split(',') for line in out.strip().splitlines())}
+    return [by_uuid[str(torch.cuda.get_device_properties(i).uuid)] for i in range(torch.cuda.device_count())]
+
+
+def pick_device(torch):
+    """Least-busy visible GPU as 'cuda:N', or 'cpu' without CUDA."""
+    if not torch.cuda.is_available():
+        return 'cpu'
+    for read in (lambda: [torch.cuda.utilization(i) for i in range(torch.cuda.device_count())], lambda: smi_load(torch)):
+        try:
+            load = read()
+        except Exception:  # NVML or nvidia-smi unavailable
+            continue
+        return f'cuda:{load.index(min(load))}'
+    return 'cuda'
+
+
 class OrbStage:
     def __init__(self, device='auto', model=MODEL, weights_path=None, precision='float32-high', steps=STEPS, fmax=FMAX):
         require()
         import torch
         from orb_models.forcefield import pretrained
         if device == 'auto':
-            device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        if device == 'cuda' and not torch.cuda.is_available():
+            device = pick_device(torch)
+        if device.startswith('cuda') and not torch.cuda.is_available():
             raise RuntimeError('CUDA was requested but is unavailable')
         factory = getattr(pretrained, model, None)
         if factory is None:
@@ -80,11 +102,12 @@ class OrbStage:
         return AseAtomsAdaptor.get_structure(atoms), converged, energy / len(atoms)
 
 
-def rank(candidates, relax, topk=None):
+def rank(candidates, relax, topk=None, progress=None):
     """Relax and rank candidate dicts (core.Predictor output). ``relax(structure) -> (structure, converged, energy_per_atom)``.
 
     Returns (ranked candidates, failures). Each ranked candidate keeps its keys; ``structure`` becomes the relaxed structure and
     ``orb_v3`` records the rank, energy per atom, convergence flag and the candidate's native rank.
+    ``progress()`` is called after each candidate.
     """
     scored, failures = [], []
     for native_rank, c in enumerate(candidates, 1):
@@ -103,6 +126,8 @@ def rank(candidates, relax, topk=None):
             scored.append(out)
         except Exception as exc:
             failures.append({'candidate_id': c.get('candidate_id'), 'native_rank': native_rank, 'error': type(exc).__name__ + ': ' + str(exc)})
+        if progress:
+            progress()
     scored.sort(key=lambda c: (c['orb_v3']['energy_per_atom_eV'], c['orb_v3']['native_rank']))
     for i, c in enumerate(scored, 1):
         c['orb_v3']['rank'] = i

@@ -58,8 +58,8 @@ TCSPV3 needs Python 3.10–3.12 (the `dm-tree` dependency does not install on 3.
 ```bash
 git clone https://github.com/usccolumbia/TCSPV3.git
 cd TCSPV3
-python3.12 -m venv csp
-source csp/bin/activate
+python3.12 -m venv .env
+source .env/bin/activate
 python -m pip install -e .
 ```
 
@@ -68,16 +68,16 @@ If `python3.12` is not available, create the environment another way, then run `
 - With uv, which downloads Python 3.12 for you if it's missing:
 
   ```bash
-  uv venv -p 3.12 --seed csp
+  uv venv -p 3.12 --seed .env
   ```
 
 - With conda:
 
   ```bash
-  conda create -y -p csp python=3.12
+  conda create -y -p .env python=3.12
   ```
 
-  Then activate it with `conda activate ./csp` instead of `source csp/bin/activate`.
+  Then activate it with `conda activate ./.env` instead of `source .env/bin/activate`.
 
 Download the template data and BERTOS model from Zenodo ([DOI 10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915), 343 MB):
 
@@ -85,11 +85,21 @@ Download the template data and BERTOS model from Zenodo ([DOI 10.5281/zenodo.236
 python scripts/install_data.py --download
 ```
 
-Test the installation. By default the candidates are relaxed and ranked with ORB-v3: `orb-models` is installed by the `pip` step above, the first run downloads the ORB-v3 weights, and a GPU is recommended (add `--ranker native` to skip this stage).
+Test the installation. The candidates are relaxed and ranked with ORB-v3 (`orb-models` is installed by the `pip` step above); the first run downloads the ORB-v3 weights.
+
+Run with GPU (default; uses the least-busy GPU, or pick one with `--orb-device cuda:N`):
 
 ```bash
 python tcsp.py --formula SrTiO3
 ```
+
+Run without GPU (CPU only, slower):
+
+```bash
+python tcsp.py --formula SrTiO3 --orb-device cpu
+```
+
+Add `--ranker native` to skip the ORB-v3 stage and keep the chemical-score order.
 
 ## Predict one composition
 

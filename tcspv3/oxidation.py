@@ -5,6 +5,8 @@ import math
 import numpy as np
 from pymatgen.core import Composition, Element
 
+PROGRESS = True  # print BERTOS progress; turned off by the CLI unless --show-warnings
+
 
 def neutral(formula, states):
     d = Composition(formula).reduced_composition.get_el_amt_dict()
@@ -63,7 +65,7 @@ def predict(formulas, database, device='cpu'):
             output[f] = evidence_from_probabilities(f, probabilities)
             output[f]['species_probabilities'] = probabilities
             output[f]['legacy_last_atom'] = {e: int(p[i+1].argmax())-5 for i, e in enumerate(seq)}
-        if start % 1024 == 0:
+        if PROGRESS and start % 1024 == 0:
             print('BERTOS', start, '/', len(formulas), flush=True)
     return output
 

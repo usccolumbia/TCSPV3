@@ -93,3 +93,33 @@ class DirectoryTest(unittest.TestCase):
             self.assertEqual(result['provenance']['ranker'], 'orb-v3')
             self.assertEqual(len(list(folder.glob('tcspv3_*.cif'))), 1)
             self.assertEqual(len(list((folder / 'native').glob('*.cif'))), 2)
+
+
+class PickDeviceTest(unittest.TestCase):
+    def fake_torch(self, available=True, load=(99, 0)):
+        cuda = mock.Mock(is_available=lambda: available, device_count=lambda: len(load),
+                         utilization=lambda i: load[i])
+        return mock.Mock(cuda=cuda)
+
+    def test_picks_least_busy_gpu(self):
+        self.assertEqual(orb.pick_device(self.fake_torch(load=(99, 0))), 'cuda:1')
+        self.assertEqual(orb.pick_device(self.fake_torch(load=(5, 40, 5))), 'cuda:0')
+
+    def test_cpu_without_cuda_and_plain_cuda_without_nvml(self):
+        self.assertEqual(orb.pick_device(self.fake_torch(available=False)), 'cpu')
+        t = self.fake_torch()
+        t.cuda.utilization = mock.Mock(side_effect=ModuleNotFoundError('pynvml'))
+        with mock.patch.object(orb, 'smi_load', side_effect=FileNotFoundError('nvidia-smi')):
+            self.assertEqual(orb.pick_device(t), 'cuda')
+
+    def test_nvidia_smi_fallback_matches_uuids(self):
+        t = self.fake_torch(load=(0, 0))
+        t.cuda.utilization = mock.Mock(side_effect=ModuleNotFoundError('pynvml'))
+        t.cuda.get_device_properties = lambda i: mock.Mock(uuid=['aaa', 'bbb'][i])
+        smi = mock.Mock(stdout='GPU-bbb, 0\nGPU-aaa, 100\n')   # nvidia-smi order differs from torch order
+        with mock.patch.object(orb.subprocess, 'run', return_value=smi):
+            self.assertEqual(orb.pick_device(t), 'cuda:1')
+
+    def test_orb_device_values(self):
+        from tcspv3.__main__ import build_parser
+        self.assertEqual(build_parser().parse_args(['--formula', 'NaCl', '--orb-device', 'cuda:1']).orb_device, 'cuda:1')

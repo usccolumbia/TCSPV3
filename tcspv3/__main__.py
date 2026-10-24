@@ -1,12 +1,34 @@
 import csv
 import argparse
+import importlib.util
 import json
+import os
 import re
+import sys
+import warnings
 from pathlib import Path
+from tqdm import tqdm
+
+
+def quiet():
+    """Hide library warnings and Warp's startup messages (use --show-warnings to keep them)."""
+    warnings.filterwarnings('ignore')
+    os.environ.setdefault('HF_HUB_DISABLE_PROGRESS_BARS', '1')  # transformers 'Loading weights' bar
+    os.environ.setdefault('PYTHONWARNINGS', 'ignore')  # also for worker processes
+    if importlib.util.find_spec('warp') is not None:
+        import warp
+        warp.config.quiet = True                      # older Warp
+        if hasattr(warp, 'LOG_WARNING'):
+            warp.config.log_level = warp.LOG_WARNING  # newer Warp
+
+
+if '--show-warnings' not in sys.argv:
+    quiet()  # before the imports below, which raise some of the warnings
 from pymatgen.core import Composition, Structure
 from .core import Predictor, dump, sha256, symmetry_vote
 from .oxidation import predict
-from . import orb
+from . import oxidation
+from . import orb, __version__
 
 
 def row_folder_name(row, formula):
@@ -42,40 +64,85 @@ def read_formula_csv(path, column=None):
         return column, records
 
 
+def clear_previous(root):
+    """Remove the files a previous single-formula run wrote, and nothing else."""
+    for f in [root/'prediction.json', root/'oxidation.json', *root.glob('tcspv3_*.cif'), *root.glob('native/tcspv3_*.cif')]:
+        f.unlink()
+    if (root/'native').is_dir() and not any((root/'native').iterdir()):
+        (root/'native').rmdir()
+
+
+BANNER = f"""\
+ ==================================================================
+   TCSP {__version__}   Template-based Crystal Structure Prediction
+   Version {__version__}
+
+   Machine Learning and Evolution Laboratory
+   University of South Carolina, 2026
+
+   License  MIT
+   Code     https://github.com/usccolumbia/TCSPV3
+   Data     https://doi.org/10.5281/zenodo.23627915
+ =================================================================="""
+
+
+def step(text, quiet):
+    """One-line status for a single-formula run."""
+    if not quiet:
+        print(text, file=sys.stderr, flush=True)
+
+
+class HelpFormatter(argparse.ArgumentDefaultsHelpFormatter):
+    """Show defaults in --help, except empty ones."""
+    def _get_help_string(self, action):
+        if action.default in (None, False):
+            return action.help
+        return super()._get_help_string(action)
+
+
 def build_parser():
-    p = argparse.ArgumentParser(description='Standalone TCSPV3; no CSP dispatcher integration')
+    p = argparse.ArgumentParser(description='Standalone TCSPV3; no CSP dispatcher integration',
+                                formatter_class=HelpFormatter)
     inputs = p.add_mutually_exclusive_group(required=True)
-    inputs.add_argument('--formula')
+    inputs.add_argument('--formula', help='One composition, e.g. SrTiO3')
     inputs.add_argument('--csv', help='CSV file of compositions/formulas')
     p.add_argument('--column', help='CSV column override')
-    p.add_argument('--database', default=str(Path(__file__).resolve().parent / 'database'))
-    p.add_argument('--index', default=str(Path(__file__).resolve().parent / '731K_index_minus_MP20_test.pkl'))
-    p.add_argument('--output', '--out', dest='out', default='./cif_output',
-                   help='Output directory (default: ./cif_output)')
+    p.add_argument('--database', default=str(Path(__file__).resolve().parent / 'database'), help='Data folder')
+    p.add_argument('--index', default=str(Path(__file__).resolve().parent / '731K_index_minus_MP20_test.pkl'), help='Template index')
+    p.add_argument('--output', '--out', dest='out', default='./cif_output', help='Output directory')
     p.add_argument('--cif-store', help='Read-only CIF mmap .bin (default) or trusted legacy .pkl')
     p.add_argument('--exclude-formulas', help='JSON list of additional excluded compositions')
-    p.add_argument('--mode', choices=['baseline', 'pn', 'union', 'v3'], default='v3')
+    p.add_argument('--mode', choices=['baseline', 'pn', 'union', 'v3'], default='v3', help='Retrieval mode')
     p.add_argument('--formula-type', choices=['full', 'reduced'], default='full',
-                   help='full: match input atom count (default); reduced: allow multiple template-cell Z values')
-    p.add_argument('--pool-size', type=int, default=100)
-    p.add_argument('--topk', type=int, default=20)
-    p.add_argument('--device', default='cpu', choices=['cpu', 'cuda'])
-    p.add_argument('--symmetry-vote', action='store_true', help='Experimental, off by default')
+                   help='full: match input atom count; reduced: allow multiple template-cell Z values')
+    p.add_argument('--pool-size', type=int, default=100, help='Valid candidates kept before ranking')
+    p.add_argument('--topk', type=int, default=20, help='Number of structures to output')
+    p.add_argument('--device', default='cpu', choices=['cpu', 'cuda'], help='Device for BERTOS')
+    p.add_argument('--symmetry-vote', action='store_true', help='Experimental')
     p.add_argument('--ranker', choices=['orb-v3', 'native'], default='orb-v3',
-                   help='Final stage. orb-v3 (default): relax the 20 native candidates with ORB-v3 and rank by ORB-v3 energy per atom; '
+                   help='Final stage. orb-v3: relax the candidates with ORB-v3 and rank by ORB-v3 energy per atom; '
                         'native: keep the chemical-score order, no relaxation')
-    p.add_argument('--orb-device', choices=['auto', 'cpu', 'cuda'], default='auto', help='Device for the ORB-v3 stage (default: cuda if available)')
+    p.add_argument('--orb-device', default='auto',
+                   help='Device for the ORB-v3 stage: auto (least-busy GPU, else CPU), cpu, cuda or cuda:N')
     p.add_argument('--orb-weights', help='Local ORB-v3 weights file (default: downloaded by orb-models)')
-    p.add_argument('--orb-steps', type=int, default=orb.STEPS, help='Maximum ORB-v3 relaxation steps (default 500)')
-    p.add_argument('--orb-fmax', type=float, default=orb.FMAX, help='ORB-v3 force threshold in eV/A (default 0.01)')
+    p.add_argument('--orb-steps', type=int, default=orb.STEPS, help='Maximum ORB-v3 relaxation steps')
+    p.add_argument('--orb-fmax', type=float, default=orb.FMAX, help='ORB-v3 force threshold in eV/A')
+    p.add_argument('--show-warnings', action='store_true', help='Show library warnings and progress messages')
+    p.add_argument('--no-banner', action='store_true', help='Do not print the software banner')
+    p.add_argument('--version', action='version', version=f'TCSP {__version__}, MIT License')
     return p
 
 
 def main():
     p = build_parser()
     args = p.parse_args()
+    oxidation.PROGRESS = args.show_warnings
+    if not args.no_banner:
+        print(BANNER, file=sys.stderr, flush=True)
     if args.pool_size < 1 or not 0 < args.topk <= args.pool_size:
         p.error('Require pool-size >= topk > 0')
+    if not re.fullmatch(r'auto|cpu|cuda(:\d+)?', args.orb_device):
+        p.error('--orb-device must be auto, cpu, cuda or cuda:N')
     for required in [Path(args.index), Path(args.database)/'data/matscholar-embedding.json',
                      Path(args.database)/'BERTOS/tokenizer/vocab.txt',
                      Path(args.database)/'BERTOS/trained_models/ICSD_CN/config.json']:
@@ -90,11 +157,12 @@ def main():
         except (ValueError, OSError) as exc:
             p.error(str(exc))
         if root.exists() and any(root.iterdir()):
-            p.error('Batch output directory must be empty or new')
+            p.error(f'{root} is not empty; use --output to choose a new folder for this batch')
     else:
         column, records = None, [(None, args.formula)]
         if (root/'prediction.json').exists():
-            p.error('Output already contains a prediction; choose a new directory')
+            print(f'Warning: {root} already has a prediction; it will be overwritten. Use --output to write elsewhere.', file=sys.stderr)
+            clear_previous(root)
     excluded = json.loads(Path(args.exclude_formulas).read_text()) if args.exclude_formulas else []
     stage = None
     native_k = args.topk
@@ -108,14 +176,18 @@ def main():
     index_hash = sha256(args.index)
     evidence_cache = {}
     summary = []
-    for row, formula in records:
+    single = not args.csv
+    rows = tqdm(records, desc='Formulas', unit='formula', file=sys.stderr, disable=None) if args.csv else records
+    for row, formula in rows:
         destination = root / row_folder_name(row, formula) if args.csv else root
         try:
             if not formula:
                 raise ValueError('Empty formula')
             target_atoms = atom_count(formula) if args.formula_type == 'full' else None
+            step(f'[1/3] Finding templates for {formula}', not single)
             plan = engine.retrieve(formula)
             needed = set([formula]+plan['embedding']+plan['pn']) - evidence_cache.keys()
+            step('[2/3] Predicting oxidation states and building candidates', not single)
             if needed:
                 evidence_cache.update(predict(list(needed), args.database, args.device))
             evidence = {f:evidence_cache[f] for f in set([formula]+plan['embedding']+plan['pn'])}
@@ -125,7 +197,9 @@ def main():
                 result['selected'] = symmetry_vote(result['selected'])
             native = result['selected']
             if stage is not None:
-                ranked, orb_failures = orb.rank(native, stage.relax, args.topk)
+                step(f'[3/3] Relaxing {len(native)} candidates with ORB-v3 on {stage.device}', not single)
+                with tqdm(total=len(native), desc='ORB-v3', unit='structure', file=sys.stderr, disable=None if single else True) as bar:
+                    ranked, orb_failures = orb.rank(native, stage.relax, args.topk, progress=bar.update)
                 if not ranked:
                     raise RuntimeError('ORB-v3 stage produced no valid candidate: ' + json.dumps(orb_failures)[:500])
                 result['native_selected_ids'] = [c['candidate_id'] for c in native]
