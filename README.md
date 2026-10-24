@@ -68,7 +68,7 @@ If `python3.12` is not available, create the environment another way, then run `
 - With uv, which downloads Python 3.12 for you if it's missing:
 
   ```bash
-  uv venv -p 3.12 .venv
+  uv venv -p 3.12 --seed .venv
   ```
 
 - With conda:
