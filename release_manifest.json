@@ -1,7 +1,9 @@
 {
   "version": "3.0.0",
   "filename": "TCSPV3-v3.0.0-template-assets.tar.gz",
-  "bytes": 342903435,
-  "sha256": "4ce04aaaf6c5cea01a60ce1279dc85c49f3ae79ff9bcc460c078c1d80d78140c",
-  "asset_count": 10
+  "bytes": 342903364,
+  "sha256": "afe73e7940f1a6037313031e303069481bcfdb096230783a8db437f9d2a66157",
+  "asset_count": 10,
+  "download_url": "https://zenodo.org/records/23627915/files/TCSPV3-v3.0.0-template-assets.tar.gz?download=1",
+  "doi": "10.5281/zenodo.23627915"
 }
