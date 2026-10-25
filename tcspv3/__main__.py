@@ -2,10 +2,13 @@ import csv
 import argparse
 import importlib.util
 import json
+import math
+import multiprocessing as mp
 import os
 import re
 import sys
 import warnings
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 from tqdm import tqdm
 
@@ -127,10 +130,91 @@ def build_parser():
     p.add_argument('--orb-weights', help='Local ORB-v3 weights file (default: downloaded by orb-models)')
     p.add_argument('--orb-steps', type=int, default=orb.STEPS, help='Maximum ORB-v3 relaxation steps')
     p.add_argument('--orb-fmax', type=float, default=orb.FMAX, help='ORB-v3 force threshold in eV/A')
+    p.add_argument('--workers', help='Parallel worker processes for --csv: a number, or auto (60%% of idle CPU, capped by RAM)')
     p.add_argument('--show-warnings', action='store_true', help='Show library warnings and progress messages')
     p.add_argument('--no-banner', action='store_true', help='Do not print the software banner')
     p.add_argument('--version', action='version', version=f'TCSP {__version__}, MIT License')
     return p
+
+
+def generate(engine, args, formula, evidence_cache, native_k, announce=False):
+    """Templates, oxidation states and native candidates for one formula (CPU work)."""
+    if not formula:
+        raise ValueError('Empty formula')
+    target_atoms = atom_count(formula) if args.formula_type == 'full' else None
+    step(f'[1/3] Finding templates for {formula}', not announce)
+    plan = engine.retrieve(formula)
+    wanted = set([formula]+plan['embedding']+plan['pn'])
+    step('[2/3] Predicting oxidation states and building candidates', not announce)
+    if wanted - evidence_cache.keys():
+        evidence_cache.update(predict(list(wanted - evidence_cache.keys()), args.database, args.device))
+    evidence = {f: evidence_cache[f] for f in wanted}
+    legacy = {f: v.get('legacy_last_atom', {}) for f, v in evidence.items()}
+    result = engine.generate(plan, args.mode, evidence, legacy, args.pool_size, native_k, target_atoms=target_atoms)
+    if args.symmetry_vote:
+        result['selected'] = symmetry_vote(result['selected'])
+    return result, evidence, target_atoms
+
+
+def finish(destination, row, formula, generated, stage, args, info, announce=False):
+    """ORB-v3 ranking (optional) and output files for one formula."""
+    result, evidence, target_atoms = generated
+    native = result['selected']
+    if stage is not None:
+        step(f'[3/3] Relaxing {len(native)} candidates with ORB-v3 on {stage.device}', not announce)
+        with tqdm(total=len(native), desc='ORB-v3', unit='structure', file=sys.stderr, disable=None if announce else True) as bar:
+            ranked, orb_failures = orb.rank(native, stage.relax, args.topk, progress=bar.update)
+        if not ranked:
+            raise RuntimeError('ORB-v3 stage produced no valid candidate: ' + json.dumps(orb_failures)[:500])
+        result['native_selected_ids'] = [c['candidate_id'] for c in native]
+        result['selected'] = ranked
+        result['orb_v3_failures'] = orb_failures
+    result['provenance'] = {'index_sha256': info['index_hash'], 'excluded_formulas': info['excluded'],
+        'arguments': vars(args), 'csv_row': row, 'input_formula': formula,
+        'csv_column': info['column'], 'formula_type': args.formula_type,
+        'target_atoms': target_atoms, 'reference_structure_used': False, 'ranker': args.ranker,
+        'final_stage': stage.provenance() if stage is not None else 'native chemical-score order, no relaxation'}
+    dump(destination/'prediction.json', result)
+    dump(destination/'oxidation.json', evidence)
+    for i, c in enumerate(result['selected'], 1):
+        Structure.from_dict(c['structure']).to(filename=str(destination/('tcspv3_%03d.cif' % i)))
+    if stage is not None:   # keep the unrelaxed native candidates for inspection
+        (destination/'native').mkdir(parents=True, exist_ok=True)
+        for i, c in enumerate(native, 1):
+            Structure.from_dict(c['structure']).to(filename=str(destination/'native'/('tcspv3_%03d.cif' % i)))
+    return {'row': row, 'formula': formula, 'status': 'ok', 'output': str(destination.resolve()),
+            'candidates': len(result['selected']), 'failures': len(result['failures'])}
+
+
+def auto_workers():
+    """60% of idle CPU capacity, capped by available RAM (about 0.8 GB per worker)."""
+    try:
+        import psutil
+    except ModuleNotFoundError:
+        return max(1, (os.cpu_count() or 2) // 2)
+    idle = sum(1 - x / 100 for x in psutil.cpu_percent(interval=1, percpu=True))
+    memory = (psutil.virtual_memory().available - 2e9) / 0.8e9
+    return max(1, math.floor(min(idle * .6, memory)))
+
+
+_WORKER = None
+
+
+def _init_worker(args, excluded, native_k):
+    global _WORKER
+    os.environ['OMP_NUM_THREADS'] = os.environ['MKL_NUM_THREADS'] = '1'
+    import torch
+    torch.set_num_threads(1)
+    _WORKER = {'engine': Predictor(args.database, args.index, excluded, cif_store=args.cif_store),
+               'args': args, 'native_k': native_k, 'cache': {}}
+
+
+def _generate_row(record):
+    row, formula = record
+    try:
+        return row, formula, generate(_WORKER['engine'], _WORKER['args'], formula, _WORKER['cache'], _WORKER['native_k']), None
+    except Exception as exc:
+        return row, formula, None, str(exc)
 
 
 def main():
@@ -151,6 +235,14 @@ def main():
     root = Path(args.out)
     if args.column and not args.csv:
         p.error('--column requires --csv')
+    workers = None
+    if args.workers is not None:
+        if not args.csv:
+            p.error('--workers requires --csv')
+        if args.workers != 'auto' and not (args.workers.isdigit() and int(args.workers) >= 1):
+            p.error('--workers must be a positive number or auto')
+        if args.device != 'cpu':
+            p.error('--workers needs --device cpu (BERTOS runs in the CPU workers)')
     if args.csv:
         try:
             column, records = read_formula_csv(args.csv, args.column)
@@ -158,6 +250,8 @@ def main():
             p.error(str(exc))
         if root.exists() and any(root.iterdir()):
             p.error(f'{root} is not empty; use --output to choose a new folder for this batch')
+        if args.workers is not None:
+            workers = min(auto_workers() if args.workers == 'auto' else int(args.workers), len(records))
     else:
         column, records = None, [(None, args.formula)]
         if (root/'prediction.json').exists():
@@ -172,67 +266,51 @@ def main():
         except RuntimeError as exc:
             p.error(str(exc))
         native_k = min(max(args.topk, 20), args.pool_size)   # the ORB-v3 stage relaxes at least the 20 native candidates
-    engine = Predictor(args.database, args.index, excluded, cif_store=args.cif_store)
-    index_hash = sha256(args.index)
-    evidence_cache = {}
-    summary = []
+    info = {'index_hash': sha256(args.index), 'excluded': excluded, 'column': column}
     single = not args.csv
-    rows = tqdm(records, desc='Formulas', unit='formula', file=sys.stderr, disable=None) if args.csv else records
-    for row, formula in rows:
+    summary = []
+    bar = tqdm(total=len(records), desc='Formulas', unit='formula', file=sys.stderr, disable=None if args.csv else True)
+
+    def record(row, formula, generated, error):
         destination = root / row_folder_name(row, formula) if args.csv else root
         try:
-            if not formula:
-                raise ValueError('Empty formula')
-            target_atoms = atom_count(formula) if args.formula_type == 'full' else None
-            step(f'[1/3] Finding templates for {formula}', not single)
-            plan = engine.retrieve(formula)
-            needed = set([formula]+plan['embedding']+plan['pn']) - evidence_cache.keys()
-            step('[2/3] Predicting oxidation states and building candidates', not single)
-            if needed:
-                evidence_cache.update(predict(list(needed), args.database, args.device))
-            evidence = {f:evidence_cache[f] for f in set([formula]+plan['embedding']+plan['pn'])}
-            legacy = {f: v.get('legacy_last_atom', {}) for f, v in evidence.items()}
-            result = engine.generate(plan, args.mode, evidence, legacy, args.pool_size, native_k, target_atoms=target_atoms)
-            if args.symmetry_vote:
-                result['selected'] = symmetry_vote(result['selected'])
-            native = result['selected']
-            if stage is not None:
-                step(f'[3/3] Relaxing {len(native)} candidates with ORB-v3 on {stage.device}', not single)
-                with tqdm(total=len(native), desc='ORB-v3', unit='structure', file=sys.stderr, disable=None if single else True) as bar:
-                    ranked, orb_failures = orb.rank(native, stage.relax, args.topk, progress=bar.update)
-                if not ranked:
-                    raise RuntimeError('ORB-v3 stage produced no valid candidate: ' + json.dumps(orb_failures)[:500])
-                result['native_selected_ids'] = [c['candidate_id'] for c in native]
-                result['selected'] = ranked
-                result['orb_v3_failures'] = orb_failures
-            result['provenance'] = {'index_sha256': index_hash, 'excluded_formulas': excluded,
-                'arguments': vars(args), 'csv_row': row, 'input_formula': formula,
-                'csv_column': column, 'formula_type': args.formula_type,
-                'target_atoms': target_atoms, 'reference_structure_used': False, 'ranker': args.ranker,
-                'final_stage': stage.provenance() if stage is not None else 'native chemical-score order, no relaxation'}
-            dump(destination/'prediction.json', result)
-            dump(destination/'oxidation.json', evidence)
-            for i, c in enumerate(result['selected'], 1):
-                Structure.from_dict(c['structure']).to(filename=str(destination/('tcspv3_%03d.cif' % i)))
-            if stage is not None:   # keep the unrelaxed native candidates for inspection
-                (destination/'native').mkdir(parents=True, exist_ok=True)
-                for i, c in enumerate(native, 1):
-                    Structure.from_dict(c['structure']).to(filename=str(destination/'native'/('tcspv3_%03d.cif' % i)))
-            status = {'row':row, 'formula':formula, 'status':'ok', 'output':str(destination.resolve()),
-                      'candidates':len(result['selected']), 'failures':len(result['failures'])}
+            if error is not None:
+                raise RuntimeError(error)
+            status = finish(destination, row, formula, generated, stage, args, info, announce=single)
         except Exception as exc:
-            if not args.csv:
+            if single:
                 raise
-            status = {'row':row, 'formula':formula, 'status':'error', 'error':str(exc), 'candidates':0}
+            status = {'row': row, 'formula': formula, 'status': 'error', 'error': str(exc), 'candidates': 0}
             dump(destination/'error.json', status)
         summary.append(status)
-        print(json.dumps(status), flush=True)
+        bar.update()
+        tqdm.write(json.dumps(status), file=sys.stdout)
         if args.csv:
-            dump(root/'batch_summary.json', {'column':column, 'input_csv':str(Path(args.csv).resolve()), 'rows':summary})
+            dump(root/'batch_summary.json', {'column': column, 'input_csv': str(Path(args.csv).resolve()), 'workers': workers or 1,
+                                             'rows': sorted(summary, key=lambda s: s['row'])})
+
+    if workers:   # CPU workers generate candidates; ORB-v3 and file writing run here, one formula at a time
+        with ProcessPoolExecutor(max_workers=workers, mp_context=mp.get_context('spawn'),
+                                 initializer=_init_worker, initargs=(args, excluded, native_k)) as pool:
+            for future in as_completed([pool.submit(_generate_row, r) for r in records]):
+                record(*future.result())
+    else:
+        engine = Predictor(args.database, args.index, excluded, cif_store=args.cif_store)
+        cache = {}
+        for row, formula in records:
+            try:
+                generated, error = generate(engine, args, formula, cache, native_k, announce=single), None
+            except Exception as exc:
+                if single:
+                    raise
+                generated, error = None, str(exc)
+            record(row, formula, generated, error)
+    bar.close()
     if args.csv:
         with (root/'batch_summary.csv').open('w', newline='') as handle:
-            writer = csv.DictWriter(handle, fieldnames=['row','formula','status','candidates','failures','output','error'])
-            writer.writeheader();writer.writerows(summary)
+            writer = csv.DictWriter(handle, fieldnames=['row', 'formula', 'status', 'candidates', 'failures', 'output', 'error'])
+            writer.writeheader()
+            writer.writerows(sorted(summary, key=lambda s: s['row']))
 
 
 if __name__ == '__main__':

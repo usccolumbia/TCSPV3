@@ -131,7 +131,7 @@ python tcsp.py --formula SrTiO3 --formula-type full \
   --cif-store /path/to/lemat_tcspv3_library/data/source_cifs.bin \
   --topk 20 --output results/lemat_SrTiO3
 
-python tcspx.py --csv examples/formulas.csv --workers 4 --formula-type full \
+python tcsp.py --csv examples/formulas.csv --workers 4 --formula-type full \
   --database tcspv3/database \
   --index /path/to/lemat_tcspv3_library/template_index.pkl \
   --cif-store /path/to/lemat_tcspv3_library/data/source_cifs.bin \
