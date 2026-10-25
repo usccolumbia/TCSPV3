@@ -4,7 +4,7 @@
 
 **Developed by Jianjun Hu, Ying Feng, and Lai Wei at Machine Learning and Evolution Lab at University of South Carolina.
 
-**Version:** `3.1.1`. The template data and model bundle (version 3.0.0) is on [Zenodo](https://doi.org/10.5281/zenodo.23627915).
+**Version:** `3.1.1`. The template data and model bundle (version 3.0.0) is on [Zenodo](https://doi.org/10.5281/zenodo.23627915). The default final stage is ORB-v3 relaxation and energy ranking. See [the separate V2 page](docs/TCSP2.md), [CHANGELOG.md](CHANGELOG.md), [algorithm details](docs/ALGORITHM.md), [benchmark protocol](docs/BENCHMARKS.md), and [data provenance](docs/DATA.md).
 
 ## What is new in TCSP3.0
 
