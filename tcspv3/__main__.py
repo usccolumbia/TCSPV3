@@ -4,6 +4,7 @@ import importlib.util
 import json
 import os
 import re
+import shutil
 import sys
 import warnings
 from pathlib import Path
@@ -177,7 +178,7 @@ def main():
     evidence_cache = {}
     summary = []
     single = not args.csv
-    rows = tqdm(records, desc='Formulas', unit='formula', file=sys.stderr, disable=None) if args.csv else records
+    rows = tqdm(records, desc='Formulas', unit='formula', file=sys.stderr, disable=None, ncols=shutil.get_terminal_size().columns) if args.csv else records
     for row, formula in rows:
         destination = root / row_folder_name(row, formula) if args.csv else root
         try:
@@ -198,7 +199,8 @@ def main():
             native = result['selected']
             if stage is not None:
                 step(f'[3/3] Relaxing {len(native)} candidates with ORB-v3 on {stage.device}', not single)
-                with tqdm(total=len(native), desc='ORB-v3', unit='structure', file=sys.stderr, disable=None if single else True) as bar:
+                with tqdm(total=len(native), desc='ORB-v3', unit='structure', file=sys.stderr, disable=None if single else True,
+                          ncols=shutil.get_terminal_size().columns)  # 80 if the terminal reports no width as bar:
                     ranked, orb_failures = orb.rank(native, stage.relax, args.topk, progress=bar.update)
                 if not ranked:
                     raise RuntimeError('ORB-v3 stage produced no valid candidate: ' + json.dumps(orb_failures)[:500])
