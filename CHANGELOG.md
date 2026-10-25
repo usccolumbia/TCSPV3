@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.1.1 — 2026-10-24
+
+- Template data and BERTOS model download from Zenodo: `python scripts/install_data.py --download` ([10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915)).
+- Parallel CSV runs in `tcsp.py` with `--workers N` or `--workers auto`; serial and parallel runs share one pipeline and give identical candidates. `tcspx.py` is kept as an alias.
+- `--orb-device auto` uses the least-busy GPU; `cuda:N` picks one, `cpu` runs without a GPU.
+- Cleaner output: version banner (`--version`, `--no-banner`), stage messages and an ORB-v3 progress bar; library warnings hidden unless `--show-warnings`.
+- An existing single-formula prediction is overwritten with a warning instead of an error; `--help` shows defaults.
+- Python 3.10–3.12 (`dm-tree` does not install on 3.13); adds `nvidia-ml-py` and `tqdm`.
+- Shorter README with one performance table against CrystalFlow and MatterGen.
+- No change to retrieval, scoring or the ORB-v3 settings; benchmark results are unchanged.
+
 ## 3.1.0 — 2026-10-14
 
 - **ORB-v3 relaxation and energy ranking is now the default final stage** (`--ranker orb-v3`). The 20 native candidates are relaxed with ORB-v3 (`orb-v3-conservative-inf-omat`; FIRE with ASE `ExpCellFilter`, at most 500 steps, force threshold 0.01 eV/Å, nonconverged structures kept) and ranked by ORB-v3 energy per atom, the same post-processing used for the deep generative models in the benchmark. The native candidates are saved in `native/`; `--ranker native` keeps the chemical-score order without relaxation. New options: `--orb-device`, `--orb-weights`, `--orb-steps`, `--orb-fmax`.

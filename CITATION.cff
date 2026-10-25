@@ -4,7 +4,7 @@ type: software
 title: "TCSPV3: Composition-Conditioned Template Crystal Structure Prediction"
 authors:
   - name: "Machine Learning and Evolution Laboratory, University of South Carolina"
-version: 3.1.0
+version: 3.1.1
 repository-code: "https://github.com/usccolumbia/TCSPV3"
 url: "https://github.com/usccolumbia/TCSPV3"
 references:
