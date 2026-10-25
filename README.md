@@ -82,7 +82,7 @@ python scripts/install_data.py --download
 
 Test the installation. The candidates are relaxed and ranked with ORB-v3 (`orb-models` is installed by the `pip` step above); the first run downloads the ORB-v3 weights.
 
-Run with GPU (default; uses the least-busy GPU, or pick one with `--orb-device cuda:N`):
+Run with GPU (default; uses the least-busy GPU, or pick one with `--device cuda:N`):
 
 ```bash
 python tcsp.py --formula SrTiO3
@@ -91,7 +91,7 @@ python tcsp.py --formula SrTiO3
 Run without GPU (CPU only, slower):
 
 ```bash
-python tcsp.py --formula SrTiO3 --orb-device cpu
+python tcsp.py --formula SrTiO3 --device cpu
 ```
 
 Add `--ranker native` to skip the ORB-v3 stage and keep the chemical-score order.

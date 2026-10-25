@@ -122,4 +122,7 @@ class PickDeviceTest(unittest.TestCase):
 
     def test_orb_device_values(self):
         from tcspv3.__main__ import build_parser
-        self.assertEqual(build_parser().parse_args(['--formula', 'NaCl', '--orb-device', 'cuda:1']).orb_device, 'cuda:1')
+        parse = lambda *a: build_parser().parse_args(['--formula', 'NaCl', *a]).device
+        self.assertEqual(parse(), 'auto')
+        self.assertEqual(parse('--device', 'cuda:1'), 'cuda:1')
+        self.assertEqual(parse('--orb-device', 'cpu'), 'cpu')   # old name still works
