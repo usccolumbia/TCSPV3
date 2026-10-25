@@ -200,7 +200,7 @@ def main():
             if stage is not None:
                 step(f'[3/3] Relaxing {len(native)} candidates with ORB-v3 on {stage.device}', not single)
                 with tqdm(total=len(native), desc='ORB-v3', unit='structure', file=sys.stderr, disable=None if single else True,
-                          ncols=shutil.get_terminal_size().columns)  # 80 if the terminal reports no width as bar:
+                          ncols=shutil.get_terminal_size().columns) as bar:  # 80 columns if the terminal reports no width
                     ranked, orb_failures = orb.rank(native, stage.relax, args.topk, progress=bar.update)
                 if not ranked:
                     raise RuntimeError('ORB-v3 stage produced no valid candidate: ' + json.dumps(orb_failures)[:500])
