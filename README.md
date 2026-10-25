@@ -20,34 +20,18 @@ TCSP2.0 already uses BERTOS oxidation-state predictions, element embeddings and 
 | Final stage | By default relaxes the 20 native candidates with ORB-v3 and ranks them by ORB-v3 energy per atom (`--ranker orb-v3`); `--ranker native` keeps the chemical-score order without relaxation. An optional MatterSim single-point stage is also available; chemical and physical rankings remain separately inspectable. |
 | Reproducibility | Checks actual source CIF composition, preserves source hashes, records failures, and supports versioned indexes and a shared read-only memory-mapped CIF archive. |
 
-## Performance and limits
+## Performance
 
-All percentages below are **StructureMatcher** recovery, not stability rates. The exploratory 46-case internal comparison used a repaired soft-OS/dedup baseline, **not** an exact reproduction of TCSP2.0.
+Structure match (pymatgen StructureMatcher) with the reference, counted at Top-1 / Top-5 / Top-20 over all targets; missing predictions count as misses.
 
-| Evaluation | Top-1 | Top-5 | Top-20 |
+| Test set | TCSP 3.1.0 | CrystalFlow | MatterGen |
 |---|---:|---:|---:|
-| Testset 46 internal repaired baseline | 23/46 (50.0%) | 34/46 (73.9%) | 39/46 (84.8%) |
-| Testset 46 V3 chemical ranking | 23/46 (50.0%) | 36/46 (78.3%) | 39/46 (84.8%) |
-| Testset 46 V3 + radius-scaled MatterSim single-point | 28/46 (60.9%) | 38/46 (82.6%) | 39/46 (84.8%) |
-| Testset 46 V3.1 default (ORB-v3 relax and rank, current T46 cohort) | **35/46 (76.1%)** | **41/46 (89.1%)** | **41/46 (89.1%)** |
-| Original TCSP 180-case list, V3 chemical ranking | 115/180 (63.89%) | **153/180 (85.00%)** | not tabulated |
-| Original TCSP 180-case list, V3 + radius-scaled MatterSim single-point | **116/180 (64.44%)** | 150/180 (83.33%) | not tabulated |
-| T180 v3.1 (leakage-audited), V3.1 default (ORB-v3 relax and rank) | **130/180 (72.2%)** | **159/180 (88.3%)** | **163/180 (90.6%)** |
-| Published TCSP2.0 on its 180-case protocol **(not controlled against V3)** | 68.3% | 78.33% | not reported |
+| T46 (46 targets) | **35 / 41 / 41** | 26 / 27 / 31 | 25 / 25 / 27 |
+| T180 (180 targets) | **130 / 159 / 163** | 115 / 121 / 130 | 97 / 110 / 119 |
+| T240 (240 targets) | **149 / 186 / 193** | 130 / 137 / 149 | 103 / 118 / 127 |
+| T800 (800 targets) | **518 / 579 / 592** | 70 / 74 / 78 | 43 / 47 / 59 |
 
-The Top-20 for the single-point rows equals the chemical-ranking pool (the same 20 candidates are only reordered). The historical Testset 46 rows are the older exploratory cohort; the V3.1 row uses the current T46 cohort, so rows are not paired across cohorts.
-
-The separate, current **T180 v3.1** benchmark recovers **130/180 (72.2%) at Top-1**, **159/180 (88.3%) at Top-5**, and **163/180 (90.6%) at Top-20** with the default ORB-v3 relaxation and energy ranking (native chemical ranking without relaxation: 122/154/163).
-
-| Cohort (structure match, Top-1/5/20) | Native order, no relaxation | Default: ORB-v3 relax and rank |
-|---|---:|---:|
-| T46 (46 targets) | 34/39/41 | **35/41/41** |
-| T180 v3.1 (180 targets) | 122/154/163 | **130/159/163** |
-| T800 (800 targets; 19 without candidates count as misses) | 512/575/591 | **518/579/592** |
-
-The ORB-v3 stage adds no candidates, so Top-20 stays (to within one target) the same; it improves the order. Without relaxation the template stage is fast: the median is 28 s per target on two CPU cores. The ORB-v3 stage adds about 219 s per target on a GPU, including loading the weights for each target. Download/browse the [ORB-v3 relaxed and ranked Top-20 prediction CIFs (default; 130/159/163), with per-target scores and hashes](benchmarks/T180_v3_1_orb_top20/README.md), or the [native-order Top-20 CIFs without relaxation (122/154/163)](benchmarks/T180_v3_1_top20/README.md). This package contains 2,581 available candidates across all 180 targets, with up to 20 per target. Its audited cohort and cell-count conditioning differ from the historical original-180 rows above; the package documents the actual input exception for `mp-557387`.
-
-
+All three methods relax and rank their candidates with ORB-v3. CrystalFlow and MatterGen use MP-20-trained checkpoints (structures up to 20 atoms); T800 targets have up to 52 atoms. Browse the [T180 prediction CIFs](benchmarks/T180_v3_1_orb_top20/README.md).
 
 ## Install
 
@@ -116,16 +100,15 @@ python tcsp.py --formula Fe2O3 --formula-type reduced --output results/Fe2O3_mul
 
 ```bash
 python tcsp.py --csv examples/formulas.csv --output results/serial
-python tcspx.py --csv examples/formulas.csv --output results/parallel
-python tcspx.py --csv examples/formulas.csv --workers 4 --formula-type reduced --output results/parallel4
-python tcspx.py --csv your.csv --column FullFormula --workers 8 --output results/custom
+python tcsp.py --csv examples/formulas.csv --workers auto --output results/parallel
+python tcsp.py --csv your.csv --column FullFormula --workers 8 --output results/custom
 ```
 
 The CSV reader finds an exact `composition` header (case-insensitive), or one header containing `formula`; use `--column` when ambiguous. Each row gets `row_<CSV row number>_<formula>` with a filename-safe formula. `batch_summary.csv` and `batch_summary.json` record successes and errors. Invalid rows do not stop the batch.
 
-`tcspx.py` runs CPU workers, each reusing its loaded index/BERTOS model. By default it samples idle CPU capacity for one second, uses 60% of it, and caps the worker count by available memory; `--workers N` overrides this. Workers share the CIF archive through a read-only memory map, while parsed structures are cached per worker. A large batch can benefit from this; a speedup for short batches has not been established.
+`--workers N` runs N CPU worker processes that build candidates in parallel, each loading the index and BERTOS once; `--workers auto` uses 60% of idle CPU capacity, capped by available memory. The ORB-v3 stage then relaxes each formula's candidates in the main process on the GPU. Results are identical to a serial run. `tcspx.py` is kept as an alias for `tcsp.py --workers auto`.
 
-Both commands default to `--output ./cif_output`, relative to the current working directory. `--out` remains an alias. Use a new output directory for each run. The default index is `tcspv3/731K_index_minus_MP20_test.pkl` (719,450 entries). Use `--index tcspv3/731K_index.pkl` for the full 731,293-entry index or `--index tcspv3/731K_index_minus_MPST52_test.pkl` for the MPTS-52-test-excluded index. See [docs/DATA.md](docs/DATA.md) for exactly what each filtered index excludes.
+Runs default to `--output ./cif_output`, relative to the current working directory. `--out` remains an alias. Use a new output directory for each run. The default index is `tcspv3/731K_index_minus_MP20_test.pkl` (719,450 entries). Use `--index tcspv3/731K_index.pkl` for the full 731,293-entry index or `--index tcspv3/731K_index_minus_MPST52_test.pkl` for the MPTS-52-test-excluded index. See [docs/DATA.md](docs/DATA.md) for exactly what each filtered index excludes.
 
 ## Use LeMat or your own CIFs as templates
 
