@@ -148,7 +148,7 @@ be returned; do not pad or relabel a short pool as full coverage.
 
 The prediction records index/source hashes and template IDs. Keep the matching
 `BUILD_COMPLETE.json` and metadata next to your results. Optional MatterSim ranking
-is a separate stage; use the [official checkpoint-download instructions](../README.md#optional-mattersim-stage).
+is a separate stage; use the [checkpoint-download notes](DATA.md).
 Changing the template library is a new experiment: existing 731K benchmark
 accuracies are not LeMat results, and BERTOS/MatterSim pretraining provenance is
 not changed merely by using a new template set.
