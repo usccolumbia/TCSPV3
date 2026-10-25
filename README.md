@@ -12,15 +12,13 @@ TCSP2.0 already uses BERTOS oxidation-state predictions, element embeddings and 
 
 | Area | V3 implementation |
 |---|---|
-| Retrieval | Unions embedding-based formulas with Villars periodic-number neighborhoods, inspired by [PNcsp+](https://doi.org/10.1021/acs.jctc.6c00044), preserving candidates from both routes under the search budget. |
+| Retrieval | Ranks template formulas by the chemical similarity of their elements and keeps the best candidates under the search budget. |
 | Element mapping | Keeps up to three near-optimal assignments that preserve reduced stoichiometric coefficients. |
 | Oxidation states | Aggregates BERTOS probabilities per species and softly scores up to four neutral alternatives, rather than letting one uncertain assignment reject a template. |
 | Geometry | Uses nearest-shell coordination and compatible Shannon/atomic radii for size penalties and optional bounded lattice scaling. |
 | Candidate diversity | Deduplicates with `StructureMatcher` while retaining distinct polymorphs; majority-space-group voting is optional and was not part of the benchmarked default. |
 | Final stage | By default relaxes the 20 native candidates with ORB-v3 and ranks them by ORB-v3 energy per atom (`--ranker orb-v3`); `--ranker native` keeps the chemical-score order without relaxation. An optional MatterSim single-point stage is also available; chemical and physical rankings remain separately inspectable. |
 | Reproducibility | Checks actual source CIF composition, preserves source hashes, records failures, and supports versioned indexes and a shared read-only memory-mapped CIF archive. |
-
-The periodic-number idea is credited to Oran, Caputo, Villars, and Tekin’s [PNcsp+ paper](https://pmc.ncbi.nlm.nih.gov/articles/PMC13085239/). TCSPV3 combines a PN retrieval route with its existing embedding route; it does not implement PNcsp+’s OQMD search, formation-enthalpy filter, or MACE/M3GNet/ALIGNN-FF ensemble.
 
 ## Performance and limits
 
@@ -138,30 +136,6 @@ The tested builder is `scripts/build_template_index.py`; auxiliary BERTOS and
 embedding assets remain necessary. LeMat results are a separate experiment, not
 the existing 731K benchmark scores.
 
-## Optional MatterSim stage
-
-Install `pip install -e '.[physics]'` in a compatible environment. MatterSim checkpoints are **downloaded from official upstream URLs, not bundled or rehosted here**.
-
-[Matbench Discovery's MatterSim entry](https://github.com/janosh/matbench-discovery/blob/main/models/mattersim/mattersim-v1-5m.yml) lists [MatterSim v1.0.0-5M (direct checkpoint)](https://github.com/microsoft/mattersim/raw/refs/heads/main/pretrained_models/mattersim-v1.0.0-5M.pth). Our recorded benchmarks used **1M**, available from [the official 1M checkpoint URL](https://github.com/microsoft/mattersim/raw/refs/heads/main/pretrained_models/mattersim-v1.0.0-1M.pth). The models are distinct: choosing 5M does not reproduce the reported 1M results.
-
-For the benchmark-compatible default, download 1M with size/SHA256 verification, then run the physical stage on a **single-formula** prediction directory:
-
-```bash
-python scripts/download_mattersim.py --model 1M
-python -m tcspv3.energy --run cif_output --device cpu
-```
-
-To explicitly use the checkpoint linked by Matbench Discovery instead:
-
-```bash
-python scripts/download_mattersim.py --model 5M
-python -m tcspv3.energy --run cif_output --device cpu --checkpoint checkpoints/mattersim-v1.0.0-5M.pth
-```
-
-Use a fresh prediction/output directory when changing the checkpoint. `model_manifest.json` records both official URLs, byte sizes and SHA256 hashes. The earlier locally prepared `TCSPV3-v3.0.0-assets.tar.gz` archive included MatterSim; it remains a historical artifact, not the current template-only bundle.
-
-This separate stage computes raw/scaled single-point energies and limited relaxation; it can take substantially longer than chemical prediction. It does not turn a low within-composition energy into a stability claim. The parallel CSV CLI currently parallelizes chemical prediction only.
-
 ## Development, citation, and license
 
 ```bash
@@ -169,7 +143,7 @@ python -m pip install -e '.[test]'
 python -m pytest tests -q
 ```
 
-The source is MIT-licensed, following the [existing TCSP2.0 license](https://github.com/usccolumbia/TCSP/blob/main/LICENSE). Large data/model assets retain their own provenance and applicable terms. For attribution, cite this software version, the [TCSP2.0 paper](https://arxiv.org/abs/2503.23183), and [PNcsp+](https://doi.org/10.1021/acs.jctc.6c00044) for the periodic-number retrieval idea. See [CITATION.cff](CITATION.cff).
+The source is MIT-licensed, following the [existing TCSP2.0 license](https://github.com/usccolumbia/TCSP/blob/main/LICENSE). Large data/model assets retain their own provenance and applicable terms. For attribution, cite this software version and the [TCSP2.0 paper](https://arxiv.org/abs/2503.23183). See [CITATION.cff](CITATION.cff).
 
 ## BibTeX citation
 

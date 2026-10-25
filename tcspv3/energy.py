@@ -37,7 +37,10 @@ def consensus_rank(arms):
 class EnergyStage:
     def __init__(self, device='cuda', checkpoint=None, threads=4):
         import torch
-        from mattersim.forcefield import MatterSimCalculator
+        try:
+            from mattersim.forcefield import MatterSimCalculator
+        except ModuleNotFoundError:
+            raise SystemExit("MatterSim is not installed. Install it with: python -m pip install -e '.[physics]'") from None
         from mattersim.applications.relax import Relaxer
         if threads < 1:
             raise ValueError('threads must be positive')
