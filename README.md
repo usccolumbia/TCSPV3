@@ -24,22 +24,22 @@ TCSP2.0 already uses BERTOS oxidation-state predictions, element embeddings and 
 
 Structure match (pymatgen StructureMatcher) with the reference, shown as matched targets (match rate) among the Top-1, Top-5 and Top-20 candidates; missing predictions count as misses.
 
-| Test set | Top-k | TCSP 3.1 | CrystalFlow | MatterGen |
-|---|---|---:|---:|---:|
-| T46 (46) | Top-1 | **35 (76.1%)** | 26 (56.5%) | 25 (54.3%) |
-|  | Top-5 | **41 (89.1%)** | 27 (58.7%) | 25 (54.3%) |
-|  | Top-20 | **41 (89.1%)** | 31 (67.4%) | 27 (58.7%) |
-| T180 (180) | Top-1 | **130 (72.2%)** | 115 (63.9%) | 97 (53.9%) |
-|  | Top-5 | **159 (88.3%)** | 121 (67.2%) | 110 (61.1%) |
-|  | Top-20 | **163 (90.6%)** | 130 (72.2%) | 119 (66.1%) |
-| T240 (240) | Top-1 | **149 (62.1%)** | 130 (54.2%) | 103 (42.9%) |
-|  | Top-5 | **186 (77.5%)** | 137 (57.1%) | 118 (49.2%) |
-|  | Top-20 | **193 (80.4%)** | 149 (62.1%) | 127 (52.9%) |
-| T800 (800) | Top-1 | **518 (64.8%)** | 70 (8.8%) | 43 (5.4%) |
-|  | Top-5 | **579 (72.4%)** | 74 (9.2%) | 47 (5.9%) |
-|  | Top-20 | **592 (74.0%)** | 78 (9.8%) | 59 (7.4%) |
+| Test set | Top-k | TCSP 3.1 | CrystalFlow | MaskGXT | MatterGen |
+|---|---|---:|---:|---:|---:|
+| T46 (46) | Top-1 | **35 (76.1%)** | 26 (56.5%) | 30 (65.2%) | 25 (54.3%) |
+|  | Top-5 | **41 (89.1%)** | 27 (58.7%) | 30 (65.2%) | 25 (54.3%) |
+|  | Top-20 | **41 (89.1%)** | 31 (67.4%) | 31 (67.4%) | 27 (58.7%) |
+| T180 (180) | Top-1 | **130 (72.2%)** | 115 (63.9%) | 113 (62.8%) | 97 (53.9%) |
+|  | Top-5 | **159 (88.3%)** | 121 (67.2%) | 116 (64.4%) | 110 (61.1%) |
+|  | Top-20 | **163 (90.6%)** | 130 (72.2%) | 119 (66.1%) | 119 (66.1%) |
+| T240 (240) | Top-1 | **149 (62.1%)** | 130 (54.2%) | 139 (57.9%) | 103 (42.9%) |
+|  | Top-5 | **186 (77.5%)** | 137 (57.1%) | 143 (59.6%) | 118 (49.2%) |
+|  | Top-20 | **193 (80.4%)** | 149 (62.1%) | 146 (60.8%) | 127 (52.9%) |
+| T800 (800) | Top-1 | **518 (64.8%)** | 70 (8.8%) | 76 (9.5%) | 43 (5.4%) |
+|  | Top-5 | **579 (72.4%)** | 74 (9.2%) | 79 (9.9%) | 47 (5.9%) |
+|  | Top-20 | **592 (74.0%)** | 78 (9.8%) | 81 (10.1%) | 59 (7.4%) |
 
-All three methods relax and rank their candidates with ORB-v3. CrystalFlow and MatterGen use MP-20-trained checkpoints (structures up to 20 atoms); T800 targets have up to 52 atoms. Browse the [T180 prediction CIFs](benchmarks/T180_v3_1_orb_top20/README.md).
+TCSP, CrystalFlow and MatterGen relax and rank their candidates with ORB-v3; MaskGXT ranks unrelaxed candidates by ORB-v3 single-point energy. The generative models use MP-20-trained checkpoints (structures up to 20 atoms), while T800 targets have up to 52 atoms; MaskGXT cannot generate structures above 20 atoms. Browse the [T180 prediction CIFs](benchmarks/T180_v3_1_orb_top20/README.md).
 
 ## Install
 
