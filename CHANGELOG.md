@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- One `--device` option (`auto`, `cpu`, `cuda`, `cuda:N`) replaces `--device` (BERTOS) and `--orb-device`; `--orb-device` still works. BERTOS always runs on the CPU, as in all benchmarks.
+
 ## 3.1.1 — 2026-10-24
 
 - Template data and BERTOS model download from Zenodo: `python scripts/install_data.py --download` ([10.5281/zenodo.23627915](https://doi.org/10.5281/zenodo.23627915)).

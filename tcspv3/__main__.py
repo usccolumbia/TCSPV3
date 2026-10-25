@@ -120,13 +120,13 @@ def build_parser():
                    help='full: match input atom count; reduced: allow multiple template-cell Z values')
     p.add_argument('--pool-size', type=int, default=100, help='Valid candidates kept before ranking')
     p.add_argument('--topk', type=int, default=20, help='Number of structures to output')
-    p.add_argument('--device', default='cpu', choices=['cpu', 'cuda'], help='Device for BERTOS')
     p.add_argument('--symmetry-vote', action='store_true', help='Experimental')
     p.add_argument('--ranker', choices=['orb-v3', 'native'], default='orb-v3',
                    help='Final stage. orb-v3: relax the candidates with ORB-v3 and rank by ORB-v3 energy per atom; '
                         'native: keep the chemical-score order, no relaxation')
-    p.add_argument('--orb-device', default='auto',
-                   help='Device for the ORB-v3 stage: auto (least-busy GPU, else CPU), cpu, cuda or cuda:N')
+    p.add_argument('--device', default='auto',
+                   help='auto (least-busy GPU, else CPU), cpu, cuda or cuda:N')
+    p.add_argument('--orb-device', dest='device', default=argparse.SUPPRESS, help=argparse.SUPPRESS)  # old name
     p.add_argument('--orb-weights', help='Local ORB-v3 weights file (default: downloaded by orb-models)')
     p.add_argument('--orb-steps', type=int, default=orb.STEPS, help='Maximum ORB-v3 relaxation steps')
     p.add_argument('--orb-fmax', type=float, default=orb.FMAX, help='ORB-v3 force threshold in eV/A')
@@ -147,7 +147,7 @@ def generate(engine, args, formula, evidence_cache, native_k, announce=False):
     wanted = set([formula]+plan['embedding']+plan['pn'])
     step('[2/3] Predicting oxidation states and building candidates', not announce)
     if wanted - evidence_cache.keys():
-        evidence_cache.update(predict(list(wanted - evidence_cache.keys()), args.database, args.device))
+        evidence_cache.update(predict(list(wanted - evidence_cache.keys()), args.database, 'cpu'))  # BERTOS always on CPU
     evidence = {f: evidence_cache[f] for f in wanted}
     legacy = {f: v.get('legacy_last_atom', {}) for f, v in evidence.items()}
     result = engine.generate(plan, args.mode, evidence, legacy, args.pool_size, native_k, target_atoms=target_atoms)
@@ -225,8 +225,8 @@ def main():
         print(BANNER, file=sys.stderr, flush=True)
     if args.pool_size < 1 or not 0 < args.topk <= args.pool_size:
         p.error('Require pool-size >= topk > 0')
-    if not re.fullmatch(r'auto|cpu|cuda(:\d+)?', args.orb_device):
-        p.error('--orb-device must be auto, cpu, cuda or cuda:N')
+    if not re.fullmatch(r'auto|cpu|cuda(:\d+)?', args.device):
+        p.error('--device must be auto, cpu, cuda or cuda:N')
     for required in [Path(args.index), Path(args.database)/'data/matscholar-embedding.json',
                      Path(args.database)/'BERTOS/tokenizer/vocab.txt',
                      Path(args.database)/'BERTOS/trained_models/ICSD_CN/config.json']:
@@ -241,8 +241,6 @@ def main():
             p.error('--workers requires --csv')
         if args.workers != 'auto' and not (args.workers.isdigit() and int(args.workers) >= 1):
             p.error('--workers must be a positive number or auto')
-        if args.device != 'cpu':
-            p.error('--workers needs --device cpu (BERTOS runs in the CPU workers)')
     if args.csv:
         try:
             column, records = read_formula_csv(args.csv, args.column)
@@ -262,7 +260,7 @@ def main():
     native_k = args.topk
     if args.ranker == 'orb-v3':
         try:
-            stage = orb.OrbStage(args.orb_device, weights_path=args.orb_weights, steps=args.orb_steps, fmax=args.orb_fmax)
+            stage = orb.OrbStage(args.device, weights_path=args.orb_weights, steps=args.orb_steps, fmax=args.orb_fmax)
         except RuntimeError as exc:
             p.error(str(exc))
         native_k = min(max(args.topk, 20), args.pool_size)   # the ORB-v3 stage relaxes at least the 20 native candidates
