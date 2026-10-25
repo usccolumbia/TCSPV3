@@ -51,6 +51,9 @@ cd TCSPV3
 python3.12 -m venv .env
 source .env/bin/activate
 python -m pip install -e .
+python scripts/install_data.py --download
+python tcsp.py --formula SrTiO3
+python tcsp.py --csv examples/formulas.csv --workers auto --output results    
 ```
 
 If `python3.12` is not available, create the environment another way, then run `python -m pip install -e .` as above:
@@ -65,6 +68,8 @@ If `python3.12` is not available, create the environment another way, then run `
 
   ```bash
   conda create -y -p .env python=3.12
+  conda activate ./.env
+  
   ```
 
   Then activate it with `conda activate ./.env` instead of `source .env/bin/activate`.
