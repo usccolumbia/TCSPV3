@@ -22,14 +22,22 @@ TCSP2.0 already uses BERTOS oxidation-state predictions, element embeddings and 
 
 ## Performance
 
-Structure match (pymatgen StructureMatcher) with the reference, counted at Top-1 / Top-5 / Top-20 over all targets; missing predictions count as misses.
+Structure match (pymatgen StructureMatcher) with the reference, shown as matched targets (match rate) among the Top-1, Top-5 and Top-20 candidates; missing predictions count as misses.
 
-| Test set | TCSP 3.1.0 | CrystalFlow | MatterGen |
-|---|---:|---:|---:|
-| T46 (46 targets) | **35 / 41 / 41** | 26 / 27 / 31 | 25 / 25 / 27 |
-| T180 (180 targets) | **130 / 159 / 163** | 115 / 121 / 130 | 97 / 110 / 119 |
-| T240 (240 targets) | **149 / 186 / 193** | 130 / 137 / 149 | 103 / 118 / 127 |
-| T800 (800 targets) | **518 / 579 / 592** | 70 / 74 / 78 | 43 / 47 / 59 |
+| Test set | Top-k | TCSP 3.1 | CrystalFlow | MatterGen |
+|---|---|---:|---:|---:|
+| T46 (46) | Top-1 | **35 (76.1%)** | 26 (56.5%) | 25 (54.3%) |
+|  | Top-5 | **41 (89.1%)** | 27 (58.7%) | 25 (54.3%) |
+|  | Top-20 | **41 (89.1%)** | 31 (67.4%) | 27 (58.7%) |
+| T180 (180) | Top-1 | **130 (72.2%)** | 115 (63.9%) | 97 (53.9%) |
+|  | Top-5 | **159 (88.3%)** | 121 (67.2%) | 110 (61.1%) |
+|  | Top-20 | **163 (90.6%)** | 130 (72.2%) | 119 (66.1%) |
+| T240 (240) | Top-1 | **149 (62.1%)** | 130 (54.2%) | 103 (42.9%) |
+|  | Top-5 | **186 (77.5%)** | 137 (57.1%) | 118 (49.2%) |
+|  | Top-20 | **193 (80.4%)** | 149 (62.1%) | 127 (52.9%) |
+| T800 (800) | Top-1 | **518 (64.8%)** | 70 (8.8%) | 43 (5.4%) |
+|  | Top-5 | **579 (72.4%)** | 74 (9.2%) | 47 (5.9%) |
+|  | Top-20 | **592 (74.0%)** | 78 (9.8%) | 59 (7.4%) |
 
 All three methods relax and rank their candidates with ORB-v3. CrystalFlow and MatterGen use MP-20-trained checkpoints (structures up to 20 atoms); T800 targets have up to 52 atoms. Browse the [T180 prediction CIFs](benchmarks/T180_v3_1_orb_top20/README.md).
 
